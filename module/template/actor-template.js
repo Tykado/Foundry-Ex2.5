@@ -80,6 +80,12 @@ class CommonActorData extends foundry.abstract.TypeDataModel {
       essence: resourceField(1, 10),
       charmslots: statField(0),
       willpower: resourceField(5, 5),
+	  virtues: new fields.SchemaField({
+       compassion: resourceField(1, 5),
+       temperance: resourceField(1, 5),
+       conviction: resourceField(1, 5),
+	   valor: resourceField(1, 5)
+    }),
       penumbra: resourceField(0, 10),
       evasion: statField(0),
       parry: statField(0),

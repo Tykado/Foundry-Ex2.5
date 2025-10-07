@@ -1257,6 +1257,16 @@ Hooks.once("ready", async function () {
       }
     }
   });
+  
+  Handlebars.registerHelper("essenceCap", function(essence) {
+  // Base cap is 5
+  let cap = 5;
+  // If Essence is above 5, increase the cap by (essence - 5)
+  if (essence > 5) cap += (essence - 5);
+  // Hard maximum of 10
+  if (cap > 10) cap = 10;
+  return cap;
+  });
 
   Hooks.on('deleteActiveEffect', (effect) => {
     let tempHPRemoved = 0;

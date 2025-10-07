@@ -2162,6 +2162,7 @@ export class ExaltedThirdActorSheet extends HandlebarsApplicationMixin(ActorShee
     else {
       this._assignToActorField(fields, index + 1);
     }
+
   }
 
   _assignToActorField(fields, value) {

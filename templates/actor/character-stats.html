@@ -60,15 +60,12 @@
                 ../system.settings.editmode}}{{#if attribute.caste}}*{{/if}}{{/if}}</label>
             {{#if ../system.settings.usedotsvalues}}
             <div class="resource-value" data-value="{{attribute.value}}" data-name="system.attributes.{{key}}.value">
-                {{#numLoop 5}}
-                <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
-                {{/numLoop}}
-                {{#if ../system.settings.usetenattributes}}
-                <div></div>
-                {{#numLoopCertainStart 5 5}}
-                <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
-                {{/numLoopCertainStart}}
-                {{/if}}
+{{#numLoop (essenceCap ../system.essence.value)}}
+  <span data-action="dotCounterChange"
+        class="resource-value-step"
+        data-index="{{this}}"></span>
+{{/numLoop}}
+
                 {{#ifEquals ../system.details.exalt 'alchemical'}}
                 {{#if ../system.settings.editmode}}
                 {{else}}
@@ -146,15 +143,12 @@
             </label>
             {{#if ../system.settings.usedotsvalues}}
             <div class="resource-value" data-value="{{ability.value}}" data-name="system.abilities.{{key}}.value">
-                {{#numLoop 5}}
-                <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
-                {{/numLoop}}
-                {{#if ../system.settings.usetenabilities}}
-                <div></div>
-                {{#numLoopCertainStart 5 5}}
-                <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
-                {{/numLoopCertainStart}}
-                {{/if}}
+{{#numLoop (essenceCap ../system.essence.value)}}
+  <span data-action="dotCounterChange"
+        class="resource-value-step"
+        data-index="{{this}}"></span>
+{{/numLoop}}
+
             </div>
             {{else}}
             <input class="list-input" type="number" name="system.abilities.{{key}}.value" value="{{ability.value}}"
@@ -274,5 +268,92 @@
 <div style="margin-bottom:10px;">
     Specialties: {{system.charcreation.spent.specialties}}/{{system.charcreation.available.specialties}}
 </div>
+<!-- BEGIN: Virtues (Exalted 2.5e) -->
+<label class="resource-label">{{localize "Ex3.Virtues"}}</label>
+<div class="virtues grid grid-4col flex-group-center">
+
+  <!-- Compassion -->
+  <div>
+    <label class="resource-label">{{localize "Ex3.Compassion"}}</label>
+    {{#if system.settings.usedotsvalues}}
+      <div class="resource-value" data-value="{{system.virtues.compassion.max}}" data-name="system.virtues.compassion.max">
+        {{#numLoop 5}}
+          <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
+        {{/numLoop}}
+      </div>
+      <div class="resource-counter" data-states="x:value" data-value="{{system.virtues.compassion.value}}" data-name="system.virtues.compassion">
+        {{#numLoop 5}}
+          <span data-action="squareCounterChange" class="resource-counter-step non-health-boxes" data-type="virtue" data-index="{{this}}" data-state=""></span>
+        {{/numLoop}}
+      </div>
+    {{else}}
+      <input type="number" name="system.virtues.compassion.value" value="{{system.virtues.compassion.value}}" data-dtype="Number" />
+      <input type="number" name="system.virtues.compassion.max" value="{{system.virtues.compassion.max}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+
+  <!-- Conviction -->
+  <div>
+    <label class="resource-label">{{localize "Ex3.Conviction"}}</label>
+    {{#if system.settings.usedotsvalues}}
+      <div class="resource-value" data-value="{{system.virtues.conviction.max}}" data-name="system.virtues.conviction.max">
+        {{#numLoop 5}}
+          <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
+        {{/numLoop}}
+      </div>
+      <div class="resource-counter" data-states="x:value" data-value="{{system.virtues.conviction.value}}" data-name="system.virtues.conviction">
+        {{#numLoop 5}}
+          <span data-action="squareCounterChange" class="resource-counter-step non-health-boxes" data-type="virtue" data-index="{{this}}" data-state=""></span>
+        {{/numLoop}}
+      </div>
+    {{else}}
+      <input type="number" name="system.virtues.conviction.value" value="{{system.virtues.conviction.value}}" data-dtype="Number" />
+      <input type="number" name="system.virtues.conviction.max" value="{{system.virtues.conviction.max}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+
+  <!-- Temperance -->
+  <div>
+    <label class="resource-label">{{localize "Ex3.Temperance"}}</label>
+    {{#if system.settings.usedotsvalues}}
+      <div class="resource-value" data-value="{{system.virtues.temperance.max}}" data-name="system.virtues.temperance.max">
+        {{#numLoop 5}}
+          <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
+        {{/numLoop}}
+      </div>
+      <div class="resource-counter" data-states="x:value" data-value="{{system.virtues.temperance.value}}" data-name="system.virtues.temperance">
+        {{#numLoop 5}}
+          <span data-action="squareCounterChange" class="resource-counter-step non-health-boxes" data-type="virtue" data-index="{{this}}" data-state=""></span>
+        {{/numLoop}}
+      </div>
+    {{else}}
+      <input type="number" name="system.virtues.temperance.value" value="{{system.virtues.temperance.value}}" data-dtype="Number" />
+      <input type="number" name="system.virtues.temperance.max" value="{{system.virtues.temperance.max}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+
+  <!-- Valor -->
+  <div>
+    <label class="resource-label">{{localize "Ex3.Valor"}}</label>
+    {{#if system.settings.usedotsvalues}}
+      <div class="resource-value" data-value="{{system.virtues.valor.max}}" data-name="system.virtues.valor.max">
+        {{#numLoop 5}}
+          <span data-action="dotCounterChange" class="resource-value-step" data-index="{{this}}"></span>
+        {{/numLoop}}
+      </div>
+      <div class="resource-counter" data-states="x:value" data-value="{{system.virtues.valor.value}}" data-name="system.virtues.valor">
+        {{#numLoop 5}}
+          <span data-action="squareCounterChange" class="resource-counter-step non-health-boxes" data-type="virtue" data-index="{{this}}" data-state=""></span>
+        {{/numLoop}}
+      </div>
+    {{else}}
+      <input type="number" name="system.virtues.valor.value" value="{{system.virtues.valor.value}}" data-dtype="Number" />
+      <input type="number" name="system.virtues.valor.max" value="{{system.virtues.valor.max}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+
+</div>
+<!-- END: Virtues -->
+
 {{/if}}
 </div>

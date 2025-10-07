@@ -547,102 +547,47 @@ export class ExaltedThirdActor extends Actor {
     return ChatMessage.create(chatData);
   }
 
-  calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
-    var maxMotes = 0;
-    if (moteType === 'personal') {
-      // if (exaltType === 'solar' || exaltType === 'abyssal' || exaltType === 'infernal') {
-      //   maxMotes = 10 + (essenceLevel * 3);
-      // }
-      // if (exaltType === 'dragonblooded') {
-      //   maxMotes = 11 + essenceLevel;
-      // }
-      // if (exaltType === 'lunar' || exaltType === 'getimian') {
-      //   maxMotes = 15 + essenceLevel;
-      // }
-      // if (exaltType === 'sovereign') {
-      //   maxMotes = 4 + essenceLevel;
-      // }
-      // if (exaltType === 'exigent') {
-      //   if (this.system.settings?.exigenttype === 'celestial') {
-      //     maxMotes = 11 + (essenceLevel * 2);
-      //   }
-      //   else {
-      //     maxMotes = 11 + essenceLevel;
-      //   }
-      // }
-      // if (exaltType === 'sidereal') {
-      //   maxMotes = 9 + (essenceLevel * 2);
-      // }
-      // if (exaltType === 'liminal') {
-      //   maxMotes = 10 + (essenceLevel * 3);
-      // }
-      // if (exaltType === 'other') {
-      //   maxMotes = 10 * essenceLevel;
-      // }
-      // if (exaltType === 'dreamsouled' || this.system.details?.caste?.toLowerCase() === 'architect' || this.system.details?.caste?.toLowerCase() === 'puppeteer') {
-      //   maxMotes = 11 + essenceLevel;
-      // }
-      // if (exaltType === 'alchemical' || this.system.details?.caste.toLowerCase() === 'strawmaiden' || exaltType === 'hearteater' || exaltType === 'umbral') {
-      //   maxMotes = 11 + (essenceLevel * 2);
-      // }
-      if (this.system.settings?.exigenttype === 'celestial' || this.system.details?.caste.toLowerCase() === 'strawmaiden') {
-        maxMotes = CONFIG.exaltedthird.exaltMotePools.personal.base['default'] + (essenceLevel * CONFIG.exaltedthird.exaltMotePools.personal.essenceLevelMultiplier['celestialExigent']);
-      } else {
-        maxMotes = (CONFIG.exaltedthird.exaltMotePools.personal.base[exaltType] ?? CONFIG.exaltedthird.exaltMotePools.personal.base['default']) + (essenceLevel * (CONFIG.exaltedthird.exaltMotePools.personal.essenceLevelMultiplier[exaltType] ?? CONFIG.exaltedthird.exaltMotePools.personal.essenceLevelMultiplier['default']));
-      }
-    }
-    else if (moteType === 'glorymotecap') {
-      if (['lunar'].includes(exaltType)) {
-        maxMotes = 34 + (essenceLevel * 2);
-      }
-      else if (['dragonblooded', 'sovereign', 'liminal', 'dreamsouled'].includes(exaltType)) {
-        maxMotes = 26 + (essenceLevel * 2);
-      }
-      else {
-        maxMotes = 25 + (essenceLevel * 5);
-      }
-    }
-    else {
-      // if (exaltType === 'solar' || exaltType === 'abyssal' || exaltType === 'infernal') {
-      //   maxMotes = 26 + (essenceLevel * 7);
-      // }
-      // if (exaltType === 'dragonblooded') {
-      //   maxMotes = 23 + (essenceLevel * 4);
-      // }
-      // if (exaltType === 'lunar') {
-      //   maxMotes = 34 + (essenceLevel * 4);
-      // }
-      // if (exaltType === 'sovereign') {
-      //   maxMotes = 30 + (essenceLevel * 4);
-      // }
-      // if (exaltType === 'exigent') {
-      //   if (this.system.settings?.exigenttype === 'celestial') {
-      //     maxMotes = 27 + (essenceLevel * 6);
-      //   }
-      //   else {
-      //     maxMotes = 23 + (essenceLevel * 4);
-      //   }
-      // }
-      // if (exaltType === 'sidereal' || exaltType === 'getimian') {
-      //   maxMotes = 25 + (essenceLevel * 6);
-      // }
-      // if (exaltType === 'liminal') {
-      //   maxMotes = 23 + (essenceLevel * 4);
-      // }
-      // if (exaltType === 'dreamsouled' || this.system.details?.caste?.toLowerCase() === 'architect' || this.system.details?.caste?.toLowerCase() === 'puppeteer') {
-      //   maxMotes = 23 + (essenceLevel * 4);
-      // }
-      // if (exaltType === 'alchemical' || this.system.details?.caste?.toLowerCase() === 'strawmaiden' || exaltType === 'hearteater' || exaltType === 'umbral') {
-      //   maxMotes = 27 + (essenceLevel * 6);
-      // }
-      if (this.system.settings?.exigenttype === 'celestial' || this.system.details?.caste.toLowerCase() === 'strawmaiden') {
-        maxMotes = CONFIG.exaltedthird.exaltMotePools.peripheral.base['celestialExigent'] + (essenceLevel * CONFIG.exaltedthird.exaltMotePools.peripheral.essenceLevelMultiplier['celestialExigent']);
-      } else {
-        maxMotes = (CONFIG.exaltedthird.exaltMotePools.peripheral.base[exaltType] ?? CONFIG.exaltedthird.exaltMotePools.peripheral.base['default']) + (essenceLevel * (CONFIG.exaltedthird.exaltMotePools.peripheral.essenceLevelMultiplier[exaltType] ?? CONFIG.exaltedthird.exaltMotePools.peripheral.essenceLevelMultiplier['default']));
-      }
-    }
-    return maxMotes
+calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
+  let maxMotes = 0;
+  exaltType = exaltType?.toLowerCase() ?? 'default';
+  const essence = Number(essenceLevel ?? this.system.essence?.value ?? 0);
+  const willpower = Number(this.system.willpower?.max ?? this.system.willpower?.value ?? 0);
+
+  // PERSONAL MOTES
+  if (moteType === 'personal') {
+    const pools = CONFIG.exaltedthird?.exaltMotePools?.personal ?? {};
+    const base = Number(pools.base?.[exaltType] ?? pools.base?.default ?? 0);
+    const mult = Number(pools.essenceLevelMultiplier?.[exaltType] ?? pools.essenceLevelMultiplier?.default ?? 0);
+    maxMotes = base + (essence * mult) + willpower;
   }
+
+  // GLORYMOTE CAP
+  else if (moteType === 'glorymotecap') {
+    if (['lunar'].includes(exaltType)) maxMotes = 34 + (essence * 2);
+    else if (['dragonblooded','sovereign','liminal','dreamsouled'].includes(exaltType)) maxMotes = 26 + (essence * 2);
+    else maxMotes = 25 + (essence * 5);
+  }
+
+  // PERIPHERAL MOTES (Virtues included)
+  else if (moteType === 'peripheral') {
+    const virtues = this.system.virtues ?? {};
+    const compassion = Number(virtues.compassion?.max ?? virtues.compassion?.value ?? 0);
+    const conviction = Number(virtues.conviction?.max ?? virtues.conviction?.value ?? 0);
+    const temperance = Number(virtues.temperance?.max ?? virtues.temperance?.value ?? 0);
+    const valor = Number(virtues.valor?.max ?? virtues.valor?.value ?? 0);
+    const virtueTotal = compassion + conviction + temperance + valor;
+
+    const pools = CONFIG.exaltedthird?.exaltMotePools?.peripheral ?? {};
+    const base = Number(pools.base?.[exaltType] ?? pools.base?.default ?? 0);
+    const mult = Number(pools.essenceLevelMultiplier?.[exaltType] ?? pools.essenceLevelMultiplier?.default ?? 0);
+
+    maxMotes = base + (essence * mult) + willpower + virtueTotal;
+  }
+
+  return Number(maxMotes) || 0;
+}
+
+
 
   async calculateCommitMotes(type) {
     var commitMotes = 0;
@@ -1398,15 +1343,35 @@ export class ExaltedThirdActor extends Actor {
         cost: returnValue,
       };
     }
-    if (ability === 'willpower' || ability === 'fever') {
-      return null;
-    }
-    if (this.items.filter(item => item.type === 'customability').some(ca => ca._id === ability)) {
-      abilityValue = this.customabilities.find(x => x._id === ability).system?.points || 0;
-    }
-    if (this.system.abilities[ability]) {
-      abilityValue = this.system.abilities[ability]?.value || 0;
-    }
+// Normalize the ability string to lowercase
+ability = ability?.toLowerCase() ?? '';
+
+// Handle willpower and fever
+if (ability === 'willpower') {
+  return Number(this.system.willpower?.max ?? this.system.willpower?.value ?? 0);
+}
+if (ability === 'fever') return 0; // still always finite
+
+// Handle virtues dynamically
+const virtuesList = ['compassion','conviction','temperance','valor'];
+if (virtuesList.includes(ability)) {
+  const virtue = this.system.virtues?.[ability];
+  return Number(virtue?.max ?? virtue?.value ?? 0);
+}
+
+// Custom abilities
+const customAbility = this.items?.find(i => i.type === 'customability' && i._id === ability);
+if (customAbility) return Number(customAbility.system?.points ?? 0);
+
+// Standard abilities
+const stdAbility = this.system.abilities?.[ability];
+if (stdAbility) return Number(stdAbility.value ?? 0);
+
+// Default fallback
+return 0;
+
+
+
 
     switch (this.system.details.exalt) {
       case 'abyssal':

@@ -20,6 +20,8 @@ Languages dialog code and effects code taken from the Foundry dnd5e system.
 
 # Suggested External Modules and Tools
 
+https://foundryvtt.com/packages/tickwerk This will convert Foundry to use a Tick based Combat round system.
+
 [All Locations Map (Fanmade)](https://github.com/Aliharu/Ex3-All-Locations-Map) I have not tested these maps for 2.5 (And know little about the map changes in 3e vs 2e.
 
 

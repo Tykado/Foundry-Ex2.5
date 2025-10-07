@@ -219,6 +219,17 @@ export function registerSettings() {
         default: false
     });
 
+// --- Exalted 2.5e Initiative Starting Value ---
+game.settings.register("exaltedthird", "ex2InitStart", {
+  name: "Exalted 2.5e Initiative Start Value",
+  hint: "Base tick before subtracting successes (default 6).",
+  scope: "world",
+  config: true,
+  type: Number,
+  default: 6
+});
+
+
     game.settings.register("exaltedthird", "gloryOverwhelming", {
         name: game.i18n.localize('Ex3.GloryOverwhelming'),
         hint: game.i18n.localize('Ex3.GloryOverwhelmingSettingDescription'),

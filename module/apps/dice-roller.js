@@ -4007,6 +4007,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         let extendedTest = ``;
 
         if (this.object.rollType === "joinBattle") {
+			console.log("DEBUG roll object (in method):", this.object);
             if (game.combat) {
                 let combatant = this.object.actorCombatant;
                 if (!combatant || combatant.initiative === null) {
@@ -7595,34 +7596,70 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                     }
                 }
             }
-            if (this.object.restore.initiative !== 0) {
-                this.object.characterInitiative += this.object.restore.initiative;
-            }
-            game.combat.setInitiative(combatant.id, this.object.characterInitiative);
-        }
-
-        this.actor.update(actorData);
-        for (const modifierUpdate of this.object.modifierUpdates) {
-            for (const modifier of this.actor.items.filter(item => item.type === "modifier" && item.system.formulaKey === modifierUpdate.key)) {
-                await modifier.update({ [`system.value`]: modifier.system.value += modifierUpdate.value });
-            }
-        }
-        if (combatant) {
-            if (this.object.rollType === "joinBattle") {
-                if (combatant.initiative === null) {
-                    combat.setInitiative(combatant.id, this.object.diceRollTotal + 3);
-                }
-                else {
-                    combat.setInitiative(combatant.id, combatant.initiative + this.object.diceRollTotal);
-                }
-            }
-            if (this.object.rollType === 'steady') {
-                if (combatant.initiative != null) {
-                    combat.setInitiative(combatant.id, combatant.initiative + this.object.thresholdSuccesses);
-                }
-            }
+// Handle restore initiative
+if (this.object.restore?.initiative !== 0) {
+    this.object.characterInitiative += this.object.restore.initiative;
+    if (combatant) {
+        try {
+            await combatant.update({ initiative: this.object.characterInitiative });
+        } catch (err) {
+            console.error("Restore initiative update failed:", err);
         }
     }
+}
+
+// Update actor data
+await this.actor.update(actorData);
+
+// Apply modifier updates
+for (const modifierUpdate of this.object.modifierUpdates ?? []) {
+    for (const modifier of this.actor.items.filter(item => item.type === "modifier" && item.system.formulaKey === modifierUpdate.key)) {
+        await modifier.update({ [`system.value`]: modifier.system.value += modifierUpdate.value });
+    }
+}
+
+// Handle combatant initiative
+if (combatant) {
+    if (this.object.rollType === "joinBattle") {
+        // === Exalted 2.5e Join Battle Initiative (Terkwerk) ===
+        const START_INITIATIVE = 6;
+
+        // Use thresholdSuccesses as the actual rolled successes
+        const successes = Number(this.object.thresholdSuccesses ?? 0);
+        const isBotch = !!(this.object.botch || this.object.isBotch || false);
+
+        // Calculate new initiative
+        const newInitiative = (isBotch || successes <= 0)
+            ? START_INITIATIVE
+            : Math.max(0, START_INITIATIVE - successes);
+
+        console.log("Join Battle calculation:", { successes, isBotch });
+        console.log("Calculated new initiative:", newInitiative);
+
+        // Apply initiative safely using Foundry's built-in method
+        try {
+            if (combatant.initiative === null) {
+                combat.setInitiative(combatant.id, newInitiative);
+            } else {
+                combat.setInitiative(combatant.id, combatant.initiative + newInitiative);
+            }
+            console.log("Initiative update succeeded.");
+        } catch (err) {
+            console.error("Initiative update failed:", err);
+        }
+    }
+
+    // Optional: Steady roll handling (unchanged)
+    if (this.object.rollType === "steady") {
+        if (combatant.initiative != null) {
+            combat.setInitiative(combatant.id, combatant.initiative + this.object.thresholdSuccesses);
+        }
+    }
+}
+		}
+	}
+
+
 
     _lowerMotes(actor, value, motePool = null) {
         let spentPersonal = 0;

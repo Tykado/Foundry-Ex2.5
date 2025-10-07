@@ -1,7 +1,7 @@
-export const ExSecond-Errata = {};
+export const exaltedsecond = {};
 
 //Localization doesn't work here for some reason
-// ExSecond-Errata.languages = {
+// exaltedsecond.languages = {
 //     "lowrealm": "Ex3.LowRealm",
 //     "highrealm": "Ex3.HighRealm",
 //     "oldrealm": "Ex3.OldRealm",
@@ -16,22 +16,22 @@ export const ExSecond-Errata = {};
 // };
 
 
-ExSecond-Errata.itemIcons = {
-  intimacy: "systems/ExSecond-Errata/assets/icons/hearts.svg",
-  spell: "systems/ExSecond-Errata/assets/icons/magic-swirl.svg",
+exaltedsecond.itemIcons = {
+  intimacy: "systems/exaltedsecond/assets/icons/hearts.svg",
+  spell: "systems/exaltedsecond/assets/icons/magic-swirl.svg",
   ritual: "icons/svg/book.svg",
   merit: "icons/svg/coins.svg",
   weapon: "icons/svg/sword.svg",
-  armor: "systems/ExSecond-Errata/assets/icons/breastplate.svg",
-  customability: "systems/ExSecond-Errata/assets/icons/d10.svg",
+  armor: "systems/exaltedsecond/assets/icons/breastplate.svg",
+  customability: "systems/exaltedsecond/assets/icons/d10.svg",
   charm: "icons/svg/explosion.svg",
   modifier: "icons/svg/aura.svg",
   specialability: "icons/svg/aura.svg",
-  craftproject: "systems/ExSecond-Errata/assets/icons/anvil-impact.svg",
+  craftproject: "systems/exaltedsecond/assets/icons/anvil-impact.svg",
   shape: "icons/svg/mystery-man.svg"
 };
 
-ExSecond-Errata.diceRollActiveEffects = [
+exaltedsecond.diceRollActiveEffects = [
   'system.damage.round.initiative.lethal',
   'system.damage.round.initiative.bashing',
   'system.damage.round.bashing',
@@ -39,17 +39,17 @@ ExSecond-Errata.diceRollActiveEffects = [
   'system.damage.round.aggravated',
 ]
 
-ExSecond-Errata.excellencyIcons = {
+exaltedsecond.excellencyIcons = {
   solar: "icons/magic/light/explosion-star-large-orange.webp",
   sidereal: "icons/magic/light/explosion-star-glow-blue-purple.webp",
-  abyssal: "systems/ExSecond-Errata/assets/icons/abyssal-excellency.webp",
-  infernal: "systems/ExSecond-Errata/assets/icons/infernal-excellency.webp",
-  dragonblooded: "systems/ExSecond-Errata/assets/icons/db-excellency.webp",
-  alchemical: "systems/ExSecond-Errata/assets/icons/alchemical-excellency.webp",
-  lunar: "systems/ExSecond-Errata/assets/icons/lunar-excellency.webp",
+  abyssal: "systems/exaltedsecond/assets/icons/abyssal-excellency.webp",
+  infernal: "systems/exaltedsecond/assets/icons/infernal-excellency.webp",
+  dragonblooded: "systems/exaltedsecond/assets/icons/db-excellency.webp",
+  alchemical: "systems/exaltedsecond/assets/icons/alchemical-excellency.webp",
+  lunar: "systems/exaltedsecond/assets/icons/lunar-excellency.webp",
 }
 
-ExSecond-Errata.activeEffectChanges = {
+exaltedsecond.activeEffectChanges = {
   none: {
     label: "Ex3.None",
     effectList: {
@@ -233,7 +233,7 @@ ExSecond-Errata.activeEffectChanges = {
   },
 }
 
-ExSecond-Errata.equipmentStats = {
+exaltedsecond.equipmentStats = {
   light: {
     accuracy: 4,
     damage: 7,
@@ -279,7 +279,7 @@ ExSecond-Errata.equipmentStats = {
     attunement: 0,
   }
 };
-ExSecond-Errata.artifactEquipmentStats = {
+exaltedsecond.artifactEquipmentStats = {
   light: {
     accuracy: 5,
     damage: 10,
@@ -319,7 +319,7 @@ ExSecond-Errata.artifactEquipmentStats = {
   },
 };
 
-ExSecond-Errata.targetableRollTypes = [
+exaltedsecond.targetableRollTypes = [
   'readIntentions',
   'social',
   'command',
@@ -330,7 +330,7 @@ ExSecond-Errata.targetableRollTypes = [
   'gambit',
 ]
 
-ExSecond-Errata.rollTypeTargetLabels = {
+exaltedsecond.rollTypeTargetLabels = {
   readIntentions: "Ex3.ReadIntentions",
   social: "Ex3.Social",
   command: "Ex3.Command",
@@ -379,66 +379,66 @@ ExSecond-Errata.rollTypeTargetLabels = {
   'willpower': "Ex3.Willpower",
 }
 
-ExSecond-Errata.rollTypeTargetImages = {
-  readIntentions: "systems/ExSecond-Errata/assets/icons/spy.svg",
-  social: "systems/ExSecond-Errata/assets/icons/heartburn.svg",
-  command: "systems/ExSecond-Errata/assets/icons/rally-the-troops.svg",
-  grappleControl: "systems/ExSecond-Errata/assets/icons/grab.svg",
-  withering: "systems/ExSecond-Errata/assets/icons/sword-clash.svg",
-  decisive: "systems/ExSecond-Errata/assets/icons/bloody-sword.svg",
-  gambit: "systems/ExSecond-Errata/assets/icons/punch-blast.svg",
-  'sorcery': 'systems/ExSecond-Errata/assets/icons/magic-swirl.svg',
-  'working': 'systems/ExSecond-Errata/assets/icons/magic-portal.svg',
-  'rush': 'systems/ExSecond-Errata/assets/icons/sprint.svg',
-  'disengage': 'systems/ExSecond-Errata/assets/icons/dodging.svg',
-  'prophecy': 'systems/ExSecond-Errata/assets/icons/magic-portal.svg',
-  'sailStratagem': 'systems/ExSecond-Errata/assets/icons/trireme.svg',
+exaltedsecond.rollTypeTargetImages = {
+  readIntentions: "systems/exaltedsecond/assets/icons/spy.svg",
+  social: "systems/exaltedsecond/assets/icons/heartburn.svg",
+  command: "systems/exaltedsecond/assets/icons/rally-the-troops.svg",
+  grappleControl: "systems/exaltedsecond/assets/icons/grab.svg",
+  withering: "systems/exaltedsecond/assets/icons/sword-clash.svg",
+  decisive: "systems/exaltedsecond/assets/icons/bloody-sword.svg",
+  gambit: "systems/exaltedsecond/assets/icons/punch-blast.svg",
+  'sorcery': 'systems/exaltedsecond/assets/icons/magic-swirl.svg',
+  'working': 'systems/exaltedsecond/assets/icons/magic-portal.svg',
+  'rush': 'systems/exaltedsecond/assets/icons/sprint.svg',
+  'disengage': 'systems/exaltedsecond/assets/icons/dodging.svg',
+  'prophecy': 'systems/exaltedsecond/assets/icons/magic-portal.svg',
+  'sailStratagem': 'systems/exaltedsecond/assets/icons/trireme.svg',
   'steady': 'icons/svg/upgrade.svg',
-  'simpleCraft': 'systems/ExSecond-Errata/assets/icons/anvil-impact.svg',
-  'craft': 'systems/ExSecond-Errata/assets/icons/anvil-impact.svg',
-  'rout': 'systems/ExSecond-Errata/assets/icons/tattered-banner.svg',
+  'simpleCraft': 'systems/exaltedsecond/assets/icons/anvil-impact.svg',
+  'craft': 'systems/exaltedsecond/assets/icons/anvil-impact.svg',
+  'rout': 'systems/exaltedsecond/assets/icons/tattered-banner.svg',
   'joinBattle': 'icons/svg/combat.svg',
 
   //Abilities
-  'archery': 'systems/ExSecond-Errata/assets/icons/striking-arrows.svg',
-  'athletics': 'systems/ExSecond-Errata/assets/icons/sprint.svg',
-  'awareness': 'systems/ExSecond-Errata/assets/icons/semi-closed-eye.svg',
-  'brawl': 'systems/ExSecond-Errata/assets/icons/fist.svg',
-  'bureaucracy': 'systems/ExSecond-Errata/assets/icons/progression.svg',
-  'dodge': 'systems/ExSecond-Errata/assets/icons/dodging.svg',
-  'integrity': 'systems/ExSecond-Errata/assets/icons/meditation.svg',
-  'investigation': 'systems/ExSecond-Errata/assets/icons/magnifying-glass.svg',
-  'larceny': 'systems/ExSecond-Errata/assets/icons/hooded-figure.svg',
-  'linguistics': 'systems/ExSecond-Errata/assets/icons/scroll-quill.svg',
-  'lore': 'systems/ExSecond-Errata/assets/icons/spell-book.svg',
-  'martialarts': 'systems/ExSecond-Errata/assets/icons/fist.svg',
-  'medicine': 'systems/ExSecond-Errata/assets/icons/caduceus.svg',
+  'archery': 'systems/exaltedsecond/assets/icons/striking-arrows.svg',
+  'athletics': 'systems/exaltedsecond/assets/icons/sprint.svg',
+  'awareness': 'systems/exaltedsecond/assets/icons/semi-closed-eye.svg',
+  'brawl': 'systems/exaltedsecond/assets/icons/fist.svg',
+  'bureaucracy': 'systems/exaltedsecond/assets/icons/progression.svg',
+  'dodge': 'systems/exaltedsecond/assets/icons/dodging.svg',
+  'integrity': 'systems/exaltedsecond/assets/icons/meditation.svg',
+  'investigation': 'systems/exaltedsecond/assets/icons/magnifying-glass.svg',
+  'larceny': 'systems/exaltedsecond/assets/icons/hooded-figure.svg',
+  'linguistics': 'systems/exaltedsecond/assets/icons/scroll-quill.svg',
+  'lore': 'systems/exaltedsecond/assets/icons/spell-book.svg',
+  'martialarts': 'systems/exaltedsecond/assets/icons/fist.svg',
+  'medicine': 'systems/exaltedsecond/assets/icons/caduceus.svg',
   'melee': 'icons/svg/sword.svg',
-  'occult': 'systems/ExSecond-Errata/assets/icons/magic-swirl.svg',
-  'performance': 'systems/ExSecond-Errata/assets/icons/musical-notes.svg',
-  'presence': 'systems/ExSecond-Errata/assets/icons/deadly-strike.svg',
-  'resistance': 'systems/ExSecond-Errata/assets/icons/fire-silhouette.svg',
-  'ride': 'systems/ExSecond-Errata/assets/icons/horse-head.svg',
-  'sail': 'systems/ExSecond-Errata/assets/icons/trireme.svg',
-  'socialize': "systems/ExSecond-Errata/assets/icons/heartburn.svg",
-  'stealth': 'systems/ExSecond-Errata/assets/icons/hidden.svg',
-  'survival': 'systems/ExSecond-Errata/assets/icons/forest-camp.svg',
-  'thrown': 'systems/ExSecond-Errata/assets/icons/thrown-daggers.svg',
-  'war': "systems/ExSecond-Errata/assets/icons/rally-the-troops.svg",
-  'fever': "systems/ExSecond-Errata/assets/icons/burning-passion.svg",
+  'occult': 'systems/exaltedsecond/assets/icons/magic-swirl.svg',
+  'performance': 'systems/exaltedsecond/assets/icons/musical-notes.svg',
+  'presence': 'systems/exaltedsecond/assets/icons/deadly-strike.svg',
+  'resistance': 'systems/exaltedsecond/assets/icons/fire-silhouette.svg',
+  'ride': 'systems/exaltedsecond/assets/icons/horse-head.svg',
+  'sail': 'systems/exaltedsecond/assets/icons/trireme.svg',
+  'socialize': "systems/exaltedsecond/assets/icons/heartburn.svg",
+  'stealth': 'systems/exaltedsecond/assets/icons/hidden.svg',
+  'survival': 'systems/exaltedsecond/assets/icons/forest-camp.svg',
+  'thrown': 'systems/exaltedsecond/assets/icons/thrown-daggers.svg',
+  'war': "systems/exaltedsecond/assets/icons/rally-the-troops.svg",
+  'fever': "systems/exaltedsecond/assets/icons/burning-passion.svg",
 
-  'strength': 'systems/ExSecond-Errata/assets/icons/strong.svg',
-  'dexterity': 'systems/ExSecond-Errata/assets/icons/acrobatic.svg',
-  'stamina': 'systems/ExSecond-Errata/assets/icons/heart-beats.svg',
-  'charisma': 'systems/ExSecond-Errata/assets/icons/shining-heart.svg',
-  'manipulation': 'systems/ExSecond-Errata/assets/icons/psychic-waves.svg',
-  'appearance': 'systems/ExSecond-Errata/assets/icons/beams-aura.svg',
-  'perception': 'systems/ExSecond-Errata/assets/icons/dead-eye.svg',
-  'intelligence': 'systems/ExSecond-Errata/assets/icons/brain.svg',
-  'wits': 'systems/ExSecond-Errata/assets/icons/sundial.svg',
+  'strength': 'systems/exaltedsecond/assets/icons/strong.svg',
+  'dexterity': 'systems/exaltedsecond/assets/icons/acrobatic.svg',
+  'stamina': 'systems/exaltedsecond/assets/icons/heart-beats.svg',
+  'charisma': 'systems/exaltedsecond/assets/icons/shining-heart.svg',
+  'manipulation': 'systems/exaltedsecond/assets/icons/psychic-waves.svg',
+  'appearance': 'systems/exaltedsecond/assets/icons/beams-aura.svg',
+  'perception': 'systems/exaltedsecond/assets/icons/dead-eye.svg',
+  'intelligence': 'systems/exaltedsecond/assets/icons/brain.svg',
+  'wits': 'systems/exaltedsecond/assets/icons/sundial.svg',
 }
 
-ExSecond-Errata.exaltcharmtypes = {
+exaltedsecond.exaltcharmtypes = {
   abyssal: "Ex3.Abyssal",
   alchemical: "Ex3.Alchemical",
   architect: "Ex3.Architect",
@@ -485,7 +485,7 @@ ExSecond-Errata.exaltcharmtypes = {
 // reaver: "Ex3.Reaver"
 // foxbinder: "Ex3.FoxBinder"
 
-ExSecond-Errata.rolltypes = {
+exaltedsecond.rolltypes = {
   attacks: "Ex3.Attacks",
   command: "Ex3.Command",
   craft: "Ex3.Craft",
@@ -500,13 +500,13 @@ ExSecond-Errata.rolltypes = {
   steady: "Ex3.Steady",
 };
 
-ExSecond-Errata.attackrolltypes = {
+exaltedsecond.attackrolltypes = {
   "withering": "Ex3.Withering",
   "decisive": "Ex3.Decisive",
   "gambit": "Ex3.Gambit",
 };
 
-ExSecond-Errata.statictypes = {
+exaltedsecond.statictypes = {
   "parry": "Ex3.Parry",
   "evasion": "Ex3.Evasion",
   "resolve": "Ex3.Resolve",
@@ -514,7 +514,7 @@ ExSecond-Errata.statictypes = {
   "soak": "Ex3.Soak",
 };
 
-ExSecond-Errata.castes = {
+exaltedsecond.castes = {
   solar: {
     dawn: 'Ex3.Dawn',
     zenith: 'Ex3.Zenith',
@@ -592,7 +592,7 @@ ExSecond-Errata.castes = {
   },
 };
 
-ExSecond-Errata.attributes = {
+exaltedsecond.attributes = {
   strength: 'Ex3.Strength',
   dexterity: 'Ex3.Dexterity',
   stamina: 'Ex3.Stamina',
@@ -604,7 +604,7 @@ ExSecond-Errata.attributes = {
   wits: 'Ex3.Wits',
 };
 
-ExSecond-Errata.abilities = {
+exaltedsecond.abilities = {
   archery: 'Ex3.Archery',
   athletics: 'Ex3.Athletics',
   awareness: 'Ex3.Awareness',
@@ -633,7 +633,7 @@ ExSecond-Errata.abilities = {
   war: 'Ex3.War',
 };
 
-ExSecond-Errata.abilityMaidens = {
+exaltedsecond.abilityMaidens = {
   archery: 'battles',
   athletics: 'endings',
   awareness: 'endings',
@@ -662,7 +662,7 @@ ExSecond-Errata.abilityMaidens = {
   war: 'battles',
 };
 
-ExSecond-Errata.abilitiesList = [
+exaltedsecond.abilitiesList = [
   'archery',
   'athletics',
   'awareness',
@@ -690,14 +690,14 @@ ExSecond-Errata.abilitiesList = [
   'war',
 ];
 
-ExSecond-Errata.attributeExalts = [
+exaltedsecond.attributeExalts = [
   'alchemical',
   'architect',
   'lunar',
   'wounds',
 ]
 
-ExSecond-Errata.exigentStuntAbilities = {
+exaltedsecond.exigentStuntAbilities = {
   janest: {
     athletics: "Ex3.Athletics",
     awareness: "Ex3.Awareness",
@@ -728,7 +728,7 @@ ExSecond-Errata.exigentStuntAbilities = {
   },
 }
 
-ExSecond-Errata.exigentTiers = {
+exaltedsecond.exigentTiers = {
   'strawmaiden': 'celestial',
   'knives': 'celestial',
   'puppeteer': 'terrestrial',
@@ -745,14 +745,14 @@ ExSecond-Errata.exigentTiers = {
   'bleakWarden': 'celestial',
 }
 
-ExSecond-Errata.abilityExalts = [
+exaltedsecond.abilityExalts = [
   'solar',
   'sidereal',
   'abyssal',
   'infernal'
 ];
 
-ExSecond-Errata.npcpools = {
+exaltedsecond.npcpools = {
   command: 'Ex3.Command',
   grapple: 'Ex3.GrappleControl',
   joinbattle: 'Ex3.JoinBattle',
@@ -763,7 +763,7 @@ ExSecond-Errata.npcpools = {
   sorcery: 'Ex3.Sorcery',
 };
 
-ExSecond-Errata.charmabilities = {
+exaltedsecond.charmabilities = {
   offensive: 'Ex3.Offensive',
   defensive: 'Ex3.Defensive',
   social: 'Ex3.Social',
@@ -813,7 +813,7 @@ ExSecond-Errata.charmabilities = {
   universal: 'Ex3.Universal',
 };
 
-ExSecond-Errata.charmAbilitiesSectioned = {
+exaltedsecond.charmAbilitiesSectioned = {
   abilities: {
     label: "Ex3.Abilities",
     entries: {
@@ -892,7 +892,7 @@ ExSecond-Errata.charmAbilitiesSectioned = {
   }
 };
 
-ExSecond-Errata.circles = {
+exaltedsecond.circles = {
   terrestrial: 'Ex3.Terrestrial',
   celestial: 'Ex3.Celestial',
   solar: 'Ex3.Solar',
@@ -901,7 +901,7 @@ ExSecond-Errata.circles = {
   void: 'Ex3.Void',
 };
 
-ExSecond-Errata.meritTypes = {
+exaltedsecond.meritTypes = {
   flaw: "Ex3.Flaw",
   story: "Ex3.Story",
   innate: "Ex3.Innate",
@@ -910,21 +910,21 @@ ExSecond-Errata.meritTypes = {
   thaumaturgy: "Ex3.Thaumaturgy",
 };
 
-ExSecond-Errata.weightTypes = {
+exaltedsecond.weightTypes = {
   light: "Ex3.Light",
   medium: "Ex3.Medium",
   heavy: "Ex3.Heavy",
   other: "Ex3.Other",
 };
 
-ExSecond-Errata.itemTypes = {
+exaltedsecond.itemTypes = {
   item: "Ex3.Item",
   artifact: "Ex3.Artifact",
   hearthstone: "Ex3.Hearthstone",
   warstrider: "Ex3.Warstrider",
 };
 
-ExSecond-Errata.martialArtsArmorAllowances = {
+exaltedsecond.martialArtsArmorAllowances = {
   'none': "Ex3.None",
   'light': "Ex3.Light",
   'medium': "Ex3.Medium",
@@ -932,7 +932,7 @@ ExSecond-Errata.martialArtsArmorAllowances = {
   '': "Ex3.NotSet",
 };
 
-ExSecond-Errata.exaltMotePools = {
+exaltedsecond.exaltMotePools = {
   personal: {
     base: {
       default: 0,
@@ -993,7 +993,7 @@ ExSecond-Errata.exaltMotePools = {
   }
 }
 
-ExSecond-Errata.languages = {
+exaltedsecond.languages = {
   "lowrealm": "Low Realm",
   "highrealm": "High Realm",
   "oldrealm": "Old Realm",
@@ -1007,7 +1007,7 @@ ExSecond-Errata.languages = {
   "localtongue": "Local Tongue",
 };
 
-ExSecond-Errata.resonance = {
+exaltedsecond.resonance = {
   "adamant": "Adamant",
   "orichalcum": "Orichalcum",
   "moonsilver": "Moonsilver",
@@ -1020,7 +1020,7 @@ ExSecond-Errata.resonance = {
   "whitejade": "White Jade",
 };
 
-ExSecond-Errata.dissonance = {
+exaltedsecond.dissonance = {
   "adamant": "Adamant",
   "orichalcum": "Orichalcum",
   "moonsilver": "Moonsilver",
@@ -1033,7 +1033,7 @@ ExSecond-Errata.dissonance = {
   "whitejade": "White Jade",
 };
 
-ExSecond-Errata.classifications = {
+exaltedsecond.classifications = {
   "creatureofdarkness": "Creature of Darkness",
   "demon": "Demon",
   "enemyoffate": "Enemy of Fate",
@@ -1045,7 +1045,7 @@ ExSecond-Errata.classifications = {
   "undead": "Undead",
 };
 
-ExSecond-Errata.weapons = {
+exaltedsecond.weapons = {
   "axes": "Axes",
   "batons": "Batons",
   "bows": "Bows",
@@ -1088,7 +1088,7 @@ ExSecond-Errata.weapons = {
   "whips": "Whips"
 };
 
-ExSecond-Errata.weapontags = {
+exaltedsecond.weapontags = {
   "aggravated": "Aggravated",
   "archery": "Archery",
   "artifact": "Artifact",
@@ -1135,7 +1135,7 @@ ExSecond-Errata.weapontags = {
   "worn": "Worn",
 };
 
-ExSecond-Errata.armortags = {
+exaltedsecond.armortags = {
   "artifact": "Artifact",
   "buoyant": "Buoyant",
   "concealable": "Concealable",
@@ -1143,7 +1143,7 @@ ExSecond-Errata.armortags = {
   "special": "Special",
 };
 
-ExSecond-Errata.martialarts = [
+exaltedsecond.martialarts = [
   "Snake Style",
   "Tiger Style",
   "Single Point Shining Into the Void Style",
@@ -1172,7 +1172,7 @@ ExSecond-Errata.martialarts = [
   "Hungry Ghost Style",
 ];
 
-ExSecond-Errata.castesPerExalt = {
+exaltedsecond.castesPerExalt = {
   "solar": {
     "dawn": ["archery", "awareness", "brawl", "martialarts", "dodge", "melee", "resistance", "thrown", "war"],
     "zenith": ["athletics", "integrity", "performance", "lore", "presence", "resistance", "survival", "war"],
@@ -1224,7 +1224,7 @@ ExSecond-Errata.castesPerExalt = {
 }
 
 
-ExSecond-Errata.casteabilitiesmap = {
+exaltedsecond.casteabilitiesmap = {
   'dawn': [
     'archery', 'awareness', 'brawl', 'martialarts', 'dodge', 'melee', 'resistance', 'thrown', 'war'
   ],
@@ -1343,7 +1343,7 @@ ExSecond-Errata.casteabilitiesmap = {
   'dice': ['dodge', 'larceny', 'socialize']
 };
 
-ExSecond-Errata.maidenabilities = {
+exaltedsecond.maidenabilities = {
   'journeys': [
     'resistance', 'ride', 'sail', 'survival', 'thrown', 'journeys'
   ],
@@ -1361,9 +1361,9 @@ ExSecond-Errata.maidenabilities = {
   ],
 }
 
-ExSecond-Errata.statusEffects = [
+exaltedsecond.statusEffects = [
   {
-    img: 'systems/ExSecond-Errata/assets/icons/targeting.svg',
+    img: 'systems/exaltedsecond/assets/icons/targeting.svg',
     id: 'aiming',
     name: 'Ex3.Aiming',
     description: '<p>Character is aiming, can make ranged attacked beyond short range.  Aiming again or at short range gives +3 dice to attack rolls.</p>',
@@ -1391,28 +1391,28 @@ ExSecond-Errata.statusEffects = [
     tooltip: "<p>Character is behind heavy cover, +2 to Defense</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/brick-wall.svg',
+    img: 'systems/exaltedsecond/assets/icons/brick-wall.svg',
     id: 'fullcover',
     name: 'Ex3.FullCover',
     description: "<p>Character cannot be targeted, if a opponent has an ability to target her anyway add +3 to Defense</p>",
     tooltip: "<p>Character cannot be targeted, if a opponent has an ability to target her anyway add +3 to Defense</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/grab.svg',
+    img: 'systems/exaltedsecond/assets/icons/grab.svg',
     id: 'grappled',
     name: 'Ex3.Grappled',
     description: "<p>Character is grapped by an opponent, -2 to Defense and -1 die to attack rolls</p>",
     tooltip: "<p>Character is grapped by an opponent, -2 to Defense and -1 die to attack rolls</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/shaking-hands.svg',
+    img: 'systems/exaltedsecond/assets/icons/shaking-hands.svg',
     id: 'grappling',
     name: 'Ex3.Grappling',
     description: "<p>Character has initiated a grapple, -2 to Defense</p>",
     tooltip: "<p>Character has initiated a grapple, -2 to Defense</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/drop-weapon.svg',
+    img: 'systems/exaltedsecond/assets/icons/drop-weapon.svg',
     id: 'disarmed',
     name: 'Ex3.Disarmed',
     tooltip: "<p>Character has dropped or lost her weapon.</p>",
@@ -1471,14 +1471,14 @@ ExSecond-Errata.statusEffects = [
     tooltip: "<p>Character cannot move</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/cobweb.svg',
+    img: 'systems/exaltedsecond/assets/icons/cobweb.svg',
     id: 'entangled',
     name: 'Ex3.Entangled',
     description: "<p>Character is entangled, +1 Mobility Penalty.</p>",
     tooltip: "<p>Character is entangled, +1 Mobility Penalty.</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/hidden.svg',
+    img: 'systems/exaltedsecond/assets/icons/hidden.svg',
     id: 'hidden',
     name: 'Ex3.Hidden',
     tooltip: "<p>Character is hidden</p>",
@@ -1490,7 +1490,7 @@ ExSecond-Errata.statusEffects = [
     tooltip: "<p>Characters that fly using the wings merit suffer a -3 penalty on dexterous/precision based actions (Including Attacks)</p>",
   },
   {
-    img: 'systems/ExSecond-Errata/assets/icons/screaming.svg',
+    img: 'systems/exaltedsecond/assets/icons/screaming.svg',
     id: 'routing',
     name: 'Ex3.Routing',
     tooltip: "<p>A battlegroup is routing, can be subject to slaughter actions before the battlegroup fully disolves.</p>",
@@ -1503,7 +1503,7 @@ ExSecond-Errata.statusEffects = [
   },
 ]
 
-ExSecond-Errata.siderealSigns = {
+exaltedsecond.siderealSigns = {
   journeys: {
     label: "Journeys",
     signs: {
@@ -1562,7 +1562,7 @@ ExSecond-Errata.siderealSigns = {
   }
 }
 
-ExSecond-Errata.oxBody = {
+exaltedsecond.oxBody = {
   'alchemical': {
     zero: {
       zero: 0,
@@ -1757,7 +1757,7 @@ ExSecond-Errata.oxBody = {
   },
 };
 
-ExSecond-Errata.weaponStats = {
+exaltedsecond.weaponStats = {
   light: {
     accuracy: 4,
     damage: 7,
@@ -1787,7 +1787,7 @@ ExSecond-Errata.weaponStats = {
     attunement: 5,
   },
 };
-ExSecond-Errata.artifactWeaponStats = {
+exaltedsecond.artifactWeaponStats = {
   light: {
     accuracy: 5,
     damage: 10,
@@ -1818,7 +1818,7 @@ ExSecond-Errata.artifactWeaponStats = {
   },
 };
 
-ExSecond-Errata.armorStats = {
+exaltedsecond.armorStats = {
   light: {
     attunement: 0,
     soak: 3,
@@ -1838,7 +1838,7 @@ ExSecond-Errata.armorStats = {
     penalty: 2,
   },
 };
-ExSecond-Errata.artifactArmorStats = {
+exaltedsecond.artifactArmorStats = {
   light: {
     attunement: 4,
     soak: 5,
@@ -1859,7 +1859,7 @@ ExSecond-Errata.artifactArmorStats = {
   },
 };
 
-ExSecond-Errata.maidens = [
+exaltedsecond.maidens = [
   "journeys",
   "serenity",
   "battles",
@@ -1867,7 +1867,7 @@ ExSecond-Errata.maidens = [
   "endings"
 ];
 
-ExSecond-Errata.booleanTriggers = [
+exaltedsecond.booleanTriggers = [
   'rollTwice',
   'rollTwiceLowest',
   'excludeOnes',
@@ -1908,7 +1908,7 @@ ExSecond-Errata.booleanTriggers = [
   'isControlSpell'
 ];
 
-ExSecond-Errata.bonusTypes = {
+exaltedsecond.bonusTypes = {
   none: {
     label: "Ex3.None",
     bonuses: {
@@ -2109,7 +2109,7 @@ ExSecond-Errata.bonusTypes = {
   }
 };
 
-ExSecond-Errata.numberBonusTypeLabels = {
+exaltedsecond.numberBonusTypeLabels = {
   'diceModifier': "Ex3.DiceModifier",
   successModifier: "Ex3.SuccessModifier",
   penaltyModifier: "Ex3.PenaltyModifier",
@@ -2172,7 +2172,7 @@ ExSecond-Errata.numberBonusTypeLabels = {
   guile: "Ex3.Guile",
 }
 
-ExSecond-Errata.triggerBonusDropdowns = {
+exaltedsecond.triggerBonusDropdowns = {
   triggerOnTensOptions: {
     'damage': "Ex3.Damage",
     'extraSuccess': "Ex3.ExtraSuccess",
@@ -2257,7 +2257,7 @@ ExSecond-Errata.triggerBonusDropdowns = {
   }
 };
 
-ExSecond-Errata.requirementTypes = {
+exaltedsecond.requirementTypes = {
   none: {
     label: "Ex3.None",
     requirements: {
@@ -2336,7 +2336,7 @@ ExSecond-Errata.requirementTypes = {
   }
 }
 
-ExSecond-Errata.selects = {
+exaltedsecond.selects = {
   booleanSelects: {
     yes: "Ex3.Yes",
     "": "Ex3.No",
@@ -3051,7 +3051,7 @@ ExSecond-Errata.selects = {
   }
 };
 
-ExSecond-Errata.tripleActionStatblocks = {
+exaltedsecond.tripleActionStatblocks = {
   firstCircleMachineSpirit: {
     primary: 9,
     secondary: 6,

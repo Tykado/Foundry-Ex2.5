@@ -1,5 +1,5 @@
 export function registerSettings() {
-    game.settings.registerMenu('ExSecond-Errata', 'rulesConfig', {
+    game.settings.registerMenu('exaltedsecond', 'rulesConfig', {
         name: "Ex3.RulesConfig",
         label: "Ex3.RulesConfigLabel",
         hint: "Ex3.RulesConfigLabelDesc",
@@ -8,7 +8,7 @@ export function registerSettings() {
         restricted: true,
     });
 
-    game.settings.register("ExSecond-Errata", "sheetStyle", {
+    game.settings.register("exaltedsecond", "sheetStyle", {
         name: "Ex3.SheetStyle",
         hint: "Ex3.SheetStyleDescription",
         scope: "world",
@@ -35,7 +35,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register("ExSecond-Errata", "pauseIcon", {
+    game.settings.register("exaltedsecond", "pauseIcon", {
         name: "Ex3.PauseIcon",
         hint: "Ex3.PauseIconDescription",
         scope: "world",
@@ -61,7 +61,7 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register('ExSecond-Errata', 'useActiveEffectsDropdown', {
+    game.settings.register('exaltedsecond', 'useActiveEffectsDropdown', {
         name: game.i18n.localize('Ex3.UseActiveEffectsDropdown'),
         hint: game.i18n.localize('Ex3.UseActiveEffectsDropdownDescription'),
         default: false,
@@ -70,7 +70,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'calculateOnslaught', {
+    game.settings.register('exaltedsecond', 'calculateOnslaught', {
         name: game.i18n.localize('Ex3.Onslaught'),
         hint: game.i18n.localize('Ex3.ShowOnslaughtDescription'),
         default: true,
@@ -79,7 +79,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'automaticDecisiveDamage', {
+    game.settings.register('exaltedsecond', 'automaticDecisiveDamage', {
         name: game.i18n.localize('Ex3.AutoDecisiveDamage'),
         hint: game.i18n.localize('Ex3.AutoDecisiveDamageDescription'),
         default: false,
@@ -88,7 +88,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'automaticWitheringDamage', {
+    game.settings.register('exaltedsecond', 'automaticWitheringDamage', {
         name: game.i18n.localize('Ex3.AutoWitheringDamage'),
         hint: game.i18n.localize('Ex3.AutoWitheringDamageDescription'),
         default: false,
@@ -97,7 +97,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'confirmDamageRolls', {
+    game.settings.register('exaltedsecond', 'confirmDamageRolls', {
         name: game.i18n.localize('Ex3.ConfirmDamageRoll'),
         hint: game.i18n.localize('Ex3.ConfirmDamageRollDescription'),
         default: true,
@@ -107,7 +107,7 @@ export function registerSettings() {
     });
 
 
-    game.settings.register("ExSecond-Errata", "systemMigrationVersion", {
+    game.settings.register("exaltedsecond", "systemMigrationVersion", {
         name: "System Migration Version",
         scope: "world",
         config: false,
@@ -115,7 +115,7 @@ export function registerSettings() {
         default: ""
     });
 
-    game.settings.register("ExSecond-Errata", "compactSheets", {
+    game.settings.register("exaltedsecond", "compactSheets", {
         name: game.i18n.localize('Ex3.CompactSheets'),
         hint: game.i18n.localize('Ex3.CompactSheetsDescription'),
         scope: "world",
@@ -124,7 +124,7 @@ export function registerSettings() {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "compactSheetsNPC", {
+    game.settings.register("exaltedsecond", "compactSheetsNPC", {
         name: game.i18n.localize('Ex3.CompactSheetsNPC'),
         hint: game.i18n.localize('Ex3.CompactSheetsDescriptionNPC'),
         scope: "world",
@@ -133,7 +133,7 @@ export function registerSettings() {
         default: false
     });
 
-    game.settings.register('ExSecond-Errata', 'animaTokenMagic', {
+    game.settings.register('exaltedsecond', 'animaTokenMagic', {
         name: game.i18n.localize('Ex3.AnimaTokenEffects'),
         hint: game.i18n.localize('Ex3.AnimaTokenEffectsDescription'),
         default: false,
@@ -142,7 +142,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'attackEffects', {
+    game.settings.register('exaltedsecond', 'attackEffects', {
         name: game.i18n.localize('Ex3.AttackEffects'),
         hint: game.i18n.localize('Ex3.AttackEffectsDescription'),
         default: false,
@@ -151,7 +151,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'spendChatCards', {
+    game.settings.register('exaltedsecond', 'spendChatCards', {
         name: game.i18n.localize('Ex3.SpendItemsChatCards'),
         hint: game.i18n.localize('Ex3.SpendItemsChatCardsDescription'),
         default: false,
@@ -160,7 +160,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register('ExSecond-Errata', 'nonTargetRollCards', {
+    game.settings.register('exaltedsecond', 'nonTargetRollCards', {
         name: game.i18n.localize('Ex3.NonTargetRollCards'),
         hint: game.i18n.localize('Ex3.NonTargetRollCardsDescription'),
         default: false,
@@ -169,7 +169,7 @@ export function registerSettings() {
         config: true,
     });
 
-    game.settings.register("ExSecond-Errata", "rollButtonTarget", {
+    game.settings.register("exaltedsecond", "rollButtonTarget", {
         name: game.i18n.localize('Ex3.RollButtonTarget'),
         hint: game.i18n.localize('Ex3.RollButtonTargetDescription'),
         scope: "world",
@@ -178,7 +178,7 @@ export function registerSettings() {
         default: true
     });
 
-    game.settings.register("ExSecond-Errata", "sortDice", {
+    game.settings.register("exaltedsecond", "sortDice", {
         name: game.i18n.localize('Ex3.sortDice'),
         hint: game.i18n.localize('Ex3.sortDiceDescription'),
         scope: "world",
@@ -188,7 +188,7 @@ export function registerSettings() {
         default: true
     });
 
-    game.settings.register("ExSecond-Errata", "unifiedCharacterCreation", {
+    game.settings.register("exaltedsecond", "unifiedCharacterCreation", {
         name: game.i18n.localize('Ex3.UnifiedCharacterCreation'),
         hint: game.i18n.localize('Ex3.UnifiedCharacterCreationDescription'),
         scope: "world",
@@ -198,7 +198,7 @@ export function registerSettings() {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "unifiedCharacterAdvancement", {
+    game.settings.register("exaltedsecond", "unifiedCharacterAdvancement", {
         name: game.i18n.localize('Ex3.UnifiedAdvancement'),
         hint: game.i18n.localize('Ex3.UnifiedAdvancementDescription'),
         scope: "world",
@@ -208,7 +208,7 @@ export function registerSettings() {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "useShieldInitiative", {
+    game.settings.register("exaltedsecond", "useShieldInitiative", {
         name: game.i18n.localize('Ex3.ShieldInitiativeSetting'),
         hint: game.i18n.localize('Ex3.ShieldInitiativeSettingDescription'),
         scope: "world",
@@ -220,7 +220,7 @@ export function registerSettings() {
     });
 
 // --- Exalted 2.5e Initiative Starting Value ---
-game.settings.register("ExSecond-Errata", "ex2InitStart", {
+game.settings.register("exaltedsecond", "ex2InitStart", {
   name: "Exalted 2.5e Initiative Start Value",
   hint: "Base tick before subtracting successes (default 6).",
   scope: "world",
@@ -230,7 +230,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
 });
 
 
-    game.settings.register("ExSecond-Errata", "gloryOverwhelming", {
+    game.settings.register("exaltedsecond", "gloryOverwhelming", {
         name: game.i18n.localize('Ex3.GloryOverwhelming'),
         hint: game.i18n.localize('Ex3.GloryOverwhelmingSettingDescription'),
         scope: "world",
@@ -244,7 +244,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         },
     });
 
-    game.settings.register("ExSecond-Errata", "useEssenceGambits", {
+    game.settings.register("exaltedsecond", "useEssenceGambits", {
         name: game.i18n.localize('Ex3.UseEssenceGambits'),
         hint: game.i18n.localize('Ex3.UseEssenceGambitsDescription'),
         scope: "world",
@@ -255,7 +255,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "bankableStunts", {
+    game.settings.register("exaltedsecond", "bankableStunts", {
         name: game.i18n.localize('Ex3.BankableStunts'),
         hint: game.i18n.localize('Ex3.BankableStuntsDescription'),
         scope: "world",
@@ -266,7 +266,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "virtues", {
+    game.settings.register("exaltedsecond", "virtues", {
         name: game.i18n.localize('Ex3.UseVirtues'),
         hint: game.i18n.localize('Ex3.UseVirtuesDescription'),
         scope: "world",
@@ -276,7 +276,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "forgivingDecisives", {
+    game.settings.register("exaltedsecond", "forgivingDecisives", {
         name: game.i18n.localize('Ex3.ForgivingDecisives'),
         hint: game.i18n.localize('Ex3.ForgivingDecisivesDescription'),
         scope: "world",
@@ -286,7 +286,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "simplifiedCrafting", {
+    game.settings.register("exaltedsecond", "simplifiedCrafting", {
         name: game.i18n.localize('Ex3.SimplifiedCrafting'),
         hint: game.i18n.localize('Ex3.SimplifiedCraftingDescription'),
         scope: "world",
@@ -296,7 +296,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "steadyAction", {
+    game.settings.register("exaltedsecond", "steadyAction", {
         name: game.i18n.localize('Ex3.SteadyAction'),
         hint: game.i18n.localize('Ex3.SteadyActionDescription'),
         scope: "world",
@@ -306,7 +306,7 @@ game.settings.register("ExSecond-Errata", "ex2InitStart", {
         default: false
     });
 
-    game.settings.register("ExSecond-Errata", "disengageCost", {
+    game.settings.register("exaltedsecond", "disengageCost", {
         name: game.i18n.localize('Ex3.DisengageCost'),
         hint: game.i18n.localize('Ex3.DisengageCostDescription'),
         scope: "world",
@@ -322,7 +322,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 class RulesConfigurator extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static PARTS = {
-        sheet: { template: "systems/ExSecond-Errata/templates/dialogues/rules-config.html" },
+        sheet: { template: "systems/exaltedsecond/templates/dialogues/rules-config.html" },
         footer: { template: "templates/generic/form-footer.hbs" }
     };
 
@@ -345,7 +345,7 @@ class RulesConfigurator extends HandlebarsApplicationMixin(ApplicationV2) {
     // static get defaultOptions() {
     //     const options = super.defaultOptions;
     //     options.id = "rules-config";
-    //     options.template = "systems/ExSecond-Errata/templates/dialogues/rules-config.html";
+    //     options.template = "systems/exaltedsecond/templates/dialogues/rules-config.html";
     //     options.width = 600;
     //     options.minimizable = true;
     //     options.resizable = true;
@@ -368,12 +368,12 @@ class RulesConfigurator extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static async myFormHandler(event, form, formData) {
         for (const setting in formData.object) {
-            game.settings.set("ExSecond-Errata", setting, formData.object[setting]);
+            game.settings.set("exaltedsecond", setting, formData.object[setting]);
         }
     }
 
     // async _updateObject(event, formData) {
     //     for (let setting in formData)
-    //         game.settings.set("ExSecond-Errata", setting, formData[setting]);
+    //         game.settings.set("exaltedsecond", setting, formData[setting]);
     // }
 }

@@ -8,7 +8,7 @@ const { ItemSheetV2 } = foundry.applications.sheets;
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
+export class exaltedsecondItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
 
   constructor(...args) {
     super(...args);
@@ -28,7 +28,7 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
       ]
     },
     position: { width: 520, height: 480 },
-    classes: ["tree-background", "ExSecond-Errata", "sheet", "item"],
+    classes: ["tree-background", "exaltedsecond", "sheet", "item"],
     actions: {
       onEditImage: this._onEditImage,
       openMacroDialog: this.openMacroDialog,
@@ -51,28 +51,28 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
 
   static PARTS = {
     header: {
-      template: "systems/ExSecond-Errata/templates/item/item-header.html",
+      template: "systems/exaltedsecond/templates/item/item-header.html",
     },
-    tabs: { template: 'systems/ExSecond-Errata/templates/dialogues/tabs.html' },
-    description: { template: 'systems/ExSecond-Errata/templates/item/description-tab.html' },
-    cost: { template: 'systems/ExSecond-Errata/templates/item/cost-tab.html' },
-    bonuses: { template: 'systems/ExSecond-Errata/templates/item/dice-bonuses-tab.html' },
-    automations: { template: 'systems/ExSecond-Errata/templates/item/automations-tab.html' },
-    upgrades: { template: 'systems/ExSecond-Errata/templates/item/charm-upgrades-tab.html' },
-    actionDetails: { template: 'systems/ExSecond-Errata/templates/item/details/action-details-tab.html' },
-    armorDetails: { template: 'systems/ExSecond-Errata/templates/item/details/armor-details-tab.html' },
-    charmDetails: { template: 'systems/ExSecond-Errata/templates/item/details/charm-details-tab.html' },
-    itemDetails: { template: 'systems/ExSecond-Errata/templates/item/details/item-details-tab.html' },
-    meritDetails: { template: 'systems/ExSecond-Errata/templates/item/details/merit-details-tab.html' },
-    ritualDetails: { template: 'systems/ExSecond-Errata/templates/item/details/ritual-details-tab.html' },
-    shapeDetails: { template: 'systems/ExSecond-Errata/templates/item/details/shape-details-tab.html' },
-    specialAbilityDetails: { template: 'systems/ExSecond-Errata/templates/item/details/specialability-details-tab.html' },
-    spellDetails: { template: 'systems/ExSecond-Errata/templates/item/details/spell-details-tab.html' },
-    weaponDetails: { template: 'systems/ExSecond-Errata/templates/item/details/weapon-details-tab.html' },
+    tabs: { template: 'systems/exaltedsecond/templates/dialogues/tabs.html' },
+    description: { template: 'systems/exaltedsecond/templates/item/description-tab.html' },
+    cost: { template: 'systems/exaltedsecond/templates/item/cost-tab.html' },
+    bonuses: { template: 'systems/exaltedsecond/templates/item/dice-bonuses-tab.html' },
+    automations: { template: 'systems/exaltedsecond/templates/item/automations-tab.html' },
+    upgrades: { template: 'systems/exaltedsecond/templates/item/charm-upgrades-tab.html' },
+    actionDetails: { template: 'systems/exaltedsecond/templates/item/details/action-details-tab.html' },
+    armorDetails: { template: 'systems/exaltedsecond/templates/item/details/armor-details-tab.html' },
+    charmDetails: { template: 'systems/exaltedsecond/templates/item/details/charm-details-tab.html' },
+    itemDetails: { template: 'systems/exaltedsecond/templates/item/details/item-details-tab.html' },
+    meritDetails: { template: 'systems/exaltedsecond/templates/item/details/merit-details-tab.html' },
+    ritualDetails: { template: 'systems/exaltedsecond/templates/item/details/ritual-details-tab.html' },
+    shapeDetails: { template: 'systems/exaltedsecond/templates/item/details/shape-details-tab.html' },
+    specialAbilityDetails: { template: 'systems/exaltedsecond/templates/item/details/specialability-details-tab.html' },
+    spellDetails: { template: 'systems/exaltedsecond/templates/item/details/spell-details-tab.html' },
+    weaponDetails: { template: 'systems/exaltedsecond/templates/item/details/weapon-details-tab.html' },
   };
 
   _initializeApplicationOptions(options) {
-    options.classes = [options.document.getSheetBackground(), "ExSecond-Errata", "sheet", "item"];
+    options.classes = [options.document.getSheetBackground(), "exaltedsecond", "sheet", "item"];
     return super._initializeApplicationOptions(options);
   }
 
@@ -124,7 +124,7 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
   }
 
   static async openMacroDialog() {
-    const template = "systems/ExSecond-Errata/templates/dialogues/charm-macros.html";
+    const template = "systems/exaltedsecond/templates/dialogues/charm-macros.html";
     const html = await foundry.applications.handlebars.renderTemplate(template, { 'prerollmacro': this.item.system.prerollmacro, 'macro': this.item.system.macro, 'damagemacro': this.item.system.damagemacro, });
 
     new foundry.applications.api.DialogV2({
@@ -169,37 +169,37 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
       flags: this.item.flags,
       type: this.item.type,
       // Adding a pointer to CONFIG.BOILERPLATE
-      config: CONFIG.ExSecond-Errata,
-      useShieldInitiative: game.settings.get("ExSecond-Errata", "useShieldInitiative"),
-      simplifiedCrafting: game.settings.get("ExSecond-Errata", "simplifiedCrafting"),
+      config: CONFIG.exaltedsecond,
+      useShieldInitiative: game.settings.get("exaltedsecond", "useShieldInitiative"),
+      simplifiedCrafting: game.settings.get("exaltedsecond", "simplifiedCrafting"),
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
 
       // Moved properties
-      attributeList: CONFIG.ExSecond-Errata.attributes,
-      charmAbilityList: JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.charmabilities)),
-      charmAbilityListSectioned: JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.charmAbilitiesSectioned)),
+      attributeList: CONFIG.exaltedsecond.attributes,
+      charmAbilityList: JSON.parse(JSON.stringify(CONFIG.exaltedsecond.charmabilities)),
+      charmAbilityListSectioned: JSON.parse(JSON.stringify(CONFIG.exaltedsecond.charmAbilitiesSectioned)),
       abilityList: (() => {
-        const list = JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.abilities));
+        const list = JSON.parse(JSON.stringify(CONFIG.exaltedsecond.abilities));
         list[''] = "Ex3.None";
         return list;
       })(),
-      charmExaltType: JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.exaltcharmtypes)),
+      charmExaltType: JSON.parse(JSON.stringify(CONFIG.exaltedsecond.exaltcharmtypes)),
       parentItemList: {
         '': 'Ex3.None'
       },
       showParentItemList: false,
-      selects: CONFIG.ExSecond-Errata.selects,
+      selects: CONFIG.exaltedsecond.selects,
       itemModes: {},
       upgradeSelects: {},
       activeEffectIds: {},
-      bonusTypes: CONFIG.ExSecond-Errata.bonusTypes,
-      triggerBonusDropdowns: CONFIG.ExSecond-Errata.triggerBonusDropdowns,
-      requirementTypes: CONFIG.ExSecond-Errata.requirementTypes,
+      bonusTypes: CONFIG.exaltedsecond.bonusTypes,
+      triggerBonusDropdowns: CONFIG.exaltedsecond.triggerBonusDropdowns,
+      requirementTypes: CONFIG.exaltedsecond.requirementTypes,
       formulaKeyPlaceholder: this.item.name.replace(/\s/g, '').toLowerCase(),
-      classifications: CONFIG.ExSecond-Errata.classifications,
-      attributes: CONFIG.ExSecond-Errata.attributes,
-      abilities: CONFIG.ExSecond-Errata.abilities,
+      classifications: CONFIG.exaltedsecond.classifications,
+      attributes: CONFIG.exaltedsecond.attributes,
+      abilities: CONFIG.exaltedsecond.abilities,
       traitHeader: itemData.type === 'armor' || itemData.type === 'weapon',
       hasDiceTriggers: ['charm', 'spell', 'merit', 'specialability', 'item', 'weapon'].includes(itemData.type),
       hasCustomModifier: ['charm', 'spell', 'customability', 'item', 'merit', 'specialability', 'weapon', 'armor'].includes(itemData.type),
@@ -379,13 +379,13 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
     const map = {
     };
     if (type === 'weapon') {
-      map['weapontags'] = CONFIG.ExSecond-Errata.weapontags
+      map['weapontags'] = CONFIG.exaltedsecond.weapontags
     }
     if (type === 'armor') {
-      map['armortags'] = CONFIG.ExSecond-Errata.armortags
+      map['armortags'] = CONFIG.exaltedsecond.armortags
     }
     if (type === 'customability') {
-      map['weapons'] = CONFIG.ExSecond-Errata.weapons
+      map['weapons'] = CONFIG.exaltedsecond.weapons
     }
     for (let [t, choices] of Object.entries(map)) {
       const trait = traits[t];
@@ -462,7 +462,7 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
   static editTraits(event, target) {
     event.preventDefault();
     const a = target;
-    const choices = CONFIG.ExSecond-Errata[a.dataset.options];
+    const choices = CONFIG.exaltedsecond[a.dataset.options];
     const options = { name: a.dataset.target, choices };
     return new TraitSelector(this.item, options).render(true);
   }
@@ -604,8 +604,8 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
         currentAlternateData = this.item.system.modes.alternates[index];
       }
 
-      const template = "systems/ExSecond-Errata/templates/dialogues/edit-alternate-mode.html";
-      const html = await foundry.applications.handlebars.renderTemplate(template, { name: currentAlternateData ? currentAlternateData.name : "New Alt Mode", system: currentAlternateData ? currentAlternateData : this.item.system, selects: CONFIG.ExSecond-Errata.selects });
+      const template = "systems/exaltedsecond/templates/dialogues/edit-alternate-mode.html";
+      const html = await foundry.applications.handlebars.renderTemplate(template, { name: currentAlternateData ? currentAlternateData.name : "New Alt Mode", system: currentAlternateData ? currentAlternateData : this.item.system, selects: CONFIG.exaltedsecond.selects });
 
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Alternate"), resizable: true },
@@ -748,11 +748,11 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
         window: { title: game.i18n.localize("Ex3.ReadMe"), resizable: true },
         content: '<div><p><a href="https://github.com/Aliharu/Foundry-Ex3/wiki/Dice-Roll-Triggers">Instructions and Syntax.</a></p></div>',
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+        classes: [`${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       }).render(true);
     }
     if (dialogType === 'charmCheatSheet') {
-      const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/charms-dialogue.html");
+      const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/charms-dialogue.html");
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Keywords"), resizable: true },
         content: html,
@@ -760,34 +760,34 @@ export class ExSecond-ErrataItemSheet extends HandlebarsApplicationMixin(ItemShe
           height: 1000, width: 1000,
         },
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+        classes: ['exaltedsecond-dialog', `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       }).render(true);
     }
     if (dialogType === 'formulaHelp') {
-      const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/formula-dialogue.html");
+      const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/formula-dialogue.html");
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Formulas"), resizable: true },
         content: html,
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+        classes: ['exaltedsecond-dialog', `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       }).render(true);
     }
     if (dialogType === 'modeHelp') {
-      const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/modes-dialogue.html");
+      const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/modes-dialogue.html");
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Modes"), resizable: true },
         content: html,
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+        classes: ['exaltedsecond-dialog', `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       }).render(true);
     }
     if (dialogType === 'upgradeHelp') {
-      const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/upgrades-dialogue.html");
+      const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/upgrades-dialogue.html");
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Upgrades"), resizable: true },
         content: html,
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+        classes: ['exaltedsecond-dialog', `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       }).render(true);
     }
   }

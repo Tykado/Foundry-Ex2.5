@@ -15,7 +15,7 @@ const { ActorSheetV2 } = foundry.applications.sheets;
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
+export class exaltedsecondActorSheet extends HandlebarsApplicationMixin(ActorSheetV2) {
   constructor(options = {}) {
     super(options);
     this.#dragDrop = this.#createDragDropHandlers();
@@ -54,7 +54,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       ]
     },
     position: { width: 800, height: 1061 },
-    classes: ["ExSecond-Errata", "sheet", "actor"],
+    classes: ["exaltedsecond", "sheet", "actor"],
     actions: {
       onEditImage: this._onEditImage,
       toggleEditMode: this.toggleEditMode,
@@ -106,44 +106,44 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
 
   static PARTS = {
     header: {
-      template: "systems/ExSecond-Errata/templates/actor/actor-header.html",
+      template: "systems/exaltedsecond/templates/actor/actor-header.html",
     },
-    tabs: { template: 'systems/ExSecond-Errata/templates/dialogues/tabs.html' },
+    tabs: { template: 'systems/exaltedsecond/templates/dialogues/tabs.html' },
     stats: {
-      template: "systems/ExSecond-Errata/templates/actor/stats-tab.html",
+      template: "systems/exaltedsecond/templates/actor/stats-tab.html",
     },
     combat: {
-      template: "systems/ExSecond-Errata/templates/actor/combat-tab.html",
+      template: "systems/exaltedsecond/templates/actor/combat-tab.html",
     },
     social: {
-      template: "systems/ExSecond-Errata/templates/actor/social-tab.html",
+      template: "systems/exaltedsecond/templates/actor/social-tab.html",
     },
     charms: {
-      template: "systems/ExSecond-Errata/templates/actor/charms-tab.html",
+      template: "systems/exaltedsecond/templates/actor/charms-tab.html",
     },
     character: {
-      template: "systems/ExSecond-Errata/templates/actor/character-tab.html",
+      template: "systems/exaltedsecond/templates/actor/character-tab.html",
     },
     effects: {
-      template: "systems/ExSecond-Errata/templates/actor/actor-effects-tab.html",
+      template: "systems/exaltedsecond/templates/actor/actor-effects-tab.html",
     },
     biography: {
-      template: "systems/ExSecond-Errata/templates/actor/biography-tab.html",
+      template: "systems/exaltedsecond/templates/actor/biography-tab.html",
     },
     limited: {
-      template: "systems/ExSecond-Errata/templates/actor/limited-tab.html",
+      template: "systems/exaltedsecond/templates/actor/limited-tab.html",
     }
   };
 
   _initializeApplicationOptions(options) {
-    options.classes = [options.document.getSheetBackground(), "ExSecond-Errata", "sheet", "actor"];
+    options.classes = [options.document.getSheetBackground(), "exaltedsecond", "sheet", "actor"];
     return super._initializeApplicationOptions(options);
   }
 
 
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    if (game.settings.get("ExSecond-Errata", "compactSheets")) {
+    if (game.settings.get("exaltedsecond", "compactSheets")) {
       options.position.height = 620;
       options.position.width = 560;
     }
@@ -180,7 +180,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
       flags: this.actor.flags,
-      config: CONFIG.ExSecond-Errata,
+      config: CONFIG.exaltedsecond,
       isNPC: this.actor.type === 'npc',
       statuses: await this._prepareStatusEffects(),
       characterEditMode: (this.actor.type === 'character' && this.actor.system.settings.editmode),
@@ -192,7 +192,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     }
 
     if (!this.tabGroups['primary']) this.tabGroups['primary'] = 'stats';
-    context.selects = CONFIG.ExSecond-Errata.selects;
+    context.selects = CONFIG.exaltedsecond.selects;
     const tabs = [{
       id: 'stats',
       group: 'primary',
@@ -259,20 +259,20 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
         relativeTo: this.actor,
       }
     );
-    context.attributeList = CONFIG.ExSecond-Errata.attributes;
-    context.signList = CONFIG.ExSecond-Errata.siderealSigns;
-    context.abilityList = JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.abilities));
+    context.attributeList = CONFIG.exaltedsecond.attributes;
+    context.signList = CONFIG.exaltedsecond.siderealSigns;
+    context.abilityList = JSON.parse(JSON.stringify(CONFIG.exaltedsecond.abilities));
     context.rollData = this.actor.getRollData();
-    context.showVirtues = game.settings.get("ExSecond-Errata", "virtues");
-    context.unifiedCharacterCreation = game.settings.get("ExSecond-Errata", "unifiedCharacterCreation");
-    context.unifiedCharacterAdvancement = game.settings.get("ExSecond-Errata", "unifiedCharacterAdvancement");
-    context.bankableStunts = game.settings.get("ExSecond-Errata", "bankableStunts");
-    context.useShieldInitiative = game.settings.get("ExSecond-Errata", "useShieldInitiative");
-    context.simplifiedCrafting = game.settings.get("ExSecond-Errata", "simplifiedCrafting");
-    context.steadyAction = game.settings.get("ExSecond-Errata", "steadyAction");
-    context.gloryOverwhelming = game.settings.get("ExSecond-Errata", "gloryOverwhelming");
-    context.abilitySelectList = CONFIG.ExSecond-Errata.selects.abilities;
-    context.abilityWithCustomsSelectList = { ...CONFIG.ExSecond-Errata.selects.abilities };
+    context.showVirtues = game.settings.get("exaltedsecond", "virtues");
+    context.unifiedCharacterCreation = game.settings.get("exaltedsecond", "unifiedCharacterCreation");
+    context.unifiedCharacterAdvancement = game.settings.get("exaltedsecond", "unifiedCharacterAdvancement");
+    context.bankableStunts = game.settings.get("exaltedsecond", "bankableStunts");
+    context.useShieldInitiative = game.settings.get("exaltedsecond", "useShieldInitiative");
+    context.simplifiedCrafting = game.settings.get("exaltedsecond", "simplifiedCrafting");
+    context.steadyAction = game.settings.get("exaltedsecond", "steadyAction");
+    context.gloryOverwhelming = game.settings.get("exaltedsecond", "gloryOverwhelming");
+    context.abilitySelectList = CONFIG.exaltedsecond.selects.abilities;
+    context.abilityWithCustomsSelectList = { ...CONFIG.exaltedsecond.selects.abilities };
     context.isExalt = this.actor.type === 'character' || this.actor.system.creaturetype === 'exalt';
 
     for (const customAbility of this.actor.items.filter(item => item.type === 'customability')) {
@@ -281,8 +281,8 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
 
     context.activeSpell = context.items?.find(item => item.system?.shaping);
     context.availableCastes = null;
-    context.availableCastes = CONFIG.ExSecond-Errata.castes[context.system.details.exalt];
-    context.selects = CONFIG.ExSecond-Errata.selects;
+    context.availableCastes = CONFIG.exaltedsecond.castes[context.system.details.exalt];
+    context.selects = CONFIG.exaltedsecond.selects;
     let characterLunars = {
       '': 'Ex3.None'
     }
@@ -321,7 +321,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
  */
   async _prepareStatusEffects() {
     const statusInfo = {};
-    for (const status of CONFIG.ExSecond-Errata.statusEffects) {
+    for (const status of CONFIG.exaltedsecond.statusEffects) {
       if ((!status.id)) continue;
       statusInfo[status.id] = {
         id: status.id,
@@ -354,13 +354,13 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     const actorData = sheetData.actor;
 
     for (let [key, setting] of Object.entries(sheetData.system.settings.rollsettings)) {
-      setting.name = CONFIG.ExSecond-Errata.rolltypes[key];
+      setting.name = CONFIG.exaltedsecond.rolltypes[key];
     }
     for (let [key, setting] of Object.entries(sheetData.system.settings.attackrollsettings)) {
-      setting.name = CONFIG.ExSecond-Errata.attackrolltypes[key];
+      setting.name = CONFIG.exaltedsecond.attackrolltypes[key];
     }
     for (let [key, setting] of Object.entries(sheetData.system.settings.staticcapsettings)) {
-      setting.name = CONFIG.ExSecond-Errata.statictypes[key];
+      setting.name = CONFIG.exaltedsecond.statictypes[key];
     }
 
     var currentParryPenalty = 0;
@@ -377,10 +377,10 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
           currentParryPenalty += (change.value * -1);
         }
       }
-      if (effect.flags.ExSecond-Errata?.statusId === 'onslaught') {
+      if (effect.flags.exaltedsecond?.statusId === 'onslaught') {
         currentOnslaughtPenalty += (effect.changes[0].value * -1);
       }
-      if (effect.flags.ExSecond-Errata?.statusId === 'defensePenalty') {
+      if (effect.flags.exaltedsecond?.statusId === 'defensePenalty') {
         currentDefensePenalty += (effect.changes[0].value * -1);
       }
     }
@@ -566,11 +566,11 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     }
     for (let [key, attr] of Object.entries(sheetData.system.attributes)) {
       attr.isCheckbox = attr.dtype === "Boolean";
-      attr.name = CONFIG.ExSecond-Errata.attributes[key];
+      attr.name = CONFIG.exaltedsecond.attributes[key];
       sheetData.system.charcreation.spent.attributes[attr.type] += (attr.value - 1);
       attr.nextDotCost = 0;
       if (attr.value < 5) {
-        if (game.settings.get("ExSecond-Errata", "unifiedCharacterAdvancement")) {
+        if (game.settings.get("exaltedsecond", "unifiedCharacterAdvancement")) {
           attr.nextDotCost = attr.favored ? 8 : 10;
         } else {
           attr.nextDotCost = attr.value * (attr.favored ? 3 : 4);
@@ -588,10 +588,10 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       }
     }
     for (let [key, ability] of Object.entries(sheetData.system.abilities)) {
-      ability.name = CONFIG.ExSecond-Errata.abilities[key];
+      ability.name = CONFIG.exaltedsecond.abilities[key];
 
       if (ability.value < 5) {
-        if (game.settings.get("ExSecond-Errata", "unifiedCharacterAdvancement")) {
+        if (game.settings.get("exaltedsecond", "unifiedCharacterAdvancement")) {
           ability.nextDotCost = ability.favored ? 4 : 5;
         } else {
           if (ability.value === 0) {
@@ -668,7 +668,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       } else if (actorData.system.abilities[charm.system.ability] && actorData.system.abilities[charm.system.ability].favored) {
         favoredCharms++;
       }
-      else if (CONFIG.ExSecond-Errata.maidens.includes(charm.system.ability) && charm.system.ability === actorData.system.details.caste) {
+      else if (CONFIG.exaltedsecond.maidens.includes(charm.system.ability) && charm.system.ability === actorData.system.details.caste) {
         favoredCharms++;
       }
       else {
@@ -705,17 +705,17 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     sheetData.system.charcreation.spent.experience += (Math.max(0, (sheetData.system.willpower.max - sheetData.system.charcreation.available.willpower))) * 6;
     sheetData.system.charcreation.spent.experience += (Math.max(0, (sheetData.system.charcreation.spent.merits - sheetData.system.charcreation.available.merits))) * 2;
     sheetData.system.charcreation.spent.experience += (Math.max(0, (sheetData.system.charcreation.spent.specialties - sheetData.system.charcreation.available.specialties))) * 2;
-    sheetData.system.settings.usedotsvalues = !game.settings.get("ExSecond-Errata", "compactSheets");
+    sheetData.system.settings.usedotsvalues = !game.settings.get("exaltedsecond", "compactSheets");
 
     sheetData.system.experience.standard.remaining = sheetData.system.experience.standard.total - sheetData.system.experience.standard.value;
     sheetData.system.experience.exalt.remaining = sheetData.system.experience.exalt.total - sheetData.system.experience.exalt.value;
   }
 
   _prepareNPCData(sheetData) {
-    sheetData.system.settings.usedotsvalues = !game.settings.get("ExSecond-Errata", "compactSheetsNPC");
+    sheetData.system.settings.usedotsvalues = !game.settings.get("exaltedsecond", "compactSheetsNPC");
 
     for (let [key, pool] of Object.entries(sheetData.system.pools)) {
-      pool.name = CONFIG.ExSecond-Errata.npcpools[key];
+      pool.name = CONFIG.exaltedsecond.npcpools[key];
     }
   }
 
@@ -889,7 +889,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
         }
         else {
           if (!rollCharms[i.system.ability]) {
-            rollCharms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            rollCharms[i.system.ability] = { name: CONFIG.exaltedsecond.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           rollCharms[i.system.ability].list.push(i);
         }
@@ -903,7 +903,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
         }
         else {
           if (!defenseCharms[i.system.ability]) {
-            defenseCharms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            defenseCharms[i.system.ability] = { name: CONFIG.exaltedsecond.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           defenseCharms[i.system.ability].list.push(i);
         }
@@ -916,7 +916,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       }
       else {
         if (!charms[i.system.ability]) {
-          charms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [], collapse: this.collapseStates.charm[i.system.ability] ?? true };
+          charms[i.system.ability] = { name: CONFIG.exaltedsecond.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [], collapse: this.collapseStates.charm[i.system.ability] ?? true };
         }
         charms[i.system.ability].list.push(i);
       }
@@ -958,10 +958,10 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
  */
   _prepareTraits(traits) {
     const map = {
-      "languages": CONFIG.ExSecond-Errata.languages,
-      "resonance": CONFIG.ExSecond-Errata.resonance,
-      "dissonance": CONFIG.ExSecond-Errata.dissonance,
-      "classifications": CONFIG.ExSecond-Errata.classifications,
+      "languages": CONFIG.exaltedsecond.languages,
+      "resonance": CONFIG.exaltedsecond.resonance,
+      "dissonance": CONFIG.exaltedsecond.dissonance,
+      "classifications": CONFIG.exaltedsecond.classifications,
     };
     for (let [t, choices] of Object.entries(map)) {
       const trait = traits[t];
@@ -1496,7 +1496,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       }
       this.actor.update({ [`system.motes.${motePool}.committed`]: commitMotes });
     } else {
-      if (game.settings.get("ExSecond-Errata", "gloryOverwhelming")) {
+      if (game.settings.get("exaltedsecond", "gloryOverwhelming")) {
         if (system.details.exalt === 'other' || (this.actor.type === 'npc' && system.creaturetype !== 'exalt')) {
           system.motes.glorymotecap.max = 10;
           if (system.creaturetype === 'god' || system.creaturetype === 'undead' || system.creaturetype === 'demon' || system.creaturetype === 'elemental') {
@@ -1536,7 +1536,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   static async setDiceCap(event, target) {
-    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/set-dice-cap.html", { 'dicecap': this.actor.system.settings.dicecap });
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/set-dice-cap.html", { 'dicecap': this.actor.system.settings.dicecap });
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.SetCustomDiceCap") },
       content: html,
@@ -1663,7 +1663,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     }
 
 
-    var template = "systems/ExSecond-Errata/templates/dialogues/calculate-health.html";
+    var template = "systems/exaltedsecond/templates/dialogues/calculate-health.html";
 
     var templateData = {
       'oxBodyText': oxBodyText,
@@ -1698,7 +1698,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       }
     }
     if (this.actor.system.battlegroup && healthType === 'person') {
-      template = "systems/ExSecond-Errata/templates/dialogues/calculate-battlegroup-health.html";
+      template = "systems/exaltedsecond/templates/dialogues/calculate-battlegroup-health.html";
       templateData.hasOxBody = false;
     }
     const html = await foundry.applications.handlebars.renderTemplate(template, templateData);
@@ -1796,7 +1796,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     const dialogType = target.dataset.dialogtype;
 
     if (dialogType === 'charmCheatSheet') {
-      const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/charms-dialogue.html");
+      const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/charms-dialogue.html");
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.Keywords"), resizable: true },
         content: html,
@@ -1805,56 +1805,56 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
           height: 1000
         },
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', this.actor.getSheetBackground()],
+        classes: ['exaltedsecond-dialog', this.actor.getSheetBackground()],
       }).render(true);
     } else {
-      let template = "systems/ExSecond-Errata/templates/dialogues/armor-tags.html";
+      let template = "systems/exaltedsecond/templates/dialogues/armor-tags.html";
       switch (dialogType) {
         case 'experience':
-          template = "systems/ExSecond-Errata/templates/dialogues/experience-points-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/experience-points-dialogue.html";
           break;
         case 'weapons':
-          template = "systems/ExSecond-Errata/templates/dialogues/weapon-tags.html";
+          template = "systems/exaltedsecond/templates/dialogues/weapon-tags.html";
           break;
         case 'craft':
-          template = "systems/ExSecond-Errata/templates/dialogues/craft-cheatsheet.html";
+          template = "systems/exaltedsecond/templates/dialogues/craft-cheatsheet.html";
           break;
         case 'advancement':
-          template = "systems/ExSecond-Errata/templates/dialogues/advancement-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/advancement-dialogue.html";
           break;
         case 'combat':
-          template = "systems/ExSecond-Errata/templates/dialogues/combat-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/combat-dialogue.html";
           break;
         case 'social':
-          template = "systems/ExSecond-Errata/templates/dialogues/social-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/social-dialogue.html";
           break;
         case 'rout':
-          template = "systems/ExSecond-Errata/templates/dialogues/rout-modifiers.html";
+          template = "systems/exaltedsecond/templates/dialogues/rout-modifiers.html";
           break;
         case 'exalt-xp':
-          template = "systems/ExSecond-Errata/templates/dialogues/exalt-xp-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/exalt-xp-dialogue.html";
           break;
         case 'featsOfStrength':
-          template = "systems/ExSecond-Errata/templates/dialogues/feats-of-strength-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/feats-of-strength-dialogue.html";
           break;
         case 'bonusPoints':
-          template = "systems/ExSecond-Errata/templates/dialogues/bonus-points-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/bonus-points-dialogue.html";
           break;
         case 'health':
-          template = "systems/ExSecond-Errata/templates/dialogues/health-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/health-dialogue.html";
           break;
         case 'workings':
-          template = "systems/ExSecond-Errata/templates/dialogues/workings-dialogue.html";
+          template = "systems/exaltedsecond/templates/dialogues/workings-dialogue.html";
           break;
         default:
           break;
       }
-      const html = await foundry.applications.handlebars.renderTemplate(template, { 'exalt': this.actor.system.details.exalt, 'caste': this.actor.system.details.caste.toLowerCase(), 'unifiedCharacterAdvancement': game.settings.get("ExSecond-Errata", "unifiedCharacterAdvancement") });
+      const html = await foundry.applications.handlebars.renderTemplate(template, { 'exalt': this.actor.system.details.exalt, 'caste': this.actor.system.details.caste.toLowerCase(), 'unifiedCharacterAdvancement': game.settings.get("exaltedsecond", "unifiedCharacterAdvancement") });
       new foundry.applications.api.DialogV2({
         window: { title: game.i18n.localize("Ex3.InfoDialog"), resizable: true },
         content: html,
         buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-        classes: ['ExSecond-Errata-dialog', this.actor.getSheetBackground()],
+        classes: ['exaltedsecond-dialog', this.actor.getSheetBackground()],
         position: {
           width: 500,
         },
@@ -1867,7 +1867,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     if (!this.isEditable) {
       return;
     }
-    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/color-picker.html", { 'color': this.actor.system.details.color, 'animaColor': this.actor.system.details.animacolor, 'initiativeIcon': this.actor.system.details.initiativeicon, 'initiativeIconColor': this.actor.system.details.initiativeiconcolor });
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/color-picker.html", { 'color': this.actor.system.details.color, 'animaColor': this.actor.system.details.animacolor, 'initiativeIcon': this.actor.system.details.initiativeicon, 'initiativeIconColor': this.actor.system.details.initiativeiconcolor });
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.PickColor") },
       position: { height: 1000, width: 406 },
@@ -1905,7 +1905,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   static async baseRoll() {
-    new RollForm(this.actor, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollType: 'base' }).render(true);
+    new RollForm(this.actor, { classes: [" exaltedsecond exaltedsecond-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollType: 'base' }).render(true);
   }
 
   static async toggleStatus(event, target) {
@@ -1926,8 +1926,8 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     if (!this.isEditable) {
       return;
     }
-    const template = "systems/ExSecond-Errata/templates/dialogues/sheet-settings.html"
-    const html = await foundry.applications.handlebars.renderTemplate(template, { 'actorType': this.actor.type, settings: this.actor.system.settings, 'maxAnima': this.actor.system.anima.max, 'lunarFormEnabled': this.actor.system.lunarform?.enabled, 'showExigentType': (this.actor.system.details.exalt === 'exigent' || this.actor.system.details.exalt === 'customExigent'), selects: CONFIG.ExSecond-Errata.selects });
+    const template = "systems/exaltedsecond/templates/dialogues/sheet-settings.html"
+    const html = await foundry.applications.handlebars.renderTemplate(template, { 'actorType': this.actor.type, settings: this.actor.system.settings, 'maxAnima': this.actor.system.anima.max, 'lunarFormEnabled': this.actor.system.lunarform?.enabled, 'showExigentType': (this.actor.system.details.exalt === 'exigent' || this.actor.system.details.exalt === 'customExigent'), selects: CONFIG.exaltedsecond.selects });
 
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.Settings"), },
@@ -1980,7 +1980,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   static async helpDialogue() {
-    const template = "systems/ExSecond-Errata/templates/dialogues/help-dialogue.html"
+    const template = "systems/exaltedsecond/templates/dialogues/help-dialogue.html"
     const html = await foundry.applications.handlebars.renderTemplate(template, { 'type': this.actor.type });
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.ReadMe"), resizable: true },
@@ -2098,7 +2098,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   _getHighestMaidenAbility(maiden) {
-    const abilityList = CONFIG.ExSecond-Errata.maidenabilities[maiden];
+    const abilityList = CONFIG.exaltedsecond.maidenabilities[maiden];
     let highestValue = 0;
     for (const ability of abilityList) {
       if ((this.actor.system.abilities[ability]?.value || 0) > highestValue) {
@@ -2109,7 +2109,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   _getMaidenCharmsNumber(maiden) {
-    const abilityList = CONFIG.ExSecond-Errata.maidenabilities[maiden];
+    const abilityList = CONFIG.exaltedsecond.maidenabilities[maiden];
     return (this.actor.items.filter(numberCharm => numberCharm.type === 'charm' && abilityList.includes(numberCharm.system.ability)).length || 0)
   }
 
@@ -2271,7 +2271,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       system: data
     };
     if (type === 'charm') {
-      if (Object.keys(CONFIG.ExSecond-Errata.exaltcharmtypes).includes(this.actor.system.details.exalt)) {
+      if (Object.keys(CONFIG.exaltedsecond.exaltcharmtypes).includes(this.actor.system.details.exalt)) {
         itemData.system.charmtype = this.actor.system.details.exalt;
       }
     }
@@ -2299,7 +2299,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       let circle = target.dataset.circle;
       if (circle) {
         sectionList[circle] = {
-          name: CONFIG.ExSecond-Errata.circles[circle],
+          name: CONFIG.exaltedsecond.circles[circle],
           list: items.filter(item => item.system.circle === circle)
         }
       } else {
@@ -2355,14 +2355,14 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
         }
         else {
           if (!sectionList[charm.system.ability]) {
-            sectionList[charm.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[charm.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            sectionList[charm.system.ability] = { name: CONFIG.exaltedsecond.charmabilities[charm.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           sectionList[charm.system.ability].list.push(charm);
         }
       }
     }
 
-    const template = "systems/ExSecond-Errata/templates/dialogues/import-item.html";
+    const template = "systems/exaltedsecond/templates/dialogues/import-item.html";
     const html = await foundry.applications.handlebars.renderTemplate(template, { 'sectionList': sectionList });
 
     await foundry.applications.api.DialogV2.wait({
@@ -2405,7 +2405,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
           });
         });
       },
-      classes: ['ExSecond-Errata-dialog', this.actor.getSheetBackground()],
+      classes: ['exaltedsecond-dialog', this.actor.getSheetBackground()],
     });
   }
 
@@ -2536,7 +2536,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
 
     switch (actionType) {
       case 'quickRoll':
-        new RollForm(this.actor, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollId: savedRollId, skipDialog: true }).roll();
+        new RollForm(this.actor, { classes: [" exaltedsecond exaltedsecond-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollId: savedRollId, skipDialog: true }).roll();
         break;
       case 'savedRoll':
         this.actor.actionRoll(
@@ -2565,7 +2565,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   static lastRoll(event, target) {
     this.actor.actionRoll(
       {
-        rollType: this.actor.flags.ExSecond-Errata.lastroll.rollType,
+        rollType: this.actor.flags.exaltedsecond.lastroll.rollType,
         lastRoll: true
       }
     );
@@ -2601,7 +2601,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
                     game.combat.setInitiative(combatant.id, combatant.initiative - total);
                   }
                   else {
-                    game.socket.emit('system.ExSecond-Errata', {
+                    game.socket.emit('system.exaltedsecond', {
                       type: 'updateInitiative',
                       id: combatant.id,
                       data: combatant.initiative - total,
@@ -2621,7 +2621,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
                   target.actor.update(targetActorData);
                 }
                 else {
-                  game.socket.emit('system.ExSecond-Errata', {
+                  game.socket.emit('system.exaltedsecond', {
                     type: 'updateTargetData',
                     id: target.id,
                     data: targetActorData,
@@ -2782,7 +2782,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   static editTraits(event, target) {
     event.preventDefault();
     const label = target.parentElement.querySelector("label");
-    const choices = CONFIG.ExSecond-Errata[target.dataset.options];
+    const choices = CONFIG.exaltedsecond[target.dataset.options];
     const options = { name: target.dataset.target, title: label.innerText, choices };
     return new TraitSelector(this.actor, options).render(true);
   }
@@ -2808,7 +2808,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
   }
 
   async _completeCraft(doc) {
-    game.rollForm = new RollForm(this.actor, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollType: 'craft', ability: "craft", standardCraftProjectId: doc.id, craftType: doc.system.type, craftRating: doc.system.rating, goalNumber: doc.system.goalnumber, intervals: doc.system.intervals }).render(true);
+    game.rollForm = new RollForm(this.actor, { classes: [" exaltedsecond exaltedsecond-dialog dice-roller", this.actor.getSheetBackground()] }, {}, { rollType: 'craft', ability: "craft", standardCraftProjectId: doc.id, craftType: doc.system.type, craftRating: doc.system.rating, goalNumber: doc.system.goalnumber, intervals: doc.system.intervals }).render(true);
   }
 
   static async _displayDataChat(event, target) {
@@ -2833,7 +2833,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       content: content,
       title: title,
     };
-    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/exalt-ability-card.html", templateData);
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/chat/exalt-ability-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {
@@ -2872,7 +2872,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       labels: this.labels,
       cardType: cardType,
     };
-    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/item-card.html", templateData);
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/chat/item-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {
@@ -2893,7 +2893,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       game.rollForm.addOpposingCharm(item);
     }
 
-    game.socket.emit('system.ExSecond-Errata', {
+    game.socket.emit('system.exaltedsecond', {
       type: 'addOpposingCharm',
       data: item,
       actorId: item.actor._id,
@@ -2902,7 +2902,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
 
   _spendItem(item) {
     item.activate();
-    if (game.settings.get("ExSecond-Errata", "spendChatCards")) {
+    if (game.settings.get("exaltedsecond", "spendChatCards")) {
       this._displayCard(item, "Spent");
     }
     // Test
@@ -2914,7 +2914,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
     if (lunar) {
       const actorData = foundry.utils.duplicate(this.actor);
 
-      const template = "systems/ExSecond-Errata/templates/dialogues/lunar-sync.html";
+      const template = "systems/exaltedsecond/templates/dialogues/lunar-sync.html";
       const html = await foundry.applications.handlebars.renderTemplate(template);
 
       const confirmed = await foundry.applications.api.DialogV2.confirm({
@@ -2925,7 +2925,7 @@ export class ExSecond-ErrataActorSheet extends HandlebarsApplicationMixin(ActorS
       });
       if (confirmed) {
         if (actorData.img === 'icons/svg/mystery-man.svg') {
-          actorData.img = "systems/ExSecond-Errata/assets/icons/lunar_animal.webp";
+          actorData.img = "systems/exaltedsecond/assets/icons/lunar_animal.webp";
         }
         actorData.system.health = lunar.system.health;
         actorData.system.willpower = lunar.system.willpower;

@@ -1,11 +1,11 @@
-// new game.ExSecond-Errata.applications.Importer().render(true);
+// new game.exaltedsecond.applications.Importer().render(true);
 export default class Importer extends FormApplication {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "importer",
             title: "Importer",
-            template: "systems/ExSecond-Errata/templates/dialogues/importer.html",
+            template: "systems/exaltedsecond/templates/dialogues/importer.html",
         });
     }
 

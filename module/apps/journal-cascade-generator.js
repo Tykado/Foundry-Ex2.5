@@ -12,7 +12,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
       type: 'character',
       includeSpells: true,
       useLinks: true,
-      selects: CONFIG.ExSecond-Errata.selects,
+      selects: CONFIG.exaltedsecond.selects,
       filterByPrerequisiteCharms: false,
     }
 
@@ -61,7 +61,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
     //   template: "templates/generic/tab-navigation.hbs",
     // },
     form: {
-      template: "systems/ExSecond-Errata/templates/dialogues/journal-cascade-generator.html",
+      template: "systems/exaltedsecond/templates/dialogues/journal-cascade-generator.html",
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
@@ -307,7 +307,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
             descriptionText: this.object.mainText,
             useLinks: this.object.useLinks,
           }
-          const spellHtml = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/journal/spell-cascade-journal.html", templateData);
+          const spellHtml = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/journal/spell-cascade-journal.html", templateData);
           spellsListHtml += spellHtml;
         }
         let fullListHtml = this.object.mainText === 'summary' ? `<div class="journal-charm-cards grid grid-2col">${spellsListHtml}</div>` : `<div class="journal-charm-cards">${spellsListHtml}</div>`;
@@ -335,7 +335,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
             descriptionText: this.object.mainText,
             useLinks: this.object.useLinks,
           }
-          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/journal/spell-cascade-journal.html", templateData);
+          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/journal/spell-cascade-journal.html", templateData);
           spellListHtml += charmHtml;
         }
         let fullListHtml = this.object.mainText === 'summary' ? `<div class="journal-charm-cards grid grid-2col">${spellListHtml}</div>` : `<div class="journal-charm-cards">${spellListHtml}</div>`;
@@ -391,7 +391,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
             descriptionText: this.object.mainText,
             useLinks: this.object.useLinks,
           }
-          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/journal/charm-cascade-journal.html", templateData);
+          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/journal/charm-cascade-journal.html", templateData);
           charmsListHtml += charmHtml;
         }
         let fullListHtml = this.object.mainText === 'summary' ? `<div class="journal-charm-cards grid grid-2col">${charmsListHtml}</div>` : `<div class="journal-charm-cards">${charmsListHtml}</div>`;
@@ -427,7 +427,7 @@ export default class JournalCascadeGenerator extends HandlebarsApplicationMixin(
             descriptionText: this.object.mainText,
             useLinks: this.object.useLinks,
           }
-          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/journal/charm-cascade-journal.html", templateData);
+          const charmHtml = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/journal/charm-cascade-journal.html", templateData);
           charmsListHtml += charmHtml;
         }
         let fullListHtml = this.object.mainText === 'summary' ? `<div class="journal-charm-cards grid grid-2col">${charmsListHtml}</div>` : `<div class="journal-charm-cards">${charmsListHtml}</div>`;

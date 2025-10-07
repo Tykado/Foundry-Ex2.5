@@ -10,8 +10,8 @@ export default class Prophecy extends HandlebarsApplicationMixin(ApplicationV2) 
             sign: '',
             signTrappings: '',
             maxAmbition: Math.max(3, this.actor.system.essence.value),
-            signList: CONFIG.ExSecond-Errata.siderealSigns,
-            selects: CONFIG.ExSecond-Errata.selects,
+            signList: CONFIG.exaltedsecond.siderealSigns,
+            selects: CONFIG.exaltedsecond.selects,
             totalUsedAmbition: 4,
             baseIntervalTime: "Ex3.OneHour",
             ambitions: {
@@ -76,7 +76,7 @@ export default class Prophecy extends HandlebarsApplicationMixin(ApplicationV2) 
 
     static PARTS = {
         form: {
-            template: "systems/ExSecond-Errata/templates/dialogues/prophecy.html",
+            template: "systems/exaltedsecond/templates/dialogues/prophecy.html",
         },
         footer: {
             template: "templates/generic/form-footer.hbs",
@@ -195,7 +195,7 @@ export default class Prophecy extends HandlebarsApplicationMixin(ApplicationV2) 
 
             const sign = `The ${this.object.sign?.capitalize() || "No Sign"}`;
 
-            const cardContent = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/prophecy-card.html", { 'data': this.object, 'actor': this.actor, intervalTimeString: this.object.baseIntervalTime, sign: sign });
+            const cardContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/chat/prophecy-card.html", { 'data': this.object, 'actor': this.actor, intervalTimeString: this.object.baseIntervalTime, sign: sign });
 
             ChatMessage.create({
                 user: game.user.id,
@@ -203,7 +203,7 @@ export default class Prophecy extends HandlebarsApplicationMixin(ApplicationV2) 
                 content: cardContent,
                 style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             });
-            game.rollForm = new RollForm(this.actor, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`] }, {}, { rollType: 'prophecy', prophecyAmbition: this.object.totalUsedAmbition, bonusIntervals: bonusIntervals }).render(true);
+            game.rollForm = new RollForm(this.actor, { classes: [" exaltedsecond exaltedsecond-dialog dice-roller", `${game.settings.get("exaltedsecond", "sheetStyle")}-background`] }, {}, { rollType: 'prophecy', prophecyAmbition: this.object.totalUsedAmbition, bonusIntervals: bonusIntervals }).render(true);
             this.close();
         }
         this.render();

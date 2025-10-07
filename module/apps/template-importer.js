@@ -64,7 +64,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
     const applyChanges = await foundry.applications.api.DialogV2.confirm({
       window: { title: `${game.i18n.localize("Ex3.Close")}?` },
       content: "<p>Any unsaved changed will be lost</p>",
-      classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       modal: true
     });
     if (applyChanges) {
@@ -111,7 +111,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
 
   static PARTS = {
     form: {
-      template: "systems/ExSecond-Errata/templates/dialogues/template-importer.html",
+      template: "systems/exaltedsecond/templates/dialogues/template-importer.html",
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
@@ -119,8 +119,8 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
   };
 
   async _prepareContext(_options) {
-    this.data.charmTypes = CONFIG.ExSecond-Errata.exaltcharmtypes;
-    this.data.selects = CONFIG.ExSecond-Errata.selects;
+    this.data.charmTypes = CONFIG.exaltedsecond.exaltcharmtypes;
+    this.data.selects = CONFIG.exaltedsecond.selects;
     const hintMap = { 'charm': 'CharmImportHint', 'spell': 'SpellImportHint', 'adversary': 'AdversaryImportHint', 'qc': 'QCImportHint', 'other': 'OtherImportHint' }
     this.data.templateHint = game.i18n.localize(`Ex3.${hintMap[this.data.type]}`);
     this.data.buttons = [
@@ -508,13 +508,13 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
   }
 
   async createOther() {
-    const martialArtsWeapons = await foundry.utils.fetchJsonWithTimeout('systems/ExSecond-Errata/module/data/martialArtsWeapons.json', {}, { int: 30000 });
+    const martialArtsWeapons = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/martialArtsWeapons.json', {}, { int: 30000 });
     let textArray = this.data.textBox.split(/\r?\n/);
     let index = 0;
 
     let folder = await this._getFolder();
-    const weaponTags = CONFIG.ExSecond-Errata.weapontags;
-    const armorTags = CONFIG.ExSecond-Errata.armortags;
+    const weaponTags = CONFIG.exaltedsecond.weapontags;
+    const armorTags = CONFIG.exaltedsecond.armortags;
     while (index < textArray.length && textArray[index].trim().toLowerCase() !== 'end') {
       var itemData = {
         type: this.data.itemType,
@@ -524,12 +524,12 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
       if (this.data.itemType === 'hearthstone') {
         itemData.system.itemtype = 'hearthstone';
         itemData.type = 'item';
-        itemData.img = 'systems/ExSecond-Errata/assets/icons/emerald.svg';
+        itemData.img = 'systems/exaltedsecond/assets/icons/emerald.svg';
       }
       if (this.data.itemType === 'warstrider') {
         itemData.system.itemtype = 'warstrider';
         itemData.type = 'item';
-        itemData.img = 'systems/ExSecond-Errata/assets/icons/battle-mech.svg';
+        itemData.img = 'systems/exaltedsecond/assets/icons/battle-mech.svg';
         itemData.system.hasevocations = true;
       }
       var weightType = '';
@@ -630,7 +630,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
         index++;
       }
       if (this.data.itemType === 'martialArt') {
-        itemData.img = "systems/ExSecond-Errata/assets/icons/punch-blast.svg";
+        itemData.img = "systems/exaltedsecond/assets/icons/punch-blast.svg";
         itemData.type = 'customability';
         itemData.system.abilitytype = 'martialart';
         if (martialArtsWeapons[itemData.name]) {
@@ -725,7 +725,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: 'intimacy',
-                  img: CONFIG.ExSecond-Errata.itemIcons['intimacy'],
+                  img: CONFIG.exaltedsecond.itemIcons['intimacy'],
                   name: intimacyArray[1].trim(),
                   system: {
                     description: intimacyArray[1].trim(),
@@ -739,7 +739,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: 'intimacy',
-                  img: CONFIG.ExSecond-Errata.itemIcons['intimacy'],
+                  img: CONFIG.exaltedsecond.itemIcons['intimacy'],
                   name: intimacyArray[0].trim(),
                   system: {
                     description: intimacyArray[0].trim(),
@@ -818,7 +818,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: 'intimacy',
-                  img: CONFIG.ExSecond-Errata.itemIcons['intimacy'],
+                  img: CONFIG.exaltedsecond.itemIcons['intimacy'],
                   name: intimacyArray[1].trim(),
                   system: {
                     description: intimacyArray[1].trim(),
@@ -832,7 +832,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: 'intimacy',
-                  img: CONFIG.ExSecond-Errata.itemIcons['intimacy'],
+                  img: CONFIG.exaltedsecond.itemIcons['intimacy'],
                   name: intimacyArray[0].trim(),
                   system: {
                     description: intimacyArray[0].trim(),
@@ -861,10 +861,10 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
       //     itemData.push(
       //       {
       //         type: 'action',
-      //         img: CONFIG.ExSecond-Errata.itemIcons['action'],
+      //         img: CONFIG.exaltedsecond.itemIcons['action'],
       //         name: primaryAction,
       //         system: {
-      //           value: CONFIG.ExSecond-Errata.tripleActionStatblocks[this.data.templateType]?.primary || 0
+      //           value: CONFIG.exaltedsecond.tripleActionStatblocks[this.data.templateType]?.primary || 0
       //         }
       //       }
       //     );
@@ -900,7 +900,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: 'action',
-                img: CONFIG.ExSecond-Errata.itemIcons['action'],
+                img: CONFIG.exaltedsecond.itemIcons['action'],
                 name: name,
                 system: {
                   value: parseInt(actionSplit[1].trim())
@@ -979,7 +979,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
         itemData.push(
           {
             type: 'weapon',
-            img: CONFIG.ExSecond-Errata.itemIcons['weapon'],
+            img: CONFIG.exaltedsecond.itemIcons['weapon'],
             name: attackName.trim(),
             system: {
               description: weaponDescription,
@@ -1022,7 +1022,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
           itemData.push(
             {
               type: 'armor',
-              img: CONFIG.ExSecond-Errata.itemIcons['armor'],
+              img: CONFIG.exaltedsecond.itemIcons['armor'],
               name: match[1],
             }
           );
@@ -1086,7 +1086,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: 'intimacy',
-                img: CONFIG.ExSecond-Errata.itemIcons['intimacy'],
+                img: CONFIG.exaltedsecond.itemIcons['intimacy'],
                 name: intimacy.trim(),
                 system: {
                   description: intimacy.trim(),
@@ -1231,7 +1231,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: 'specialty',
-                img: CONFIG.ExSecond-Errata.itemIcons['specialty'],
+                img: CONFIG.exaltedsecond.itemIcons['specialty'],
                 name: specialtyText.trim(),
                 system: {
                   ability: trimmedName,
@@ -1281,7 +1281,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: 'merit',
-                img: CONFIG.ExSecond-Errata.itemIcons['merit'],
+                img: CONFIG.exaltedsecond.itemIcons['merit'],
                 name: meritName.trim(),
                 system: {
                   points: meritValue ? meritValue : 0,
@@ -1321,7 +1321,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: 'specialty',
-                  img: CONFIG.ExSecond-Errata.itemIcons['specialty'],
+                  img: CONFIG.exaltedsecond.itemIcons['specialty'],
                   name: specialtyText.trim(),
                   system: {
                     ability: trimmedName,
@@ -1334,7 +1334,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
         }
       }
       this.errorSection = 'Attacks';
-      const weaponTags = CONFIG.ExSecond-Errata.weapontags;
+      const weaponTags = CONFIG.exaltedsecond.weapontags;
       while (textArray[index].includes('Attack')) {
         var attackString = textArray[index];
         if (!textArray[index + 1].includes('Attack') && !textArray[index + 1].includes('Combat')) {
@@ -1394,7 +1394,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
         itemData.push(
           {
             type: 'weapon',
-            img: CONFIG.ExSecond-Errata.itemIcons['weapon'],
+            img: CONFIG.exaltedsecond.itemIcons['weapon'],
             name: attackName.trim(),
             system: {
               description: weaponDescription,
@@ -1470,7 +1470,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
         itemData.push(
           {
             type: 'armor',
-            img: CONFIG.ExSecond-Errata.itemIcons['armor'],
+            img: CONFIG.exaltedsecond.itemIcons['armor'],
             name: armorName.trim(),
             system: {
               soak: armorValue,
@@ -1702,7 +1702,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
               itemData.push(
                 {
                   type: itemType,
-                  img: CONFIG.ExSecond-Errata.itemIcons[itemType],
+                  img: CONFIG.exaltedsecond.itemIcons[itemType],
                   name: intimacyArray[1].trim(),
                   system: {
                     description: intimacyArray[1].trim(),
@@ -1883,7 +1883,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: itemType,
-                img: CONFIG.ExSecond-Errata.itemIcons[itemType],
+                img: CONFIG.exaltedsecond.itemIcons[itemType],
                 name: itemName,
                 system: {
                   description: itemDescription.trim(),
@@ -1899,7 +1899,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: itemType,
-                img: CONFIG.ExSecond-Errata.itemIcons[itemType],
+                img: CONFIG.exaltedsecond.itemIcons[itemType],
                 name: itemName,
                 system: charmSystemData,
               }
@@ -1913,7 +1913,7 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
             itemData.push(
               {
                 type: itemType,
-                img: CONFIG.ExSecond-Errata.itemIcons[itemType],
+                img: CONFIG.exaltedsecond.itemIcons[itemType],
                 name: itemName,
                 system: spellSystemData,
               }
@@ -1988,12 +1988,12 @@ export default class TemplateImporter extends HandlebarsApplicationMixin(Applica
   }
 
   static async showHelpDialog(event, target) {
-    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/dialogues/help-dialogue.html");
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/help-dialogue.html");
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.ReadMe"), resizable: true },
       content: html,
       buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-      classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
     }).render(true);
   }
 }

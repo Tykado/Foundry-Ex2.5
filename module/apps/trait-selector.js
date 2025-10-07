@@ -11,7 +11,7 @@ export default class TraitSelector extends HandlebarsApplicationMixin(DocumentSh
   }
 
   static DEFAULT_OPTIONS = {
-    classes: ["exaltedthird", "trait-selector", "subconfig"],
+    classes: ["ExSecond-Errata", "trait-selector", "subconfig"],
     tag: "form",
     position: { width: 320, height: "auto" },
     form: {
@@ -23,7 +23,7 @@ export default class TraitSelector extends HandlebarsApplicationMixin(DocumentSh
 
   static PARTS = {
     form: {
-      template: "systems/exaltedthird/templates/dialogues/trait-selector/trait-list.html",
+      template: "systems/ExSecond-Errata/templates/dialogues/trait-selector/trait-list.html",
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
@@ -35,7 +35,7 @@ export default class TraitSelector extends HandlebarsApplicationMixin(DocumentSh
   }
 
   _initializeApplicationOptions(options) {
-    options.classes = [options.document.getSheetBackground(), "exaltedthird", "trait-selector", "subconfig"];
+    options.classes = [options.document.getSheetBackground(), "ExSecond-Errata", "trait-selector", "subconfig"];
     return super._initializeApplicationOptions(options);
   }
 

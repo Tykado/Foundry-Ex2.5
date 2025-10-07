@@ -6,7 +6,7 @@ import { getNumberFormula } from "../utils/utils.js";
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class ExaltedThirdActor extends Actor {
+export class ExSecond-ErrataActor extends Actor {
 
   /**
    * Augment the basic actor data with additional dynamic data.
@@ -26,7 +26,7 @@ export class ExaltedThirdActor extends Actor {
     const essenceLevel = updateData.system?.essence?.value || this.system.essence.value;
     const creatureType = updateData.system?.creaturetype || this.system.creaturetype;
     const caste = updateData.system?.details?.caste || this.system.details.caste;
-    const casteAbilitiesMap = CONFIG.exaltedthird.casteabilitiesmap;
+    const casteAbilitiesMap = CONFIG.ExSecond-Errata.casteabilitiesmap;
     if (this.type === 'npc') {
       if (updateData.system?.battlegroup && !this.system.battlegroup) {
         if (updateData.system?.health?.levels) {
@@ -150,7 +150,7 @@ export class ExaltedThirdActor extends Actor {
         else {
           abilities[key].caste = false;
         }
-        if ((this.items.some(charm => charm.type === 'charm' && charm.system.ability === key) || (ability.favored && abilityValue > 0)) && CONFIG.exaltedthird.abilityExalts.includes(caste)) {
+        if ((this.items.some(charm => charm.type === 'charm' && charm.system.ability === key) || (ability.favored && abilityValue > 0)) && CONFIG.ExSecond-Errata.abilityExalts.includes(caste)) {
           abilities[key].excellency = true;
         }
         if (this.items.some(charm => charm.type === 'charm' && charm.system.ability === key && charm.system.keywords.toLowerCase().includes('excellency'))) {
@@ -159,11 +159,11 @@ export class ExaltedThirdActor extends Actor {
       }
       if (this.system.details.exalt === 'exigent') {
         if (updateData.system?.settings) {
-          updateData.system.settings.exigenttype = CONFIG.exaltedthird.exigentTiers[caste];
+          updateData.system.settings.exigenttype = CONFIG.ExSecond-Errata.exigentTiers[caste];
         }
         else {
           updateData.system.settings = {
-            exigenttype: CONFIG.exaltedthird.exigentTiers[caste]
+            exigenttype: CONFIG.ExSecond-Errata.exigentTiers[caste]
           }
         }
         updateData.system.traits = {
@@ -246,7 +246,7 @@ export class ExaltedThirdActor extends Actor {
             validAbilityRequirement = false;
           }
         }
-        else if (CONFIG.exaltedthird.maidens.includes(item.system.ability)) {
+        else if (CONFIG.ExSecond-Errata.maidens.includes(item.system.ability)) {
           if (item.system.numberprerequisites.number > this._getMaidenCharmsNumber(item.system.numberprerequisites.ability)) {
             validAbilityRequirement = false;
           }
@@ -274,7 +274,7 @@ export class ExaltedThirdActor extends Actor {
         validAbilityRequirement = false;
       }
 
-      if (CONFIG.exaltedthird.maidens.includes(item.system.ability) && item.system.requirement > this._getHighestMaidenAbility(item.system.ability)) {
+      if (CONFIG.ExSecond-Errata.maidens.includes(item.system.ability) && item.system.requirement > this._getHighestMaidenAbility(item.system.ability)) {
         validAbilityRequirement = false;
       }
 
@@ -293,7 +293,7 @@ export class ExaltedThirdActor extends Actor {
           if (this.system.abilities[item.system.archetype.ability] && item.system.requirement > this.system.abilities[item.system.archetype.ability].value) {
             return false;
           }
-          if (CONFIG.exaltedthird.maidens.includes(item.system.archetype.ability) && item.system.requirement > this._getHighestMaidenAbility(item.system.archetype.ability)) {
+          if (CONFIG.ExSecond-Errata.maidens.includes(item.system.archetype.ability) && item.system.requirement > this._getHighestMaidenAbility(item.system.archetype.ability)) {
             return false;
           }
         }
@@ -373,7 +373,7 @@ export class ExaltedThirdActor extends Actor {
   }
 
   _getHighestMaidenAbility(maiden) {
-    const abilityList = CONFIG.exaltedthird.maidenabilities[maiden];
+    const abilityList = CONFIG.ExSecond-Errata.maidenabilities[maiden];
     let highestValue = 0;
     for (const ability of abilityList) {
       if ((this.system.abilities[ability]?.value || 0) > highestValue) {
@@ -384,7 +384,7 @@ export class ExaltedThirdActor extends Actor {
   }
 
   _getMaidenCharmsNumber(maiden) {
-    return (this.items.filter(numberCharm => numberCharm.type === 'charm' && CONFIG.exaltedthird.maidenabilities[maiden].includes(numberCharm.system.ability)).length || 0)
+    return (this.items.filter(numberCharm => numberCharm.type === 'charm' && CONFIG.ExSecond-Errata.maidenabilities[maiden].includes(numberCharm.system.ability)).length || 0)
   }
 
   spendMotes(moteCost, actorData, motePool = '', muteMotes = 0) {
@@ -395,7 +395,7 @@ export class ExaltedThirdActor extends Actor {
     let newGloryMotes = actorData.system.motes.glorymotecap.value;
     let feverGain = 0;
 
-    if (game.settings.get("exaltedthird", "gloryOverwhelming")) {
+    if (game.settings.get("ExSecond-Errata", "gloryOverwhelming")) {
       let animaLevels = ["Dim", "Glowing", "Burning", "Bonfire"];
 
       if (actorData.system.anima.max === 4) {
@@ -532,7 +532,7 @@ export class ExaltedThirdActor extends Actor {
       tokenId: token?.uuid || null,
       item: item.system
     };
-    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/item-card.html", templateData);
+    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/item-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {
@@ -555,7 +555,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
 
   // PERSONAL MOTES
   if (moteType === 'personal') {
-    const pools = CONFIG.exaltedthird?.exaltMotePools?.personal ?? {};
+    const pools = CONFIG.ExSecond-Errata?.exaltMotePools?.personal ?? {};
     const base = Number(pools.base?.[exaltType] ?? pools.base?.default ?? 0);
     const mult = Number(pools.essenceLevelMultiplier?.[exaltType] ?? pools.essenceLevelMultiplier?.default ?? 0);
     maxMotes = base + (essence * mult) + willpower;
@@ -577,7 +577,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
     const valor = Number(virtues.valor?.max ?? virtues.valor?.value ?? 0);
     const virtueTotal = compassion + conviction + temperance + valor;
 
-    const pools = CONFIG.exaltedthird?.exaltMotePools?.peripheral ?? {};
+    const pools = CONFIG.ExSecond-Errata?.exaltMotePools?.peripheral ?? {};
     const base = Number(pools.base?.[exaltType] ?? pools.base?.default ?? 0);
     const mult = Number(pools.essenceLevelMultiplier?.[exaltType] ?? pools.essenceLevelMultiplier?.default ?? 0);
 
@@ -941,9 +941,9 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
     }
 
     if (data.rollType === 'useOpposingCharms') {
-      game.opposingCharmForm = await new RollForm(this, { classes: [" exaltedthird exaltedthird-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id, skipDialog: true }).roll();
+      game.opposingCharmForm = await new RollForm(this, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id, skipDialog: true }).roll();
     } else {
-      game.rollForm = await new RollForm(this, { classes: [" exaltedthird exaltedthird-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id, skipDialog: true }).roll();
+      game.rollForm = await new RollForm(this, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id, skipDialog: true }).roll();
     }
   }
 
@@ -952,7 +952,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
     if (!roll) {
       return ui.notifications.error(`${this.name} does not have a saved roll named ${name}!`);
     }
-    return new RollForm(this, { classes: [" exaltedthird exaltedthird-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id });
+    return new RollForm(this, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.getSheetBackground()] }, {}, { rollId: roll.id });
   }
   /**
    * Prepare Character type specific data
@@ -1110,10 +1110,10 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
           currentParryPenalty += (change.value * -1);
         }
       }
-      if (effect.flags.exaltedthird?.statusId === 'onslaught') {
+      if (effect.flags.ExSecond-Errata?.statusId === 'onslaught') {
         currentOnslaughtPenalty += (effect.changes[0].value * -1);
       }
-      if (effect.flags.exaltedthird?.statusId === 'defensePenalty') {
+      if (effect.flags.ExSecond-Errata?.statusId === 'defensePenalty') {
         currentDefensePenalty += (effect.changes[0].value * -1);
       }
     }
@@ -1138,15 +1138,15 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
 
     if (actorData.type === 'character') {
       for (let [key, attr] of Object.entries(actorData.system.attributes)) {
-        attr.name = CONFIG.exaltedthird.attributes[key];
+        attr.name = CONFIG.ExSecond-Errata.attributes[key];
       }
       for (let [key, ability] of Object.entries(actorData.system.abilities)) {
-        ability.name = CONFIG.exaltedthird.abilities[key];
+        ability.name = CONFIG.ExSecond-Errata.abilities[key];
       }
     }
     else {
       for (let [key, pool] of Object.entries(actorData.system.pools)) {
-        pool.name = CONFIG.exaltedthird.npcpools[key];
+        pool.name = CONFIG.ExSecond-Errata.npcpools[key];
       }
     }
 
@@ -1259,7 +1259,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
         }
         else {
           if (!rollCharms[i.system.ability]) {
-            rollCharms[i.system.ability] = { name: CONFIG.exaltedthird.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            rollCharms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           rollCharms[i.system.ability].list.push(i);
         }
@@ -1273,7 +1273,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
         }
         else {
           if (!defenseCharms[i.system.ability]) {
-            defenseCharms[i.system.ability] = { name: CONFIG.exaltedthird.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            defenseCharms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           defenseCharms[i.system.ability].list.push(i);
         }
@@ -1290,7 +1290,7 @@ calculateMaxExaltedMotes(moteType, exaltType, essenceLevel) {
         if (charms[i.system.ability]) {
         }
         else {
-          charms[i.system.ability] = { name: CONFIG.exaltedthird.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [], collapse: this.charms ? this.charms[i.system.ability]?.collapse : true };
+          charms[i.system.ability] = { name: CONFIG.ExSecond-Errata.charmabilities[i.system.ability] || 'Ex3.Other', visible: true, list: [], collapse: this.charms ? this.charms[i.system.ability]?.collapse : true };
         }
         charms[i.system.ability].list.push(i);
       }
@@ -1724,10 +1724,10 @@ return 0;
           currentParryPenalty += (change.value * -1);
         }
       }
-      if (effect.flags.exaltedthird?.statusId === 'onslaught') {
+      if (effect.flags.ExSecond-Errata?.statusId === 'onslaught') {
         currentOnslaughtPenalty += (effect.changes[0].value * -1);
       }
-      if (effect.flags.exaltedthird?.statusId === 'defensePenalty') {
+      if (effect.flags.ExSecond-Errata?.statusId === 'defensePenalty') {
         currentDefensePenalty += (effect.changes[0].value * -1);
       }
     }
@@ -1861,25 +1861,25 @@ return 0;
       data.preMessageId = message.id;
     }
     if (data.rollType === 'useOpposingCharms') {
-      game.opposingCharmForm = await new RollForm(this, { classes: [" exaltedthird exaltedthird-dialog dice-roller", this.getSheetBackground()], position: { width: 846, height: 642 } }, {}, data).render(true);
+      game.opposingCharmForm = await new RollForm(this, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.getSheetBackground()], position: { width: 846, height: 642 } }, {}, data).render(true);
     } else {
-      game.rollForm = await new RollForm(this, { classes: [" exaltedthird exaltedthird-dialog dice-roller", this.getSheetBackground()], position: { width: 763 } }, {}, data).render(true);
+      game.rollForm = await new RollForm(this, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", this.getSheetBackground()], position: { width: 763 } }, {}, data).render(true);
     }
   }
 
   getSheetBackground() {
     if (this.system.settings.sheetbackground === 'default') {
-      return `${game.settings.get("exaltedthird", "sheetStyle")}-background`;
+      return `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`;
     }
     return `${this.system.settings.sheetbackground}-background`;
   }
 
   async sendTargetingChatMessage(data) {
-    const imageUrl = CONFIG.exaltedthird.rollTypeTargetImages[data.attackType] || CONFIG.exaltedthird.rollTypeTargetImages[data.rollType] || CONFIG.exaltedthird.rollTypeTargetImages[data.ability] || "systems/exaltedthird/assets/icons/d10.svg";
-    const rollTypeLabel = CONFIG.exaltedthird.rollTypeTargetLabels[data.attackType] || CONFIG.exaltedthird.rollTypeTargetLabels[data.rollType] || CONFIG.exaltedthird.rollTypeTargetLabels[data.ability] || "Ex3.Roll";
+    const imageUrl = CONFIG.ExSecond-Errata.rollTypeTargetImages[data.attackType] || CONFIG.ExSecond-Errata.rollTypeTargetImages[data.rollType] || CONFIG.ExSecond-Errata.rollTypeTargetImages[data.ability] || "systems/ExSecond-Errata/assets/icons/d10.svg";
+    const rollTypeLabel = CONFIG.ExSecond-Errata.rollTypeTargetLabels[data.attackType] || CONFIG.ExSecond-Errata.rollTypeTargetLabels[data.rollType] || CONFIG.ExSecond-Errata.rollTypeTargetLabels[data.ability] || "Ex3.Roll";
     if (game.user.targets && game.user.targets.size > 0) {
       for (const target of Array.from(game.user.targets)) {
-        const messageContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/targeting-card.html", {
+        const messageContent = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/targeting-card.html", {
           actor: this,
           targetActor: target.actor,
           imgUrl: imageUrl,
@@ -1890,7 +1890,7 @@ return 0;
           content: messageContent,
           style: CONST.CHAT_MESSAGE_STYLES.OTHER,
           flags: {
-            "exaltedthird": {
+            "ExSecond-Errata": {
               rollerUuid: this.uuid,
               targetActorId: target.actor.id,
               targetTokenId: target.id,
@@ -1898,8 +1898,8 @@ return 0;
           },
         });
       }
-    } else if (CONFIG.exaltedthird.targetableRollTypes.includes(data.rollType)) {
-      const messageContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/targeting-card.html", {
+    } else if (CONFIG.ExSecond-Errata.targetableRollTypes.includes(data.rollType)) {
+      const messageContent = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/targeting-card.html", {
         actor: this,
         targetActor: null,
         imgUrl: imageUrl,
@@ -1910,15 +1910,15 @@ return 0;
         content: messageContent,
         style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         flags: {
-          "exaltedthird": {
+          "ExSecond-Errata": {
             rollerUuid: this.uuid,
             targetActorId: null,
             targetTokenId: null,
           }
         },
       });
-    } else if (game.settings.get("exaltedthird", "nonTargetRollCards")) {
-      const messageContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/pre-roll-card.html", {
+    } else if (game.settings.get("ExSecond-Errata", "nonTargetRollCards")) {
+      const messageContent = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/pre-roll-card.html", {
         actor: this,
         imgUrl: imageUrl,
         rollType: rollTypeLabel,
@@ -1928,7 +1928,7 @@ return 0;
         content: messageContent,
         style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         flags: {
-          "exaltedthird": {
+          "ExSecond-Errata": {
             rollerUuid: this.uuid,
             targetActorId: null,
             targetTokenId: null,
@@ -1958,13 +1958,13 @@ return 0;
   }
 
   alterDefensePenalty(direction = "increase", statusId = "defensePenalty") {
-    let icon = 'systems/exaltedthird/assets/icons/slashed-shield.svg';
+    let icon = 'systems/ExSecond-Errata/assets/icons/slashed-shield.svg';
     let label = "Defense Penalty";
     if (statusId === 'onslaught') {
       label = "Onslaught";
-      icon = 'systems/exaltedthird/assets/icons/surrounded-shield.svg';
+      icon = 'systems/ExSecond-Errata/assets/icons/surrounded-shield.svg';
     }
-    const existingPenalty = this.effects.find(i => i.flags.exaltedthird?.statusId === statusId);
+    const existingPenalty = this.effects.find(i => i.flags.ExSecond-Errata?.statusId === statusId);
 
     if (direction === "increase") {
       if (existingPenalty) {
@@ -1983,7 +1983,7 @@ return 0;
             rounds: 10,
           },
           flags: {
-            "exaltedthird": {
+            "ExSecond-Errata": {
               statusId: statusId,
             }
           },
@@ -2032,7 +2032,7 @@ return 0;
       item: item,
       cardType: cardType,
     };
-    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/item-card.html", templateData);
+    const html = await foundry.applications.handlebars.renderTemplate("systems/ExSecond-Errata/templates/chat/item-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {

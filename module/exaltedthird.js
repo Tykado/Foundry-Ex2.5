@@ -1,11 +1,11 @@
 // Import Modules
-import { exaltedthird } from "./config.js";
+import { ExSecond-Errata } from "./config.js";
 
-import { ExaltedThirdActorSheet } from "./actor/actor-sheet.js";
-import { ExaltedThirdActor } from "./actor/actor.js";
+import { ExSecond-ErrataActorSheet } from "./actor/actor-sheet.js";
+import { ExSecond-ErrataActor } from "./actor/actor.js";
 import * as Chat from "./chat.js";
-import { ExaltedThirdItemSheet } from "./item/item-sheet.js";
-import { ExaltedThirdItem } from "./item/item.js";
+import { ExSecond-ErrataItemSheet } from "./item/item-sheet.js";
+import { ExSecond-ErrataItem } from "./item/item.js";
 
 import ExaltedActiveEffectConfig from "./active-effect-config.js";
 import ExaltedActiveEffect from "./active-effect.js";
@@ -51,7 +51,7 @@ Hooks.once('init', async function () {
 
   registerSettings();
 
-  game.exaltedthird = {
+  game.ExSecond-Errata = {
     applications: {
       TraitSelector,
       ItemSearch,
@@ -61,10 +61,10 @@ Hooks.once('init', async function () {
       Prophecy
     },
     entities: {
-      ExaltedThirdActor,
-      ExaltedThirdItem
+      ExSecond-ErrataActor,
+      ExSecond-ErrataItem
     },
-    config: exaltedthird,
+    config: ExSecond-Errata,
     weaponAttack: weaponAttack,
     triggerItem: triggerItem,
     roll: roll,
@@ -107,8 +107,8 @@ Hooks.once('init', async function () {
   }
 
   CONFIG.Combat.initiativeIcon = {
-    icon: "../systems/exaltedthird/assets/icons/d10.svg",
-    hover: "../systems/exaltedthird/assets/icons/d10.svg"
+    icon: "../systems/ExSecond-Errata/assets/icons/d10.svg",
+    hover: "../systems/ExSecond-Errata/assets/icons/d10.svg"
   };
 
   /**
@@ -120,38 +120,38 @@ Hooks.once('init', async function () {
   // };
 
   // Define custom Entity classes
-  CONFIG.exaltedthird = exaltedthird;
-  CONFIG.statusEffects = exaltedthird.statusEffects;
+  CONFIG.ExSecond-Errata = ExSecond-Errata;
+  CONFIG.statusEffects = ExSecond-Errata.statusEffects;
 
-  CONFIG.Actor.documentClass = ExaltedThirdActor;
-  CONFIG.Item.documentClass = ExaltedThirdItem;
+  CONFIG.Actor.documentClass = ExSecond-ErrataActor;
+  CONFIG.Item.documentClass = ExSecond-ErrataItem;
 
   CONFIG.Combat.documentClass = ExaltedCombat;
   CONFIG.Combatant.documentClass = ExaltedCombatant;
   CONFIG.ui.combat = ExaltedCombatTracker;
   CONFIG.ActiveEffect.documentClass = ExaltedActiveEffect;
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "exaltedthird", ExaltedActiveEffectConfig, { makeDefault: true });
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, "ExSecond-Errata", ExaltedActiveEffectConfig, { makeDefault: true });
 
   CONFIG.ActiveEffect.sheetClass = ExaltedActiveEffectConfig;
   CONFIG.ActiveEffect.legacyTransferral = false;
 
-  game.socket.on('system.exaltedthird', handleSocket);
+  game.socket.on('system.ExSecond-Errata', handleSocket);
 
   // Register sheet application classes
   foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
-  foundry.documents.collections.Actors.registerSheet("exaltedthird", ExaltedThirdActorSheet, { makeDefault: true });
+  foundry.documents.collections.Actors.registerSheet("ExSecond-Errata", ExSecond-ErrataActorSheet, { makeDefault: true });
   foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
-  foundry.documents.collections.Items.registerSheet("exaltedthird", ExaltedThirdItemSheet, { makeDefault: true });
+  foundry.documents.collections.Items.registerSheet("ExSecond-Errata", ExSecond-ErrataItemSheet, { makeDefault: true });
 
   // Pre-load templates
   foundry.applications.handlebars.loadTemplates([
-    "systems/exaltedthird/templates/dialogues/added-charm-list.html",
-    "systems/exaltedthird/templates/actor/active-effects.html",
-    "systems/exaltedthird/templates/item/custom-modifier.html",
-    "systems/exaltedthird/templates/item/item-trigger-list.html",
-    "systems/exaltedthird/templates/actor/equipment-list.html",
-    "systems/exaltedthird/templates/actor/npc-stats.html",
-    "systems/exaltedthird/templates/actor/character-stats.html",
+    "systems/ExSecond-Errata/templates/dialogues/added-charm-list.html",
+    "systems/ExSecond-Errata/templates/actor/active-effects.html",
+    "systems/ExSecond-Errata/templates/item/custom-modifier.html",
+    "systems/ExSecond-Errata/templates/item/item-trigger-list.html",
+    "systems/ExSecond-Errata/templates/actor/equipment-list.html",
+    "systems/ExSecond-Errata/templates/actor/npc-stats.html",
+    "systems/ExSecond-Errata/templates/actor/character-stats.html",
   ]);
 
   Combatant.prototype._getInitiativeFormula = function () {
@@ -411,7 +411,7 @@ Handlebars.registerHelper('ifNumberValue', function (arg1, arg2, options) {
 });
 
 Handlebars.registerHelper('isBooleanTrigger', function (bonusEffect, options) {
-  return CONFIG.exaltedthird.booleanTriggers.includes(bonusEffect) ? options.fn(this) : options.inverse(this);
+  return CONFIG.ExSecond-Errata.booleanTriggers.includes(bonusEffect) ? options.fn(this) : options.inverse(this);
 });
 
 $(document).ready(() => {
@@ -419,7 +419,7 @@ $(document).ready(() => {
 
   $(document).on('click', diceIconSelector, ev => {
     ev.preventDefault();
-    new RollForm(null, { classes: [" exaltedthird exaltedthird-dialog dice-roller", `${game.settings.get("exaltedthird", "sheetStyle")}-background`] }, {}, { rollType: 'base' }).render(true);
+    new RollForm(null, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`] }, {}, { rollType: 'base' }).render(true);
   });
 });
 
@@ -428,7 +428,7 @@ Hooks.on("renderActorDirectory", (app, html, data) => {
 
   html.querySelectorAll('.character-generator-button').forEach(element => {
     element.addEventListener('click', async (ev) => {
-      new CharacterBuilder({ classes: [" exaltedthird exaltedthird-dialog", `${game.settings.get("exaltedthird", "sheetStyle")}-background`] }, {}).render(true);
+      new CharacterBuilder({ classes: [" ExSecond-Errata ExSecond-Errata-dialog", `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`] }, {}).render(true);
     });
   });
 
@@ -505,7 +505,7 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
       target.addEventListener('click', async (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
-        new CharacterBuilder({ classes: ["exaltedthird exaltedthird-dialog", `${game.settings.get("exaltedthird", "sheetStyle")}-background`] }, message.flags?.exaltedthird?.character).render(true);
+        new CharacterBuilder({ classes: ["ExSecond-Errata ExSecond-Errata-dialog", `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`] }, message.flags?.ExSecond-Errata?.character).render(true);
       });
     });
   html.querySelectorAll('.add-oppose-charms')
@@ -515,10 +515,10 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
         ev.stopPropagation();
         let actor = null;
 
-        if (message.flags?.exaltedthird?.targetActorId) {
-          actor = canvas.tokens.placeables.find(t => t.id === message.flags?.exaltedthird?.targetTokenId)?.actor;
+        if (message.flags?.ExSecond-Errata?.targetActorId) {
+          actor = canvas.tokens.placeables.find(t => t.id === message.flags?.ExSecond-Errata?.targetTokenId)?.actor;
           if (!actor) {
-            actor = game.actors.get(message.flags?.exaltedthird?.targetActorId);
+            actor = game.actors.get(message.flags?.ExSecond-Errata?.targetActorId);
           }
           if (actor.permission < 3 || (!game.user.isGM && !actor.system.lunarform?.enabled)) {
             actor = null;
@@ -533,8 +533,8 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
         }
         let attacker = null;
 
-        if (message.flags?.exaltedthird?.rollerUuid) {
-          attacker = await fromUuid(message.flags.exaltedthird.rollerUuid);
+        if (message.flags?.ExSecond-Errata?.rollerUuid) {
+          attacker = await fromUuid(message.flags.ExSecond-Errata.rollerUuid);
         }
 
         if (actor) {
@@ -552,9 +552,9 @@ Hooks.on("renderChatMessageHTML", (message, html, data) => {
       target.addEventListener('click', async (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
-        const attribute = message.flags?.exaltedthird?.attribute;
-        const ability = message.flags?.exaltedthird?.ability;
-        const difficulty = message.flags?.exaltedthird?.difficulty;
+        const attribute = message.flags?.ExSecond-Errata?.attribute;
+        const ability = message.flags?.ExSecond-Errata?.ability;
+        const difficulty = message.flags?.ExSecond-Errata?.difficulty;
         if (game.user.character) {
           game.user.character.actionRoll({
             rollType: 'ability',
@@ -598,14 +598,14 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
         if (activeEffect.duration.remaining >= 0 && !activeEffect.disabled) {
           for (const change of activeEffect.changes) {
             let rolledChangeValue = 0;
-            if (CONFIG.exaltedthird.diceRollActiveEffects.includes(change.key)) {
+            if (CONFIG.ExSecond-Errata.diceRollActiveEffects.includes(change.key)) {
               const double10s = (change.key === 'system.damage.round.initiative.lethal' || change.key === 'system.damage.round.initiative.bashing') && ((currentCombatantInitiative || 0) > 0)
               let roll = await new Roll(`${parseInt(change.value)}d10cs>=7${double10s ? `ds>=10` : ''}`).toMessage({ flavor: `${activeEffect.name} Damage Roll` });
               rolledChangeValue = roll?.rolls[0]?.total || 0;
             }
             if (change.key === 'system.damage.round.initiative.lethal' || change.key === 'system.damage.round.initiative.bashing') {
               if (currentCombatantInitiative !== null && (currentCombatantInitiative - rolledChangeValue) <= 0 && currentCombatantInitiative > 0) {
-                crasherId = activeEffect.flags?.exaltedthird?.poisonerCombatantId;
+                crasherId = activeEffect.flags?.ExSecond-Errata?.poisonerCombatantId;
               }
               if ((currentCombatantInitiative || 0) > 0) {
                 currentCombatantInitiative -= rolledChangeValue;
@@ -649,7 +649,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
             }
           }
         }
-        if (activeEffect.flags?.exaltedthird?.weaponInflictedPosion && activeEffect.duration.remaining === 0) {
+        if (activeEffect.flags?.ExSecond-Errata?.weaponInflictedPosion && activeEffect.duration.remaining === 0) {
           await activeEffect.delete();
         }
       }
@@ -667,7 +667,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
           }
         }
       }
-      if (moteCost && !game.settings.get("exaltedthird", "gloryOverwhelming")) {
+      if (moteCost && !game.settings.get("ExSecond-Errata", "gloryOverwhelming")) {
         let moteResults = combatant.actor.spendMotes(moteCost, actorData);
         actorData.system.motes.personal.value = moteResults.newPersonalMotes;
         actorData.system.motes.peripheral.value = moteResults.newPeripheralMotes;
@@ -699,7 +699,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
 
       if (combatant.flags?.crashRecovery) {
         await combatant.update({
-          [`flags.exaltedthird.crashRecovery`]: (combatant.flags?.exaltedthird?.crashRecovery ?? 2) - 1,
+          [`flags.ExSecond-Errata.crashRecovery`]: (combatant.flags?.ExSecond-Errata?.crashRecovery ?? 2) - 1,
         });
       }
 
@@ -711,7 +711,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
     if (combat.current.combatantId) {
       var currentCombatant = combat.combatants.get(combat.current.combatantId);
       if (currentCombatant?.actor) {
-        const onslaught = currentCombatant.actor.effects.find(i => i.flags.exaltedthird?.statusId == "onslaught");
+        const onslaught = currentCombatant.actor.effects.find(i => i.flags.ExSecond-Errata?.statusId == "onslaught");
         if (onslaught) {
           if (!currentCombatant.actor.system.dontresetonslaught) {
             await onslaught.delete();
@@ -721,7 +721,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
         if (fullDefense) {
           await fullDefense.delete();
         }
-        const defensePenalty = currentCombatant.actor.effects.find(i => i.flags.exaltedthird?.statusId == "defensePenalty");
+        const defensePenalty = currentCombatant.actor.effects.find(i => i.flags.ExSecond-Errata?.statusId == "defensePenalty");
         if (defensePenalty) {
           await defensePenalty.delete();
         }
@@ -781,7 +781,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
             activeEffect.update({ disabled: true });
           }
         }
-        if (moteCost && !game.settings.get("exaltedthird", "gloryOverwhelming")) {
+        if (moteCost && !game.settings.get("ExSecond-Errata", "gloryOverwhelming")) {
           let moteResults = currentCombatant.actor.spendMotes(moteCost, actorData);
           actorData.system.motes.personal.value = moteResults.newPersonalMotes;
           actorData.system.motes.peripheral.value = moteResults.newPeripheralMotes;
@@ -869,7 +869,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
 Hooks.on("deleteCombat", (entity, deleted) => {
   for (const combatant of entity.combatants) {
     if (combatant?.actor) {
-      const onslaught = combatant.actor.effects.find(i => i.flags.exaltedthird?.statusId == "onslaught");
+      const onslaught = combatant.actor.effects.find(i => i.flags.ExSecond-Errata?.statusId == "onslaught");
       if (onslaught) {
         if (!combatant.actor.system.dontresetonslaught) {
           onslaught.delete();
@@ -953,7 +953,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
           </div>
       </div>
       </form>`,
-      classes: [`${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
       buttons: [{
         action: "choice",
         label: game.i18n.localize("Ex3.GiveXP"),
@@ -1043,7 +1043,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
           </div>
       </div>
       </form>`,
-      classes: [`${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
       buttons: [{
         action: "choice",
         label: game.i18n.localize("Ex3.Advance"),
@@ -1220,16 +1220,16 @@ Hooks.on("renderTokenConfig", (dialog, html) => {
 });
 
 Hooks.on("renderPause", function () {
-  const iconSrc = game.settings.get("exaltedthird", "pauseIcon");
+  const iconSrc = game.settings.get("ExSecond-Errata", "pauseIcon");
   document.querySelectorAll(".paused img").forEach(img => {
-    img.src = `systems/exaltedthird/assets/pause/${iconSrc}.png`;
+    img.src = `systems/ExSecond-Errata/assets/pause/${iconSrc}.png`;
   });
 });
 
 Hooks.on("renderGamePause", function () {
-  const iconSrc = game.settings.get("exaltedthird", "pauseIcon");
+  const iconSrc = game.settings.get("ExSecond-Errata", "pauseIcon");
   document.querySelectorAll(".paused img").forEach(img => {
-    img.src = `systems/exaltedthird/assets/pause/${iconSrc}.png`;
+    img.src = `systems/ExSecond-Errata/assets/pause/${iconSrc}.png`;
   });
 });
 
@@ -1282,9 +1282,9 @@ Hooks.once("ready", async function () {
     }
   });
 
-  const gameMigrationVersion = game.settings.get("exaltedthird", "systemMigrationVersion");
+  const gameMigrationVersion = game.settings.get("ExSecond-Errata", "systemMigrationVersion");
 
-  if (foundry.utils.isNewerVersion("1.4.1", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.4.1", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let item of game.items) {
       try {
         let updateData = foundry.utils.deepClone(item.toObject());
@@ -1302,11 +1302,11 @@ Hooks.once("ready", async function () {
         error.message = `Failed migration for Item ${item.name}: ${error.message} `;
         console.error(error);
       }
-      await game.settings.set("exaltedthird", "systemMigrationVersion", game.system.version);
+      await game.settings.set("ExSecond-Errata", "systemMigrationVersion", game.system.version);
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.4.3", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.4.3", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let actor of game.actors) {
       try {
         let updateData = foundry.utils.deepClone(actor.toObject());
@@ -1321,7 +1321,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.7.6", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.7.6", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let actor of game.actors.filter((actor) => actor.type === 'npc' && actor.system.creaturetype !== 'exalt' && actor.system.details.exalt === 'abyssal')) {
       try {
         let updateData = foundry.utils.deepClone(actor.toObject());
@@ -1336,7 +1336,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.9.2", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.9.2", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let item of game.items) {
       try {
         if (item.type === 'charm') {
@@ -1392,7 +1392,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.9.5", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.9.5", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let actor of game.actors.filter((actor) => actor.type === 'npc')) {
       try {
         let updateData = foundry.utils.duplicate(actor);
@@ -1408,7 +1408,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.10.0", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.10.0", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     for (let actor of game.actors.filter((actor) => actor.type === 'npc')) {
       try {
         let updateData = foundry.utils.duplicate(actor);
@@ -1424,7 +1424,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("1.11.0", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("1.11.0", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     const martialArtData = {
       system: {
         abilitytype: 'martialart'
@@ -1541,7 +1541,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("2.0.3", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.0.3", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.0.3, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1559,7 +1559,7 @@ Hooks.once("ready", async function () {
     ui.notifications.notify(`Migration Complete`);
   }
 
-  if (foundry.utils.isNewerVersion("2.4.0", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.4.0", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.4.0, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1573,7 +1573,7 @@ Hooks.once("ready", async function () {
     }
     ui.notifications.notify(`Migration Complete`);
   }
-  if (foundry.utils.isNewerVersion("2.5.2", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.5.2", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.5.2, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1588,7 +1588,7 @@ Hooks.once("ready", async function () {
     ui.notifications.notify(`Migration Complete`);
   }
 
-  if (foundry.utils.isNewerVersion("2.7.0", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.7.0", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.7.0, please wait`);
     for (let actor of game.actors.filter(actor => actor.type === "character")) {
       try {
@@ -1602,7 +1602,7 @@ Hooks.once("ready", async function () {
     ui.notifications.notify(`Migration Complete`);
   }
 
-  if (foundry.utils.isNewerVersion("2.7.4", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.7.4", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.7.4, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1633,7 +1633,7 @@ Hooks.once("ready", async function () {
     ui.notifications.notify(`Migration Complete`);
   }
 
-  if (foundry.utils.isNewerVersion("2.7.5", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("2.7.5", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 2.7.5, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1654,7 +1654,7 @@ Hooks.once("ready", async function () {
     }
   }
 
-  if (foundry.utils.isNewerVersion("3.7.8", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  if (foundry.utils.isNewerVersion("3.7.8", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
     ui.notifications.notify(`Migrating data to 3.7.8, please wait`);
     for (let actor of game.actors) {
       try {
@@ -1696,11 +1696,11 @@ Hooks.once("ready", async function () {
       }
     }
 
-    await game.settings.set("exaltedthird", "systemMigrationVersion", game.system.version);
+    await game.settings.set("ExSecond-Errata", "systemMigrationVersion", game.system.version);
     ui.notifications.notify(`Migration Complete`);
   }
 
-  // if (foundry.utils.isNewerVersion("2.8.0", game.settings.get("exaltedthird", "systemMigrationVersion"))) {
+  // if (foundry.utils.isNewerVersion("2.8.0", game.settings.get("ExSecond-Errata", "systemMigrationVersion"))) {
   //   ui.notifications.notify(`Migrating data to 2.8.0, please wait`);
   //   for (let item of game.items.filter(item => item.type === 'charm')) {
   //     try {
@@ -1735,7 +1735,7 @@ Hooks.once("ready", async function () {
   //   }
 
   //   ui.notifications.notify(`Migration Complete`);
-  //   await game.settings.set("exaltedthird", "systemMigrationVersion", game.system.version);
+  //   await game.settings.set("ExSecond-Errata", "systemMigrationVersion", game.system.version);
   // }
 
   // document.querySelector("#chat-log").addEventListener("click", ev => {
@@ -1778,10 +1778,10 @@ async function createItemMacro(data, slot) {
     const item = await Item.fromDropData(data);
     let command = `Hotbar.toggleDocumentSheet("${data.uuid}");`;
     if (item.type === 'weapon') {
-      command = `//Switch withering with (decisive, gambit) to roll different attack types\ngame.exaltedthird.weaponAttack("${data.uuid}", 'withering');`;
+      command = `//Switch withering with (decisive, gambit) to roll different attack types\ngame.ExSecond-Errata.weaponAttack("${data.uuid}", 'withering');`;
     }
     if (item.type === 'charm') {
-      command = `//Will add this charm to any roll you have open and if opposed any roll another player has open\n//If the charm user has no dice roller open it will instead Spend or activate the charm\ngame.exaltedthird.triggerItem("${data.uuid}");`;
+      command = `//Will add this charm to any roll you have open and if opposed any roll another player has open\n//If the charm user has no dice roller open it will instead Spend or activate the charm\ngame.ExSecond-Errata.triggerItem("${data.uuid}");`;
     }
     let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
     if (!macro) {
@@ -1791,7 +1791,7 @@ async function createItemMacro(data, slot) {
           type: "script",
           img: item.img,
           command: command,
-          flags: { "exaltedthird.itemMacro": true }
+          flags: { "ExSecond-Errata.itemMacro": true }
         });
       }
       else {
@@ -1808,10 +1808,10 @@ async function createItemMacro(data, slot) {
   }
   else {
     const command = `const formActor = await fromUuid("${data.actorId}");
-        game.rollForm = new game.exaltedthird.RollForm(${data.actorId.includes('Token') ? 'formActor.actor' : 'formActor'}, {classes: [" exaltedthird exaltedthird-dialog", "${game.settings.get("exaltedthird", "sheetStyle")}-background"]}, {}, { rollId: "${data.id}" }).render(true); `;
+        game.rollForm = new game.ExSecond-Errata.RollForm(${data.actorId.includes('Token') ? 'formActor.actor' : 'formActor'}, {classes: [" ExSecond-Errata ExSecond-Errata-dialog", "${game.settings.get("ExSecond-Errata", "sheetStyle")}-background"]}, {}, { rollId: "${data.id}" }).render(true); `;
     const macro = await Macro.create({
       name: data.name,
-      img: 'systems/exaltedthird/assets/icons/d10.svg',
+      img: 'systems/ExSecond-Errata/assets/icons/d10.svg',
       type: "script",
       command: command,
     });
@@ -1823,8 +1823,8 @@ async function createItemMacro(data, slot) {
 function applyDecisiveDamage(message) {
   let targetedTokens = Array.from(game.user.targets);
   // If there are not any controlled tokens, issue a warning.
-  if (!targetedTokens?.length || !game.settings.get("exaltedthird", "rollButtonTarget")) {
-    const targetToken = game.canvas.tokens.get(message?.flags?.exaltedthird?.targetId);
+  if (!targetedTokens?.length || !game.settings.get("ExSecond-Errata", "rollButtonTarget")) {
+    const targetToken = game.canvas.tokens.get(message?.flags?.ExSecond-Errata?.targetId);
     if (targetToken) {
       targetedTokens = [targetToken];
     }
@@ -1836,9 +1836,9 @@ function applyDecisiveDamage(message) {
   }
   // Get the damage and ap from the roll data
   const damageContext = {
-    value: message?.flags?.exaltedthird?.damage?.total || 0,
-    type: message?.flags?.exaltedthird?.damage?.type || 'lethal',
-    attackerTokenId: message?.flags?.exaltedthird?.attackerTokenId,
+    value: message?.flags?.ExSecond-Errata?.damage?.total || 0,
+    type: message?.flags?.ExSecond-Errata?.damage?.type || 'lethal',
+    attackerTokenId: message?.flags?.ExSecond-Errata?.attackerTokenId,
   };
   // For each token controlled...
   for (const token of targetedTokens) {
@@ -1852,8 +1852,8 @@ function applyDecisiveDamage(message) {
 function applyWitheringDamage(message) {
   let targetedTokens = Array.from(game.user.targets);
   // If there are not any controlled tokens, issue a warning.
-  if (!targetedTokens?.length || !game.settings.get("exaltedthird", "rollButtonTarget")) {
-    const targetToken = game.canvas.tokens.get(message?.flags?.exaltedthird?.targetId);
+  if (!targetedTokens?.length || !game.settings.get("ExSecond-Errata", "rollButtonTarget")) {
+    const targetToken = game.canvas.tokens.get(message?.flags?.ExSecond-Errata?.targetId);
     if (targetToken) {
       targetedTokens = [targetToken];
     }
@@ -1885,18 +1885,18 @@ function applyWitheringDamage(message) {
       });
     }
     if (combatant && combatant.initiative !== null) {
-      var initiativeDamage = message?.flags?.exaltedthird?.damage?.total;
+      var initiativeDamage = message?.flags?.ExSecond-Errata?.damage?.total;
       if (actor.type !== 'npc' || actor.system.battlegroup === false) {
-        if (game.settings.get("exaltedthird", "useShieldInitiative") && actor.system.newShieldInitiative.value > 0) {
-          var newShieldInitiative = Math.max(0, actor.system.newShieldInitiative.value - message?.flags?.exaltedthird?.damage?.total);
-          initiativeDamage = Math.max(0, message?.flags?.exaltedthird?.damage?.total - actor.system.newShieldInitiative.value);
+        if (game.settings.get("ExSecond-Errata", "useShieldInitiative") && actor.system.newShieldInitiative.value > 0) {
+          var newShieldInitiative = Math.max(0, actor.system.newShieldInitiative.value - message?.flags?.ExSecond-Errata?.damage?.total);
+          initiativeDamage = Math.max(0, message?.flags?.ExSecond-Errata?.damage?.total - actor.system.newShieldInitiative.value);
           this.actor.update({ [`system.newShieldInitiative.value`]: newShieldInitiative });
         }
-        game.combat.setInitiative(combatant.id, combatant.initiative - initiativeDamage, message?.flags?.exaltedthird?.attackerCombatantId);
+        game.combat.setInitiative(combatant.id, combatant.initiative - initiativeDamage, message?.flags?.ExSecond-Errata?.attackerCombatantId);
       }
     }
     if (actor.system?.battlegroup) {
-      dealHealthDamage(actor, message?.flags?.exaltedthird?.damage?.total, message?.flags?.exaltedthird?.damage?.type || 'lethal');
+      dealHealthDamage(actor, message?.flags?.ExSecond-Errata?.damage?.total, message?.flags?.ExSecond-Errata?.damage?.type || 'lethal');
     }
   }
 }
@@ -1904,8 +1904,8 @@ function applyWitheringDamage(message) {
 function gainAttackInitiative(message) {
   let targetedTokens = Array.from(game.user.targets);
   // If there are not any controlled tokens, issue a warning.
-  if (!targetedTokens?.length || !game.settings.get("exaltedthird", "rollButtonTarget")) {
-    const targetToken = game.canvas.tokens.get(message?.flags?.exaltedthird?.attackerTokenId);
+  if (!targetedTokens?.length || !game.settings.get("ExSecond-Errata", "rollButtonTarget")) {
+    const targetToken = game.canvas.tokens.get(message?.flags?.ExSecond-Errata?.attackerTokenId);
     if (targetToken) {
       targetedTokens = [targetToken];
     }
@@ -1934,7 +1934,7 @@ function gainAttackInitiative(message) {
       });
     }
     if (combatant && combatant.initiative !== null) {
-      game.combat.setInitiative(combatant.id, combatant.initiative + message?.flags?.exaltedthird?.damage?.gainedInitiative);
+      game.combat.setInitiative(combatant.id, combatant.initiative + message?.flags?.ExSecond-Errata?.damage?.gainedInitiative);
     }
   }
 }
@@ -1944,12 +1944,12 @@ async function applyDamageDialogue(targetUuid, damageContext) {
   // If the target document is a Token, change the actor value to target.actor, otherwise use the target document itself.
   const actor = target?.documentName === 'Token' ? target?.actor : target;
 
-  const template = "systems/exaltedthird/templates/dialogues/damage-dialogue.html"
-  const html = await foundry.applications.handlebars.renderTemplate(template, { 'damageContext': damageContext, damageTypes: CONFIG.exaltedthird.selects.damageTypes });
+  const template = "systems/ExSecond-Errata/templates/dialogues/damage-dialogue.html"
+  const html = await foundry.applications.handlebars.renderTemplate(template, { 'damageContext': damageContext, damageTypes: CONFIG.ExSecond-Errata.selects.damageTypes });
   new foundry.applications.api.DialogV2({
     window: { title: `Apply Damage to ${actor.name}` },
     content: html,
-    classes: [`${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+    classes: [`${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`],
     buttons: [{
       action: "choice",
       label: game.i18n.localize("Ex3.Save"),
@@ -2018,7 +2018,7 @@ function weaponAttack(itemUuid, attackType = 'withering') {
       const itemName = item?.name ?? itemUuid;
       return ui.notifications.warn(`Could not find item ${itemName}. You may need to delete and recreate this macro.`);
     }
-    game.rollForm = new RollForm(item.parent, { classes: [" exaltedthird exaltedthird-dialog dice-roller", `${game.settings.get("exaltedthird", "sheetStyle")}-background`] }, {}, { rollType: attackType, weapon: item.system }).render(true);
+    game.rollForm = new RollForm(item.parent, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller", `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`] }, {}, { rollType: attackType, weapon: item.system }).render(true);
   });
 }
 
@@ -2039,7 +2039,7 @@ function triggerItem(itemUuid) {
       game.rollForm.addCharm(item);
     }
     else if (item.system.diceroller.opposedbonuses.enabled) {
-      game.socket.emit('system.exaltedthird', {
+      game.socket.emit('system.ExSecond-Errata', {
         type: 'addOpposingCharm',
         data: item,
         actorId: item.actor._id,
@@ -2056,11 +2056,11 @@ function triggerItem(itemUuid) {
 
 /**
  * 
- * @param {ExaltedThirdActor} actor 
+ * @param {ExSecond-ErrataActor} actor 
  * @param {object} object 
  * @param {object} data 
  * @returns {Promise}
  */
 function roll(actor, object, data) {
-  return new RollForm(actor, { classes: [" exaltedthird exaltedthird-dialog dice-roller"] }, {}, data).roll();
+  return new RollForm(actor, { classes: [" ExSecond-Errata ExSecond-Errata-dialog dice-roller"] }, {}, data).roll();
 }

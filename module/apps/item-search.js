@@ -52,7 +52,7 @@ export default class ItemSearch extends HandlebarsApplicationMixin(ApplicationV2
       submitOnChange: true,
       closeOnSubmit: false
     },
-    classes: ['exaltedthird-dialog', `tree-background`],
+    classes: ['ExSecond-Errata-dialog', `tree-background`],
     actions: {
       toggleCollapse: this.toggleCollapse,
     },
@@ -61,7 +61,7 @@ export default class ItemSearch extends HandlebarsApplicationMixin(ApplicationV2
 
   static PARTS = {
     form: {
-      template: "systems/exaltedthird/templates/dialogues/item-search.html",
+      template: "systems/ExSecond-Errata/templates/dialogues/item-search.html",
     },
   };
 
@@ -70,12 +70,12 @@ export default class ItemSearch extends HandlebarsApplicationMixin(ApplicationV2
 
     return {
       filters: this.filters,
-      selects: CONFIG.exaltedthird.selects,
+      selects: CONFIG.ExSecond-Errata.selects,
       items: this.items,
       filteredItems: this.applyFilter(),
       itemSections: this.getListSections(),
-      charmAbilities: CONFIG.exaltedthird.charmabilities,
-      charmExaltType: JSON.parse(JSON.stringify(CONFIG.exaltedthird.exaltcharmtypes)),
+      charmAbilities: CONFIG.ExSecond-Errata.charmabilities,
+      charmExaltType: JSON.parse(JSON.stringify(CONFIG.ExSecond-Errata.exaltcharmtypes)),
     };
   }
 

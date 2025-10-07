@@ -5,7 +5,7 @@ import { getNumberFormula } from "../utils/utils.js";
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class ExaltedThirdItem extends Item {
+export class ExSecond-ErrataItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
@@ -16,14 +16,14 @@ export class ExaltedThirdItem extends Item {
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
     if (!data.img || data.img == "icons/svg/item-bag.svg") {
-      this.updateSource({ img: CONFIG.exaltedthird.itemIcons[data.type] });
+      this.updateSource({ img: CONFIG.ExSecond-Errata.itemIcons[data.type] });
     }
   }
 
   async _preUpdate(updateData, options, user) {
     await super._preUpdate(updateData, options, user);
-    const equipmentChart = CONFIG.exaltedthird.equipmentStats;
-    const artifactEquipmentChart = CONFIG.exaltedthird.artifactEquipmentStats;
+    const equipmentChart = CONFIG.ExSecond-Errata.equipmentStats;
+    const artifactEquipmentChart = CONFIG.ExSecond-Errata.artifactEquipmentStats;
     if (this.type === 'weapon' || this.type === 'armor') {
       const equipped = updateData.system?.equipped ?? this.system.equipped;
       const weighttype = updateData.system?.weighttype ?? this.system.weighttype;
@@ -210,7 +210,7 @@ export class ExaltedThirdItem extends Item {
     if (this.parent) {
       return this.parent.getSheetBackground();
     }
-    return `${game.settings.get("exaltedthird", "sheetStyle")}-background`;
+    return `${game.settings.get("ExSecond-Errata", "sheetStyle")}-background`;
   }
 
   async switchMode() {
@@ -267,13 +267,13 @@ export class ExaltedThirdItem extends Item {
     const actorData = await foundry.utils.duplicate(this.actor);
     let updateActive = null;
     let activateAmount = 1;
-    let charmMotePool = game.settings.get("exaltedthird", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
+    let charmMotePool = game.settings.get("ExSecond-Errata", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
 
     if (this.type === 'charm') {
       if (this.system.active) {
         updateActive = false;
         if (this.system.cost.commitmotes > 0) {
-          actorData.system.motes[this.flags?.exaltedthird?.poolCommitted ?? charmMotePool].committed -= (this.system.cost.commitmotes * this.flags?.exaltedthird?.currentIterationsActive || 1);
+          actorData.system.motes[this.flags?.ExSecond-Errata?.poolCommitted ?? charmMotePool].committed -= (this.system.cost.commitmotes * this.flags?.ExSecond-Errata?.currentIterationsActive || 1);
         }
       }
       else {
@@ -318,8 +318,8 @@ export class ExaltedThirdItem extends Item {
     if (updateActive !== null) {
       await this.update({
         [`system.active`]: updateActive,
-        [`flags.exaltedthird.poolCommitted`]: updateActive ? charmMotePool : null,
-        [`flags.exaltedthird.currentIterationsActive`]: activateAmount,
+        [`flags.ExSecond-Errata.poolCommitted`]: updateActive ? charmMotePool : null,
+        [`flags.ExSecond-Errata.currentIterationsActive`]: activateAmount,
       });
       for (const effect of this.actor.allApplicableEffects()) {
         if (effect._sourceName === this.name && effect.system.activatewithparentitem) {
@@ -345,7 +345,7 @@ export class ExaltedThirdItem extends Item {
       await this.spendItemResources(actorData, 1);
       await this.actor.update(actorData);
       await this.update({
-        [`flags.exaltedthird.currentIterationsActive`]: (this.flags?.exaltedthird?.currentIterationsActive || 0) + 1,
+        [`flags.ExSecond-Errata.currentIterationsActive`]: (this.flags?.ExSecond-Errata?.currentIterationsActive || 0) + 1,
       });
     }
   }
@@ -357,16 +357,16 @@ export class ExaltedThirdItem extends Item {
       });
     } else {
       const actorData = await foundry.utils.duplicate(this.actor);
-      let charmMotePool = game.settings.get("exaltedthird", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
-      if (this.flags?.exaltedthird?.currentIterationsActive === 1) {
+      let charmMotePool = game.settings.get("ExSecond-Errata", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
+      if (this.flags?.ExSecond-Errata?.currentIterationsActive === 1) {
         this.activate();
       } else {
         if (this.system.cost.commitmotes > 0) {
-          actorData.system.motes[this.flags?.exaltedthird?.poolCommitted ?? charmMotePool].committed -= this.system.cost.commitmotes;
+          actorData.system.motes[this.flags?.ExSecond-Errata?.poolCommitted ?? charmMotePool].committed -= this.system.cost.commitmotes;
         }
         await this.actor.update(actorData);
         await this.update({
-          [`flags.exaltedthird.currentIterationsActive`]: (this.flags?.exaltedthird?.currentIterationsActive || 0) - 1,
+          [`flags.ExSecond-Errata.currentIterationsActive`]: (this.flags?.ExSecond-Errata?.currentIterationsActive || 0) - 1,
         });
       }
     }
@@ -411,7 +411,7 @@ export class ExaltedThirdItem extends Item {
         actorData.system.fever.value += spendMotesResult.feverGain;
       }
       if (this.system.cost.commitmotes > 0) {
-        let charmMotePool = game.settings.get("exaltedthird", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
+        let charmMotePool = game.settings.get("ExSecond-Errata", "gloryOverwhelming") ? 'glorymotecap' : actorData.system.settings.charmmotepool;
         actorData.system.motes[charmMotePool].committed += (this.system.cost.commitmotes * activateAmount);
       }
     }
@@ -523,13 +523,13 @@ export function prepareItemTraits(type, i) {
   const map = {
   };
   if (type === 'weapon') {
-    map['weapontags'] = CONFIG.exaltedthird.weapontags
+    map['weapontags'] = CONFIG.ExSecond-Errata.weapontags
   }
   if (type === 'armor') {
-    map['armortags'] = CONFIG.exaltedthird.armortags
+    map['armortags'] = CONFIG.ExSecond-Errata.armortags
   }
   if (type === 'customability') {
-    map['weapons'] = CONFIG.exaltedthird.weapons
+    map['weapons'] = CONFIG.ExSecond-Errata.weapons
   }
   for (let [t, choices] of Object.entries(map)) {
     const trait = i.system.traits[t];

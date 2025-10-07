@@ -32,7 +32,7 @@ export function getNumberFormula(formulaString, actor, item = null) {
             negativeValue = true;
         }
         if (changeValue.toLowerCase() === 'activationcount') {
-            returnValue = item.effect?.parent?.flags?.exaltedthird?.currentIterationsActive ?? 1;
+            returnValue = item.effect?.parent?.flags?.exaltedsecond?.currentIterationsActive ?? 1;
         }
         if (actor.getRollData()[changeValue]?.value) {
             returnValue = actor.getRollData()[changeValue]?.value;
@@ -91,7 +91,7 @@ export function sortDice(diceRoll, ignoreSetting = false) {
 
     let sortedDice;
 
-    if (game.settings.get('exaltedthird', 'sortDice') || ignoreSetting === true) {
+    if (game.settings.get('exaltedsecond', 'sortDice') || ignoreSetting === true) {
         sortedDice = diceRoll.sort((a, b) => b.result - a.result);
     } else {
         sortedDice = diceRoll;
@@ -194,7 +194,7 @@ export function isColor(strColor) {
 }
 
 export function noActorBaseRoll() {
-    new RollForm(null, { classes: [" exaltedthird exaltedthird-dialog dice-roller", `${game.settings.get("exaltedthird", "sheetStyle")}-background`] }, {}, { rollType: 'base' }).render(true);
+    new RollForm(null, { classes: [" exaltedsecond exaltedsecond-dialog dice-roller", `${game.settings.get("exaltedsecond", "sheetStyle")}-background`] }, {}, { rollType: 'base' }).render(true);
 }
 
 export function createListSections(items) {
@@ -211,13 +211,13 @@ export function createListSections(items) {
             switch (item.type) {
                 case 'charm':
                     if (!sectionList[item.system.ability]) {
-                        sectionList[item.system.ability] = { name: game.i18n.localize(CONFIG.exaltedthird.charmabilities[item.system.ability]) || 'Ex3.Other', visible: true, list: [], collapse: true };
+                        sectionList[item.system.ability] = { name: game.i18n.localize(CONFIG.exaltedsecond.charmabilities[item.system.ability]) || 'Ex3.Other', visible: true, list: [], collapse: true };
                     }
                     sectionList[item.system.ability].list.push(item);
                     break;
                 case 'spell':
                     if (!sectionList[item.system.circle]) {
-                        sectionList[item.system.circle] = { name: `${game.i18n.localize(CONFIG.exaltedthird.circles[item.system.circle])} Spells`, visible: true, list: [], collapse: true };
+                        sectionList[item.system.circle] = { name: `${game.i18n.localize(CONFIG.exaltedsecond.circles[item.system.circle])} Spells`, visible: true, list: [], collapse: true };
                     }
                     sectionList[item.system.circle].list.push(item);
                     break;
@@ -229,7 +229,7 @@ export function createListSections(items) {
                         sectionList[`merit${item.system.archetypename}`].list.push(item);
                     } else {
                         if (!sectionList[item.system.merittype]) {
-                            sectionList[item.system.merittype] = { name: `${game.i18n.localize(CONFIG.exaltedthird.meritTypes[item.system.merittype])} Merits`, visible: true, list: [], collapse: true };
+                            sectionList[item.system.merittype] = { name: `${game.i18n.localize(CONFIG.exaltedsecond.meritTypes[item.system.merittype])} Merits`, visible: true, list: [], collapse: true };
                         }
                         sectionList[item.system.merittype].list.push(item);
                     }
@@ -237,7 +237,7 @@ export function createListSections(items) {
                 case 'armor':
                     if (item.system.traits.armortags.value.includes('artifact')) {
                         sectionList[`armorArtifact${item.system.weighttype}`] = {
-                            name: `${game.i18n.localize(CONFIG.exaltedthird.weightTypes[item.system.weighttype])} Artifact Armor`,
+                            name: `${game.i18n.localize(CONFIG.exaltedsecond.weightTypes[item.system.weighttype])} Artifact Armor`,
                             list: [],
                             collapse: true
                         }
@@ -245,7 +245,7 @@ export function createListSections(items) {
                     }
                     else {
                         sectionList[`armor${item.system.weighttype}`] = {
-                            name: `${game.i18n.localize(CONFIG.exaltedthird.weightTypes[item.system.weighttype])} Mundane Armor`,
+                            name: `${game.i18n.localize(CONFIG.exaltedsecond.weightTypes[item.system.weighttype])} Mundane Armor`,
                             list: [],
                             collapse: true
                         }
@@ -256,7 +256,7 @@ export function createListSections(items) {
                     if (item.system.traits.weapontags.value.includes('artifact')) {
                         if (!sectionList[`weaponArtifact${item.system.weighttype}`]) {
                             sectionList[`weaponArtifact${item.system.weighttype}`] = {
-                                name: `${game.i18n.localize(CONFIG.exaltedthird.weightTypes[item.system.weighttype])} Artifact Weapons`,
+                                name: `${game.i18n.localize(CONFIG.exaltedsecond.weightTypes[item.system.weighttype])} Artifact Weapons`,
                                 list: [],
                                 collapse: true
                             }
@@ -266,7 +266,7 @@ export function createListSections(items) {
                     else {
                         if (!sectionList[`weapon${item.system.weighttype}`]) {
                             sectionList[`weapon${item.system.weighttype}`] = {
-                                name: `${game.i18n.localize(CONFIG.exaltedthird.weightTypes[item.system.weighttype])} Mundane Weapons`,
+                                name: `${game.i18n.localize(CONFIG.exaltedsecond.weightTypes[item.system.weighttype])} Mundane Weapons`,
                                 list: [], collapse: true
                             }
                         }
@@ -297,7 +297,7 @@ export function createListSections(items) {
                     if (item.system.armorallowance) {
                         if (!sectionList[`martialArts${item.system.armorallowance}`]) {
                             sectionList[`martialArts${item.system.armorallowance}`] = {
-                                name: `Martial Arts (${game.i18n.localize(CONFIG.exaltedthird.martialArtsArmorAllowances[item.system.armorallowance])} or Lower Armor)`,
+                                name: `Martial Arts (${game.i18n.localize(CONFIG.exaltedsecond.martialArtsArmorAllowances[item.system.armorallowance])} or Lower Armor)`,
                                 list: [],
                                 collapse: true
                             }
@@ -309,7 +309,7 @@ export function createListSections(items) {
                 case 'item':
                     if (!sectionList[`item${item.system.itemtype}`]) {
                         sectionList[`item${item.system.itemtype}`] = {
-                            name: `Items (${game.i18n.localize(CONFIG.exaltedthird.itemTypes[item.system.itemtype])})`,
+                            name: `Items (${game.i18n.localize(CONFIG.exaltedsecond.itemTypes[item.system.itemtype])})`,
                             list: [],
                             collapse: true
                         }

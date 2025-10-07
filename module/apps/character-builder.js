@@ -23,7 +23,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         this.object.character.classificationType = 'exalt';
       }
       if (!this.object.character.languages) {
-        this.object.character.languages = Object.entries(CONFIG.exaltedthird.languages).reduce((obj, e) => {
+        this.object.character.languages = Object.entries(CONFIG.exaltedsecond.languages).reduce((obj, e) => {
           let [k, v] = e;
           obj[k] = { label: v, chosen: false };
           return obj;
@@ -36,8 +36,8 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
       this.object.characterType = 'character';
       this.object.poolNumbers = 'mid';
       this.object.availableCastes = null;
-      this.object.abilityList = CONFIG.exaltedthird.abilities;
-      this.object.signList = CONFIG.exaltedthird.siderealSigns;
+      this.object.abilityList = CONFIG.exaltedsecond.abilities;
+      this.object.signList = CONFIG.exaltedsecond.siderealSigns;
       this.object.creationData = {
         physical: 'primary',
         social: 'secondary',
@@ -459,7 +459,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
             name: '',
           },
           randomSpells: 0,
-          languages: Object.entries(CONFIG.exaltedthird.languages).reduce((obj, e) => {
+          languages: Object.entries(CONFIG.exaltedsecond.languages).reduce((obj, e) => {
             let [k, v] = e;
             obj[k] = { label: v, chosen: false };
             return obj;
@@ -468,19 +468,19 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         }
     }
     // Populate choices
-    // const choices = Object.entries(CONFIG.exaltedthird.languages).reduce((obj, e) => {
+    // const choices = Object.entries(CONFIG.exaltedsecond.languages).reduce((obj, e) => {
     //   let [k, v] = e;
     //   obj[k] = { label: v, chosen: false };
     //   return obj;
     // }, {});
     for (let [key, ability] of Object.entries(this.object.character.abilities)) {
-      for (const [maiden, list] of Object.entries(CONFIG.exaltedthird.maidenabilities)) {
+      for (const [maiden, list] of Object.entries(CONFIG.exaltedsecond.maidenabilities)) {
         if (list.includes(key)) {
           ability.maiden = maiden;
         }
       }
     }
-    this.object.unifiedCharacterCreation = game.settings.get("exaltedthird", "unifiedCharacterCreation");
+    this.object.unifiedCharacterCreation = game.settings.get("exaltedsecond", "unifiedCharacterCreation");
     this.onChange();
   }
 
@@ -527,15 +527,15 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   };
 
   static PARTS = {
-    header: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-header.html' },
-    tabs: { template: 'systems/exaltedthird/templates/dialogues/tabs.html' },
-    overview: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-overview.html' },
-    attributes: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-attributes.html' },
-    abilities: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-abilities.html' },
-    merits: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-merits.html' },
-    charms: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-charms.html' },
-    social: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-social.html' },
-    equipment: { template: 'systems/exaltedthird/templates/dialogues/character-builder/character-builder-equipment.html' },
+    header: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-header.html' },
+    tabs: { template: 'systems/exaltedsecond/templates/dialogues/tabs.html' },
+    overview: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-overview.html' },
+    attributes: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-attributes.html' },
+    abilities: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-abilities.html' },
+    merits: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-merits.html' },
+    charms: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-charms.html' },
+    social: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-social.html' },
+    equipment: { template: 'systems/exaltedsecond/templates/dialogues/character-builder/character-builder-equipment.html' },
     footer: {
       template: "templates/generic/form-footer.hbs",
     },
@@ -567,7 +567,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
 
     return {
       data: this.object,
-      selects: CONFIG.exaltedthird.selects,
+      selects: CONFIG.exaltedsecond.selects,
       tab: this.tabGroups['primary'],
       tabs: [
         {
@@ -647,7 +647,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
 
     if (resetFavored) {
       for (let [key, attribute] of Object.entries(this.object.character.attributes)) {
-        if (CONFIG.exaltedthird.casteabilitiesmap[this.object.character.caste.toLowerCase()]?.includes(key)) {
+        if (CONFIG.exaltedsecond.casteabilitiesmap[this.object.character.caste.toLowerCase()]?.includes(key)) {
           if (this.object.character.exalt === 'alchemcial') {
             attribute.favored = true;
           }
@@ -659,13 +659,13 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         }
       }
       for (let [key, ability] of Object.entries(this.object.character.abilities)) {
-        if (CONFIG.exaltedthird.casteabilitiesmap[this.object.character.caste.toLowerCase()]?.includes(key)) {
+        if (CONFIG.exaltedsecond.casteabilitiesmap[this.object.character.caste.toLowerCase()]?.includes(key)) {
           if (this.object.character.exalt !== 'solar' && this.object.character.exalt !== 'abyssal') {
             ability.favored = true;
           }
           ability.caste = true;
         }
-        else if (this.object.character.exalt === 'exigent' && CONFIG.exaltedthird.casteabilitiesmap[this.object.character.exigent.toLowerCase()]?.includes(key)) {
+        else if (this.object.character.exalt === 'exigent' && CONFIG.exaltedsecond.casteabilitiesmap[this.object.character.exigent.toLowerCase()]?.includes(key)) {
           ability.favored = true;
           ability.caste = true;
         }
@@ -693,7 +693,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         await actor.calculateAllDerivedStats();
       }
       else {
-        game.socket.emit('system.exaltedthird', {
+        game.socket.emit('system.exaltedsecond', {
           type: 'createGeneratedCharacter',
           id: game.user.id,
           data: actorData,
@@ -712,12 +712,12 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   onChange() {
-    if (CONFIG.exaltedthird.castes[this.object.character.exalt]) {
-      this.object.availableCastes = CONFIG.exaltedthird.castes[this.object.character.exalt];
+    if (CONFIG.exaltedsecond.castes[this.object.character.exalt]) {
+      this.object.availableCastes = CONFIG.exaltedsecond.castes[this.object.character.exalt];
     } else {
       this.object.availableCastes = null;
     }
-    if (CONFIG.exaltedthird.attributeExalts.includes(this.object.character.exalt) || CONFIG.exaltedthird.attributeExalts.includes(this.object.character.exigent)) {
+    if (CONFIG.exaltedsecond.attributeExalts.includes(this.object.character.exalt) || CONFIG.exaltedsecond.attributeExalts.includes(this.object.character.exigent)) {
       this.object.character.showAttributeCharms = true;
       this.object.character.showAbilityCharms = false;
     }
@@ -744,7 +744,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     for (let [key, ability] of Object.entries(this.object.character.abilities)) {
       ability.casteMarks = [];
       if (['solar', 'dragonblooded', 'abyssal', 'sidereal'].includes(this.object.character.exalt)) {
-        for (const [caste, list] of Object.entries(CONFIG.exaltedthird.castesPerExalt[this.object.character.exalt])) {
+        for (const [caste, list] of Object.entries(CONFIG.exaltedsecond.castesPerExalt[this.object.character.exalt])) {
           if (list.includes(key)) {
             ability.casteMarks.push(caste);
           }
@@ -755,7 +755,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     for (let [key, attribute] of Object.entries(this.object.character.attributes)) {
       attribute.casteMarks = [];
       if (['lunar', 'alchemical'].includes(this.object.character.exalt)) {
-        for (const [caste, list] of Object.entries(CONFIG.exaltedthird.castesPerExalt[this.object.character.exalt])) {
+        for (const [caste, list] of Object.entries(CONFIG.exaltedsecond.castesPerExalt[this.object.character.exalt])) {
           if (list.includes(key)) {
             attribute.casteMarks.push(caste);
           }
@@ -797,7 +797,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   _calculateSpentExperience() {
-    const casteAbilitiesMap = CONFIG.exaltedthird.casteabilitiesmap;
+    const casteAbilitiesMap = CONFIG.exaltedsecond.casteabilitiesmap;
 
     var pointsAvailableMap = {
       primary: 8,
@@ -1095,7 +1095,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
       } else if (this.object.character.abilities[charm.system.ability] && this.object.character.abilities[charm.system.ability].favored) {
         favoredCharms += charm.itemCount;
       }
-      else if (CONFIG.exaltedthird.maidens.includes(charm.system.ability) && charm.system.ability === this.object.character.caste) {
+      else if (CONFIG.exaltedsecond.maidens.includes(charm.system.ability) && charm.system.ability === this.object.character.caste) {
         favoredCharms += charm.itemCount
       }
       else if (charm.system.ability === 'universal') {
@@ -1177,7 +1177,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   _getMaidenCharmsNumber(maiden) {
-    const abilityList = CONFIG.exaltedthird.maidenabilities[maiden];
+    const abilityList = CONFIG.exaltedsecond.maidenabilities[maiden];
     return (Object.values(this.object.character.charms)?.filter(numberCharm => abilityList.includes(numberCharm.system.ability)).length || 0)
   }
 
@@ -1209,7 +1209,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     const applyChanges = await foundry.applications.api.DialogV2.confirm({
       window: { title: game.i18n.localize("Ex3.Close") },
       content: "<p>Any unsaved changed will be lost</p>",
-      classes: [`${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
       modal: true
     });
     if (applyChanges) {
@@ -1281,7 +1281,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   static async randomAbilities(event, target) {
-    const abilitiesRandom = CONFIG.exaltedthird.abilitiesList;
+    const abilitiesRandom = CONFIG.exaltedsecond.abilitiesList;
 
     const favoredOrCasteAbilities = [];
     const otherAbilities = [];
@@ -1640,19 +1640,19 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         }
         else {
           if (!sectionList[charm.system.ability]) {
-            sectionList[charm.system.ability] = { name: CONFIG.exaltedthird.charmabilities[charm.system.ability] || 'Ex3.Other', visible: true, list: [] };
+            sectionList[charm.system.ability] = { name: CONFIG.exaltedsecond.charmabilities[charm.system.ability] || 'Ex3.Other', visible: true, list: [] };
           }
           sectionList[charm.system.ability].list.push(charm);
           // if(charm.system.archetype.ability) {
           //   if (!sectionList[charm.system.archetype.ability]) {
-          //     sectionList[charm.system.archetype.ability] = { name: CONFIG.exaltedthird.charmabilities[charm.system.archetype.ability] || 'Ex3.Other', visible: true, list: [] };
+          //     sectionList[charm.system.archetype.ability] = { name: CONFIG.exaltedsecond.charmabilities[charm.system.archetype.ability] || 'Ex3.Other', visible: true, list: [] };
           //   }
           //   sectionList[charm.system.archetype.ability].list.push(charm);
           // }
         }
       }
     }
-    const template = "systems/exaltedthird/templates/dialogues/import-item.html";
+    const template = "systems/exaltedsecond/templates/dialogues/import-item.html";
     const html = await foundry.applications.handlebars.renderTemplate(template, { 'sectionList': sectionList });
 
     await foundry.applications.api.DialogV2.wait({
@@ -1720,7 +1720,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
           });
         });
       },
-      classes: ['exaltedthird-dialog', `${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+      classes: ['exaltedsecond-dialog', `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
     });
   }
 
@@ -1888,8 +1888,8 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     const type = target.dataset.type;
 
     if (type === 'merits' && game.items.filter(item => item.type === 'merit').length <= 0) {
-      const mutationsList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/mutations.json', {}, { int: 30000 });
-      const meritList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/merits.json', {}, { int: 30000 });
+      const mutationsList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/mutations.json', {}, { int: 30000 });
+      const meritList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/merits.json', {}, { int: 30000 });
       const fullMeritList = mutationsList.concat(meritList);
 
       var merit = fullMeritList[Math.floor(Math.random() * fullMeritList.length)];
@@ -1985,7 +1985,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
             if (this.object.character.abilities[charm.system.ability]) {
               return charm.system.requirement <= this.object.character.abilities[charm.system.ability].value;
             }
-            if (CONFIG.exaltedthird.maidens.includes(charm.system.ability)) {
+            if (CONFIG.exaltedsecond.maidens.includes(charm.system.ability)) {
               return charm.system.requirement <= this._getHighestMaidenAbility(charm.system.ability);
             }
             return true;
@@ -2012,7 +2012,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
             if (this.object.character.abilities[charm.system.archetype.ability]) {
               return charm.system.requirement <= this.object.character.abilities[charm.system.archetype.ability].value;
             }
-            if (CONFIG.exaltedthird.maidens.includes(charm.system.archetype.ability)) {
+            if (CONFIG.exaltedsecond.maidens.includes(charm.system.archetype.ability)) {
               return charm.system.requirement <= this._getHighestMaidenAbility(charm.system.archetype.ability);
             }
             return true;
@@ -2120,7 +2120,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
               existingCharms = (Object.values(this.object.character.charms)?.filter(numberCharm => ['charisma', 'appearance', 'manipulation'].includes(numberCharm.system.ability)).length || 0);
             }
           }
-          else if (CONFIG.exaltedthird.maidens.includes(charm.system.ability)) {
+          else if (CONFIG.exaltedsecond.maidens.includes(charm.system.ability)) {
             existingCharms = this._getMaidenCharmsNumber(charm.system.numberprerequisites.ability);
           }
           else {
@@ -2147,7 +2147,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   _getHighestMaidenAbility(maiden) {
-    const abilityList = CONFIG.exaltedthird.maidenabilities[maiden];
+    const abilityList = CONFIG.exaltedsecond.maidenabilities[maiden];
     let highestValue = 0;
     for (const ability of abilityList) {
       if ((this.object.character.abilities[ability]?.value || 0) > highestValue) {
@@ -2163,7 +2163,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
       content: `<div>In progress character <b>${this.object.character.name || this.object.character.defaultName}</b> has been saved to this chat message</div><div><button class="resume-character">${game.i18n.localize('Ex3.Resume')}</button></div>`,
       style: CONST.CHAT_MESSAGE_STYLES.OTHER,
       flags: {
-        "exaltedthird": {
+        "exaltedsecond": {
           character: this.object,
         }
       },
@@ -2171,18 +2171,18 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   static async showHelpDialog(event, target) {
-    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/dialogues/dialog-help.html", { 'link': 'https://github.com/Aliharu/Foundry-Ex3/wiki/Character-Creator' });
+    const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/dialog-help.html", { 'link': 'https://github.com/Aliharu/Foundry-Ex3/wiki/Character-Creator' });
     new foundry.applications.api.DialogV2({
       window: { title: game.i18n.localize("Ex3.ReadMe"), resizable: true },
       content: html,
       buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-      classes: [`${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+      classes: [`${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
     }).render(true);
   }
 
   async getCommonName() {
     let newName = '';
-    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/randomNames.json', {}, { int: 30000 });
+    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/randomNames.json', {}, { int: 30000 });
     const nameFormats = [
       { option: 1, weight: 4 },
       { option: 2, weight: 16 },
@@ -2281,12 +2281,12 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   async getDynastName() {
-    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/randomDynastNames.json', {}, { int: 30000 });
+    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/randomDynastNames.json', {}, { int: 30000 });
     return `${randomName.house[Math.floor(Math.random() * randomName.house.length)]} ${randomName.name1[Math.floor(Math.random() * randomName.name1.length)]}${randomName.name2[Math.floor(Math.random() * randomName.name2.length)]}`;
   }
 
   async getAbyssalName() {
-    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/randomAbyssalTitles.json', {}, { int: 30000 });
+    const randomName = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/randomAbyssalTitles.json', {}, { int: 30000 });
     return `The ${randomName.name1[Math.floor(Math.random() * randomName.name1.length)]} ${randomName.name2[Math.floor(Math.random() * randomName.name2.length)]} ${randomName.name3[Math.floor(Math.random() * randomName.name3.length)]} ${randomName.name4[Math.floor(Math.random() * randomName.name4.length)]}`;
   }
 
@@ -2317,7 +2317,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     if (actorData.system.details.exalt === 'exigent') {
       actorData.system.details.caste = this.object.character.exigent;
       if (this.object.character.exigent) {
-        actorData.system.settings.exigenttype = CONFIG.exaltedthird.exigentTiers[this.object.character.exigent];
+        actorData.system.settings.exigenttype = CONFIG.exaltedsecond.exigentTiers[this.object.character.exigent];
       }
     }
     else {
@@ -2347,7 +2347,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     actorData.system.settings.necromancycircle = this.object.character.necromancer;
 
     if (this.object.character.oxBodies > 0) {
-      const oxBodyChart = CONFIG.exaltedthird.oxBody;
+      const oxBodyChart = CONFIG.exaltedsecond.oxBody;
       var oxBodyValue = this.object.character.attributes.stamina.value + this.object.character.attributes.stamina.upgrade;
       if (oxBodyChart[this.object.character.exalt]) {
         if (oxBodyValue < 3) {
@@ -2524,7 +2524,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     for (let [key, ability] of Object.entries(this.object.character.abilities)) {
       actorData.system.abilities[key].value = ability.value;
       actorData.system.abilities[key].favored = ability.favored;
-      if (((Object.entries(ability.charms).length > 0) || (ability.favored && ability.value > 0)) && (CONFIG.exaltedthird.abilityExalts.includes(this.object.character.exalt) || this.object.character.exigent === 'strawmaiden' || this.object.character.exigent === 'knives')) {
+      if (((Object.entries(ability.charms).length > 0) || (ability.favored && ability.value > 0)) && (CONFIG.exaltedsecond.abilityExalts.includes(this.object.character.exalt) || this.object.character.exigent === 'strawmaiden' || this.object.character.exigent === 'knives')) {
         actorData.system.abilities[key].excellency = true;
       }
       if (Object.values(ability.charms).some(charm => charm.system.ability === key && charm.system.keywords.toLowerCase().includes('excellency'))) {
@@ -2623,7 +2623,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
         }
       )
     }
-    const animaList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/animaEffectsList.json', {}, { int: 30000 });
+    const animaList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/animaEffectsList.json', {}, { int: 30000 });
     if (animaList[this.object.character.caste]) {
       actorData.system.anima.passive = animaList[this.object.character.caste][0];
       actorData.system.anima.active = animaList[this.object.character.caste][1];
@@ -2641,7 +2641,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     itemData.push(
       {
         type: 'weapon',
-        img: "systems/exaltedthird/assets/icons/fist.svg",
+        img: "systems/exaltedsecond/assets/icons/fist.svg",
         name: 'Grapple',
         system: {
           witheringaccuracy: 4 + this._getCharacterPool(this.object.character.skills.combat.value),
@@ -2706,8 +2706,8 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
   }
 
   async _getCharacterEquipment(actorData, itemData) {
-    const weaponsList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/weaponsList.json', {}, { int: 30000 });
-    const armorList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedthird/module/data/armorList.json', {}, { int: 30000 });
+    const weaponsList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/weaponsList.json', {}, { int: 30000 });
+    const armorList = await foundry.utils.fetchJsonWithTimeout('systems/exaltedsecond/module/data/armorList.json', {}, { int: 30000 });
 
     for (const weapon of Object.values(this.object.character.weapons)) {
       const weaponCopy = foundry.utils.duplicate(weapon);
@@ -2780,7 +2780,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     itemData.push(
       {
         type: 'weapon',
-        img: 'systems/exaltedthird/assets/icons/fist.svg',
+        img: 'systems/exaltedsecond/assets/icons/fist.svg',
         name: 'Unarmed',
         system: {
           witheringaccuracy: 4 + (this.object.characterType === 'npc' ? this._getCharacterPool(this.object.character.skills.combat.value) : 0),
@@ -2800,7 +2800,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     if (this.object.character.exalt !== 'mortal' && this.object.character.exalt !== 'dragonblooded') {
       itemData.push({
         type: 'charm',
-        img: CONFIG.exaltedthird.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
+        img: CONFIG.exaltedsecond.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
         name: 'Dice Excellency',
         system: {
           description: 'Add 1 die to a roll for 1 mote.',
@@ -2818,7 +2818,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
       });
       itemData.push({
         type: 'charm',
-        img: CONFIG.exaltedthird.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
+        img: CONFIG.exaltedsecond.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
         name: 'Static Excellency',
         system: {
           description: 'Add 1 to a static value for 2 motes.',
@@ -2842,10 +2842,10 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     }
 
 
-    if (CONFIG.exaltedthird.attributeExalts.includes(this.object.character.exalt) || CONFIG.exaltedthird.attributeExalts.includes(this.object.character.exigent)) {
+    if (CONFIG.exaltedsecond.attributeExalts.includes(this.object.character.exalt) || CONFIG.exaltedsecond.attributeExalts.includes(this.object.character.exigent)) {
       itemData.push({
         type: 'charm',
-        img: CONFIG.exaltedthird.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
+        img: CONFIG.exaltedsecond.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
         name: 'Soak Excellency',
         system: {
           description: 'Add 1 to a soak for 1 mote.',
@@ -2866,7 +2866,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
       });
       itemData.push({
         type: 'charm',
-        img: CONFIG.exaltedthird.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
+        img: CONFIG.exaltedsecond.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
         name: 'Damage Excellency',
         system: {
           description: 'Add 1 damage to an attack for 1 mote.',
@@ -2889,7 +2889,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     if (this.object.character.exalt === 'alchemical') {
       itemData.push({
         type: 'charm',
-        img: CONFIG.exaltedthird.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
+        img: CONFIG.exaltedsecond.excellencyIcons[this.object.character.exalt] || 'icons/magic/light/explosion-star-large-orange.webp',
         name: 'Success Excellency',
         system: {
           description: 'Add 1 success to a roll for 2 motes.',
@@ -3065,7 +3065,7 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     var armor = munadneArmorList[Math.floor(Math.random() * munadneArmorList.length)];
     return {
       type: 'armor',
-      img: "systems/exaltedthird/assets/icons/breastplate.svg",
+      img: "systems/exaltedsecond/assets/icons/breastplate.svg",
       name: armor.name,
       system: {
         attunement: armor.attunement,
@@ -3087,8 +3087,8 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     }
     weaponData.system.weighttype = weight;
     weaponData.system.weapontype = weaponType;
-    const equipmentChart = CONFIG.exaltedthird.weaponStats;
-    const artifactEquipmentChart = CONFIG.exaltedthird.artifactWeaponStats;
+    const equipmentChart = CONFIG.exaltedsecond.weaponStats;
+    const artifactEquipmentChart = CONFIG.exaltedsecond.artifactWeaponStats;
     if (isArtifact) {
       weaponData.system.witheringaccuracy = artifactEquipmentChart[weaponData.system.weighttype].accuracy;
       weaponData.system.witheringdamage = artifactEquipmentChart[weaponData.system.weighttype].damage;
@@ -3125,13 +3125,13 @@ export default class CharacterBuilder extends HandlebarsApplicationMixin(Applica
     const armorData = {
       name: 'Armor',
       type: 'armor',
-      img: "systems/exaltedthird/assets/icons/breastplate.svg",
+      img: "systems/exaltedsecond/assets/icons/breastplate.svg",
       system: {}
     }
     armorData.system.weighttype = weight;
 
-    const equipmentChart = CONFIG.exaltedthird.armorStats;
-    const artifactEquipmentChart = CONFIG.exaltedthird.artifactArmorStats;
+    const equipmentChart = CONFIG.exaltedsecond.armorStats;
+    const artifactEquipmentChart = CONFIG.exaltedsecond.artifactArmorStats;
     if (isArtifact) {
       armorData.system.attunement = artifactEquipmentChart[armorData.system.weighttype].attunement;
       armorData.system.soak = artifactEquipmentChart[armorData.system.weighttype].soak;

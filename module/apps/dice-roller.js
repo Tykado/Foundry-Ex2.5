@@ -8,12 +8,12 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         super(options);
         this.object = {};
         this.actor = actor;
-        this.selects = CONFIG.exaltedthird.selects;
-        this.rollableAbilities = { ...CONFIG.exaltedthird.selects.abilities };
-        this.rollablePools = CONFIG.exaltedthird.npcpools;
+        this.selects = CONFIG.exaltedsecond.selects;
+        this.rollableAbilities = { ...CONFIG.exaltedsecond.selects.abilities };
+        this.rollablePools = CONFIG.exaltedsecond.npcpools;
         this.rollableAbilities['willpower'] = "Ex3.Willpower";
         this.rollablePools['willpower'] = "Ex3.Willpower";
-        if (game.settings.get("exaltedthird", "gloryOverwhelming")) {
+        if (game.settings.get("exaltedsecond", "gloryOverwhelming")) {
             this.rollableAbilities['fever'] = "Ex3.Fever";
             this.rollablePools['fever'] = "Ex3.Fever";
         }
@@ -24,7 +24,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         this.object.actorCombatant = data.actorCombatant ?? this._getActorCombatant();
 
         if (data.lastRoll) {
-            this.object = foundry.utils.duplicate(this.actor.flags.exaltedthird.lastroll);
+            this.object = foundry.utils.duplicate(this.actor.flags.exaltedsecond.lastroll);
             this.object.skipDialog = true;
         }
         else if (data.rollId) {
@@ -397,7 +397,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                     this.object.diceModifier += this.actor.system.settings.rollsettings[this.object.rollType.toLowerCase()].bonus;
                 }
 
-                if (this.object.rollType === 'disengage' && game.settings.get("exaltedthird", "disengageCost")) {
+                if (this.object.rollType === 'disengage' && game.settings.get("exaltedsecond", "disengageCost")) {
                     this.object.cost.initiative += 2;
                 }
 
@@ -520,13 +520,13 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         this.object.missedAttacks = 0;
         this.object.failedDecisives = 0;
         this.object.deleteEffects = [];
-        this.object.useShieldInitiative = game.settings.get("exaltedthird", "useShieldInitiative");
-        this.object.bankableStunts = game.settings.get("exaltedthird", "bankableStunts");
-        this.object.simplifiedCrafting = game.settings.get("exaltedthird", "simplifiedCrafting");
-        this.object.useEssenceGambit = game.settings.get("exaltedthird", "useEssenceGambits");
-        this.object.attributes = CONFIG.exaltedthird.attributes;
-        this.object.abilities = CONFIG.exaltedthird.abilities;
-        this.object.npcPools = CONFIG.exaltedthird.npcpools;
+        this.object.useShieldInitiative = game.settings.get("exaltedsecond", "useShieldInitiative");
+        this.object.bankableStunts = game.settings.get("exaltedsecond", "bankableStunts");
+        this.object.simplifiedCrafting = game.settings.get("exaltedsecond", "simplifiedCrafting");
+        this.object.useEssenceGambit = game.settings.get("exaltedsecond", "useEssenceGambits");
+        this.object.attributes = CONFIG.exaltedsecond.attributes;
+        this.object.abilities = CONFIG.exaltedsecond.abilities;
+        this.object.npcPools = CONFIG.exaltedsecond.npcpools;
         this.object.stuntsList = {
             "none": "Ex3.NoStunt",
             "one": "Ex3.LevelOneStunt",
@@ -750,29 +750,29 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     static PARTS = {
         header: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/dice-roll-header.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/dice-roll-header.html",
         },
-        tabs: { template: 'systems/exaltedthird/templates/dialogues/tabs.html' },
+        tabs: { template: 'systems/exaltedsecond/templates/dialogues/tabs.html' },
         dice: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/dice-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/dice-tab.html",
         },
         damage: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/damage-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/damage-tab.html",
         },
         results: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/results-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/results-tab.html",
         },
         targets: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/targets-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/targets-tab.html",
         },
         cost: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/cost-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/cost-tab.html",
         },
         charms: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/charms-tab.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/charms-tab.html",
         },
         footer: {
-            template: "systems/exaltedthird/templates/dialogues/dice-roll/dice-roll-footer.html",
+            template: "systems/exaltedsecond/templates/dialogues/dice-roll/dice-roll-footer.html",
         },
     };
 
@@ -801,7 +801,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     async _prepareContext(_options) {
         if (!this.tabGroups['primary']) this.tabGroups['primary'] = 'dice';
-        this.selects = CONFIG.exaltedthird.selects;
+        this.selects = CONFIG.exaltedsecond.selects;
         const tabs = [];
         if (this.object.rollType !== 'damageResults') {
             tabs.push({
@@ -874,7 +874,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                     else if (condition.statuses.has('grappled')) {
                         penalties.push(
                             {
-                                img: "systems/exaltedthird/assets/icons/grab.svg",
+                                img: "systems/exaltedsecond/assets/icons/grab.svg",
                                 name: "Ex3.Grappled",
                                 summary: "-1 dice on attacks"
                             },
@@ -1008,7 +1008,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         if (this.object.isFlurry) {
             penalties.push(
                 {
-                    img: "systems/exaltedthird/assets/icons/spinning-blades.svg",
+                    img: "systems/exaltedsecond/assets/icons/spinning-blades.svg",
                     name: "Ex3.Flurry",
                     summary: "-3 Dice"
                 },
@@ -1132,7 +1132,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         return {
             actor: this.actor,
             enableStuntAttribute: (this.actor?.type === 'character' && this.actor?.system.details.exalt === "lunar") || this.actor?.system.lunarform?.enabled,
-            stuntAbilityList: CONFIG.exaltedthird.exigentStuntAbilities[this.actor?.system.details.caste.toLowerCase() || ""] || null,
+            stuntAbilityList: CONFIG.exaltedsecond.exigentStuntAbilities[this.actor?.system.details.caste.toLowerCase() || ""] || null,
             selects: this.selects,
             rollableAbilities: this.rollableAbilities,
             rollablePools: this.rollablePools,
@@ -1164,7 +1164,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
     }
 
     getData() {
-        this.selects = CONFIG.exaltedthird.selects;
+        this.selects = CONFIG.exaltedsecond.selects;
         return {
             actor: this.actor,
             selects: this.selects,
@@ -1302,7 +1302,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             else {
                 if (this.actor && (this.object.rollType !== 'damage' && this.object.rollType !== 'damageResults')) {
                     const rollData = this.getSavedRollData();
-                    await this.actor.update({ [`flags.exaltedthird.lastroll`]: rollData });
+                    await this.actor.update({ [`flags.exaltedsecond.lastroll`]: rollData });
                 }
                 await this._resolveRoll();
                 if (this.object.intervals <= 0 && this.object.rollType !== 'accuracy' && this.object.rollType !== 'damage') {
@@ -1683,7 +1683,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             }
         }
         if (this.object.diceRoll && (this.object.rollType === 'accuracy' || this.object.validOpposingRollType)) {
-            game.socket.emit('system.exaltedthird', {
+            game.socket.emit('system.exaltedsecond', {
                 type: 'addOpposingRoll',
                 data: { diceRoll: this.object.diceRoll, diceDisplay: this.object.diceDisplay, total: this.object.diceRollTotal },
                 actorId: this.actor._id,
@@ -1742,12 +1742,12 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
     }
 
     static async saveRoll() {
-        let html = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
+        let html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
 
         new foundry.applications.api.DialogV2({
             window: { title: game.i18n.localize("Ex3.SaveRoll"), },
             content: html,
-            classes: [this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+            classes: [this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
             buttons: [{
                 action: "save",
                 label: game.i18n.localize("Ex3.Save"),
@@ -1798,12 +1798,12 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
     }
 
     static async editSettings() {
-        const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/dialogues/dice-roller-settings.html", { 'isAttack': this._isAttackRoll(), 'selfDefensePenalty': this.object.triggerSelfDefensePenalty, 'targetDefensePenalty': this.object.triggerTargetDefensePenalty, 'settings': this.object.settings, 'rerolls': this.object.reroll, 'damageRerolls': this.object.damage.reroll, 'selects': this.selects });
+        const html = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/dialogues/dice-roller-settings.html", { 'isAttack': this._isAttackRoll(), 'selfDefensePenalty': this.object.triggerSelfDefensePenalty, 'targetDefensePenalty': this.object.triggerTargetDefensePenalty, 'settings': this.object.settings, 'rerolls': this.object.reroll, 'damageRerolls': this.object.damage.reroll, 'selects': this.selects });
 
         new foundry.applications.api.DialogV2({
             window: { title: game.i18n.localize("Ex3.DiceRollSettings"), resizable: true },
             content: html,
-            classes: [this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+            classes: [this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
             buttons: [{
                 action: "choice",
                 label: game.i18n.localize("Ex3.Save"),
@@ -1859,9 +1859,9 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     static async showDialog(event, target) {
         const dialogType = target.dataset.dialogtype;
-        let template = "systems/exaltedthird/templates/dialogues/gambits.html";
+        let template = "systems/exaltedsecond/templates/dialogues/gambits.html";
         if (dialogType === 'socialActions') {
-            template = "systems/exaltedthird/templates/dialogues/social-actions.html";
+            template = "systems/exaltedsecond/templates/dialogues/social-actions.html";
         }
         const html = await foundry.applications.handlebars.renderTemplate(template, { 'useEssenceGambit': this.object.useEssenceGambit });
 
@@ -1873,7 +1873,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 height: 600
             },
             buttons: [{ action: 'close', label: game.i18n.localize("Ex3.Close") }],
-            classes: ['exaltedthird-dialog', this.actor.getSheetBackground()],
+            classes: ['exaltedsecond-dialog', this.actor.getSheetBackground()],
         }).render(true);
     }
 
@@ -2890,7 +2890,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             return this.object.thresholdSuccesses || 0;
         }
         if (formula.toLowerCase() === 'activationcount' && item) {
-            return item.flags?.exaltedthird?.currentIterationsActive ?? 1;
+            return item.flags?.exaltedsecond?.currentIterationsActive ?? 1;
         }
         if (formula?.toLowerCase() === 'damagedealt') {
             if (this.object.initiativeDamageDealt) {
@@ -3290,12 +3290,12 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             await game.rollForm.addMultiOpposedBonuses(data);
         }
 
-        game.socket.emit('system.exaltedthird', {
+        game.socket.emit('system.exaltedsecond', {
             type: 'addMultiOpposingCharms',
             data: data,
             actorId: this.actor._id,
         });
-        const messageContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/added-opposing-charms-card.html", {
+        const messageContent = await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/chat/added-opposing-charms-card.html", {
             actor: this.actor,
             addingCharms: addingCharms,
         });
@@ -3304,7 +3304,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             content: messageContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     targetActorId: null,
                     targetTokenId: null,
                 }
@@ -4128,7 +4128,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             rolls: [this.object.roll],
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     dice: this.object.dice,
                     successes: this.object.successes,
                     successModifier: this.object.successModifier,
@@ -4180,7 +4180,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             rolls: [this.object.roll],
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     roller: this.actor._id,
                     dice: this.object.dice,
                     successes: this.object.successes,
@@ -4213,7 +4213,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             content: messageContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         });
-        if (!game.settings.get("exaltedthird", "confirmDamageRolls")) {
+        if (!game.settings.get("exaltedsecond", "confirmDamageRolls")) {
             this.object.rollType = 'damageResults';
         }
     }
@@ -4422,7 +4422,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             rolls: [this.object.damageDiceRollResults.roll],
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     dice: this.object.dice,
                     successes: this.object.successes,
                     successModifier: this.object.successModifier,
@@ -4446,7 +4446,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 }
             }
         });
-        if (!game.settings.get("exaltedthird", "confirmDamageRolls")) {
+        if (!game.settings.get("exaltedsecond", "confirmDamageRolls")) {
             this.object.rollType = 'damageResults';
         }
     }
@@ -4481,7 +4481,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                     ${game.i18n.localize('Ex3.ApplyDecisiveDamage')}
                 </button>
                 `;
-                if (this.object.damageSuccesses && game.settings.get("exaltedthird", "automaticDecisiveDamage")) {
+                if (this.object.damageSuccesses && game.settings.get("exaltedsecond", "automaticDecisiveDamage")) {
                     this.dealHealthDamage(this.object.damageSuccesses);
                 }
                 this.object.damageLevelsDealt = this.object.damageSuccesses;
@@ -4505,7 +4505,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         if ((this.object.targetCombatant.actor.type !== 'npc' || this.object.targetCombatant.actor.system.battlegroup === false) && (!this.actor.system.battlegroup || this.object.targetCombatant.initiative > 0)) {
                             let newInitative = this.object.newTargetInitiative;
                             let subractTotal = this.object.damageSuccesses;
-                            if (game.settings.get("exaltedthird", "automaticWitheringDamage") && this.object.useShieldInitiative && this.object.shieldInitiative > 0) {
+                            if (game.settings.get("exaltedsecond", "automaticWitheringDamage") && this.object.useShieldInitiative && this.object.shieldInitiative > 0) {
                                 let newShieldInitiative = Math.max(0, this.object.shieldInitiative - this.object.damageSuccesses);
                                 this.object.newTargetData.system.shieldinitiative.value = newShieldInitiative;
                                 this.object.updateTargetActorData = true;
@@ -4530,7 +4530,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                                     }
                                 }
                             }
-                            if (game.settings.get("exaltedthird", "automaticWitheringDamage")) {
+                            if (game.settings.get("exaltedsecond", "automaticWitheringDamage")) {
                                 this.object.newTargetInitiative = newInitative;
                                 this.object.updateTargetInitiative = true;
                                 this.object.gainedInitiative = Math.max(this.object.damageSuccesses, this.object.gainedInitiative);
@@ -4541,7 +4541,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         }
                     }
                     if (this.object.target?.actor?.system?.battlegroup) {
-                        if (game.settings.get("exaltedthird", "automaticWitheringDamage")) {
+                        if (game.settings.get("exaltedsecond", "automaticWitheringDamage")) {
                             sizeDamaged = this.dealHealthDamage(this.object.damageSuccesses, true);
                             if (sizeDamaged) {
                                 this.object.gainedInitiative += ((this.object.damage.crashBonus ?? 5) * sizeDamaged);
@@ -4569,7 +4569,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 if (this.object.target?.actor?.system?.battlegroup) {
                     fullInitiative = (5 * sizeDamaged) + 1;
                 }
-                if (!game.settings.get("exaltedthird", "automaticWitheringDamage") && this.object.gainedInitiative) {
+                if (!game.settings.get("exaltedsecond", "automaticWitheringDamage") && this.object.gainedInitiative) {
                     fullInitiative += this.object.gainedInitiative;
                 }
                 if (this.object.damage.maxInitiativeGain) {
@@ -4618,7 +4618,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             content: messageContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     dice: this.object.dice,
                     successes: this.object.successes,
                     successModifier: this.object.successModifier,
@@ -4685,7 +4685,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             content: messageContent,
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
         });
-        if (!game.settings.get("exaltedthird", "confirmDamageRolls")) {
+        if (!game.settings.get("exaltedsecond", "confirmDamageRolls")) {
             this.object.rollType = 'damageResults';
         }
         // await this._addAttackEffects();
@@ -4704,7 +4704,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     async _addAttackEffects() {
         if (this.object.triggerSelfDefensePenalty > 0) {
-            const existingPenalty = this.actor.effects.find(i => i.flags.exaltedthird?.statusId == "defensePenalty");
+            const existingPenalty = this.actor.effects.find(i => i.flags.exaltedsecond?.statusId == "defensePenalty");
             if (existingPenalty) {
                 let changes = foundry.utils.duplicate(existingPenalty.changes);
                 changes[0].value = changes[0].value - this.object.triggerSelfDefensePenalty;
@@ -4714,7 +4714,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             else {
                 this.actor.createEmbeddedDocuments('ActiveEffect', [{
                     name: 'Defense Penalty',
-                    img: 'systems/exaltedthird/assets/icons/slashed-shield.svg',
+                    img: 'systems/exaltedsecond/assets/icons/slashed-shield.svg',
                     origin: this.actor.uuid,
                     disabled: false,
                     duration: {
@@ -4722,7 +4722,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         // startRound: game.combat?.round || 0,
                     },
                     flags: {
-                        "exaltedthird": {
+                        "exaltedsecond": {
                             statusId: 'defensePenalty',
                         }
                     },
@@ -4745,7 +4745,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             this._addStatusEffect('fulldefense', "addSelfStatuses");
         }
         if (this.object.target) {
-            if (game.settings.get("exaltedthird", "calculateOnslaught")) {
+            if (game.settings.get("exaltedsecond", "calculateOnslaught")) {
                 this._addOnslaught(this.object.onslaughtAddition);
                 if (this.object.magicOnslaughtAddition) {
                     this._addOnslaught(this.object.magicOnslaughtAddition, true);
@@ -4763,7 +4763,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         startRound: game.combat?.round || 0,
                     },
                     flags: {
-                        "exaltedthird": {
+                        "exaltedsecond": {
                             poisonerCombatantId: this.object.actorCombatant?._id || null,
                             weaponInflictedPosion: true,
                         }
@@ -4806,14 +4806,14 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 if (this.object.gambit === 'revealWeakness') {
                     this.object.newTargetData.effects.push({
                         name: 'Reveal Weakness',
-                        img: 'systems/exaltedthird/assets/icons/hammer-break.svg',
+                        img: 'systems/exaltedsecond/assets/icons/hammer-break.svg',
                         origin: this.object.target.actor.uuid,
                         disabled: false,
                         duration: {
                             rounds: 5,
                         },
                         flags: {
-                            "exaltedthird": {
+                            "exaltedsecond": {
                                 statusId: 'revealWeakness',
                             }
                         },
@@ -4854,11 +4854,11 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     async _removeEffect(type = 'revealWeakness') {
         this.object.updateTargetActorData = true;
-        const effect = this.object.newTargetData.effects.find(i => i.flags.exaltedthird?.statusId === type);
+        const effect = this.object.newTargetData.effects.find(i => i.flags.exaltedsecond?.statusId === type);
         if (effect?._id) {
             this.object.deleteEffects.push(effect._id);
         }
-        this.object.newTargetData.effects = this.object.newTargetData.effects.filter(i => i.flags.exaltedthird?.statusId !== type);
+        this.object.newTargetData.effects = this.object.newTargetData.effects.filter(i => i.flags.exaltedsecond?.statusId !== type);
     }
 
     async _addTriggerBonuses(type = 'beforeRoll') {
@@ -4942,7 +4942,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                                 if (cleanedValue === 'prompt') {
                                     cleanedValue = await foundry.applications.api.DialogV2.prompt({
                                         window: { title: game.i18n.localize(charm.name) },
-                                        content: `<div class="resource-label">Trigger: ${trigger.name}</div><label class="resource-label">Input value for: ${game.i18n.localize(CONFIG.exaltedthird.numberBonusTypeLabels[bonus.effect])}</label><input name="promptValue" type="text" placeholder="Insert number or formula" autofocus>`,
+                                        content: `<div class="resource-label">Trigger: ${trigger.name}</div><label class="resource-label">Input value for: ${game.i18n.localize(CONFIG.exaltedsecond.numberBonusTypeLabels[bonus.effect])}</label><input name="promptValue" type="text" placeholder="Insert number or formula" autofocus>`,
                                         ok: {
                                             label: "Submit",
                                             callback: (event, button, dialog) => button.form.elements.promptValue.value
@@ -5402,7 +5402,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                                         }
                                         break;
                                     case 'inflictStatus':
-                                        if (CONFIG.exaltedthird.statusEffects.some(status => status.id === cleanedValue)) {
+                                        if (CONFIG.exaltedsecond.statusEffects.some(status => status.id === cleanedValue)) {
                                             this._addStatusEffect(cleanedValue);
                                         }
                                         break;
@@ -5733,7 +5733,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         const value = await foundry.applications.api.DialogV2.confirm({
                             window: { title: game.i18n.localize('Ex3.Requirement') },
                             content: `<p>${result}</p>`,
-                            classes: ["dialog", this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedthird", "sheetStyle")}-background`],
+                            classes: ["dialog", this.actor ? this.actor.getSheetBackground() : `${game.settings.get("exaltedsecond", "sheetStyle")}-background`],
                             modal: true
                         });
                         if (!value) {
@@ -5903,7 +5903,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         }
         if (!this.object.target.actor.system.immunities.onslaught && ((this.object.target.actor.system.sizecategory || 'standard') !== 'legendary' && !magicInflicted)) {
             this.object.updateTargetActorData = true;
-            const onslaught = this.object.newTargetData.effects.find(i => i.flags.exaltedthird?.statusId === "onslaught");
+            const onslaught = this.object.newTargetData.effects.find(i => i.flags.exaltedsecond?.statusId === "onslaught");
             if (onslaught) {
                 onslaught.changes[0].value = onslaught.changes[0].value - number;
                 onslaught.changes[1].value = onslaught.changes[1].value - number;
@@ -5912,7 +5912,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             else {
                 this.object.newTargetData.effects.push({
                     name: `${game.i18n.localize('Ex3.Onslaught')} (-${number})`,
-                    img: 'systems/exaltedthird/assets/icons/surrounded-shield.svg',
+                    img: 'systems/exaltedsecond/assets/icons/surrounded-shield.svg',
                     origin: this.object.target.actor.uuid,
                     disabled: false,
                     duration: {
@@ -5920,7 +5920,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                         // startRound: game.combat?.round || 0,
                     },
                     flags: {
-                        "exaltedthird": {
+                        "exaltedsecond": {
                             statusId: 'onslaught',
                         }
                     },
@@ -5943,7 +5943,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
 
     _addTargetDefensePenalty(number = 1) {
         this.object.updateTargetActorData = true;
-        const existingPenalty = this.object.newTargetData.effects.find(i => i.flags.exaltedthird?.statusId == "defensePenalty");
+        const existingPenalty = this.object.newTargetData.effects.find(i => i.flags.exaltedsecond?.statusId == "defensePenalty");
         if (existingPenalty) {
             existingPenalty.changes[0].value = existingPenalty.changes[0].value - number;
             existingPenalty.changes[1].value = existingPenalty.changes[1].value - number;
@@ -5952,14 +5952,14 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         else {
             this.object.newTargetData.effects.push({
                 name: `${game.i18n.localize("Ex3.DefensePenalty")} (-${number})`,
-                img: 'systems/exaltedthird/assets/icons/slashed-shield.svg',
+                img: 'systems/exaltedsecond/assets/icons/slashed-shield.svg',
                 origin: this.object.target.actor.uuid,
                 disabled: false,
                 duration: {
                     rounds: 5,
                 },
                 flags: {
-                    "exaltedthird": {
+                    "exaltedsecond": {
                         statusId: 'defensePenalty',
                     }
                 },
@@ -6060,7 +6060,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             }
         }
         else {
-            game.socket.emit('system.exaltedthird', {
+            game.socket.emit('system.exaltedsecond', {
                 type: 'updateTargetData',
                 id: this.object.target.id,
                 data: this.object.newTargetData,
@@ -6080,7 +6080,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 game.combat.setInitiative(this.object.targetCombatant.id, this.object.newTargetInitiative, crasherId);
             }
             else {
-                game.socket.emit('system.exaltedthird', {
+                game.socket.emit('system.exaltedsecond', {
                     type: 'updateInitiative',
                     id: this.object.targetCombatant.id,
                     data: this.object.newTargetInitiative,
@@ -6223,7 +6223,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             style: CONST.CHAT_MESSAGE_STYLES.OTHER,
             rolls: [this.object.roll],
             flags: {
-                "exaltedthird": {
+                "exaltedsecond": {
                     dice: this.object.dice,
                     successes: this.object.successes,
                     successModifier: this.object.successModifier,
@@ -6258,7 +6258,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
     }
 
     _getCraftDifficulty() {
-        if (game.settings.get("exaltedthird", "simplifiedCrafting")) {
+        if (game.settings.get("exaltedsecond", "simplifiedCrafting")) {
             this.object.intervals = 1;
         }
         else {
@@ -6378,8 +6378,8 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         const attackTypeValue = this._isAttackRoll() ? this.object.attackType : '';
         const messageData = {
             name: cardName,
-            rollTypeImgUrl: CONFIG.exaltedthird.rollTypeTargetImages[this.object.rollType] || CONFIG.exaltedthird.rollTypeTargetImages[attackTypeValue] || CONFIG.exaltedthird.rollTypeTargetImages[this.object.ability] || "systems/exaltedthird/assets/icons/d10.svg",
-            rollTypeLabel: CONFIG.exaltedthird.rollTypeTargetLabels[this.object.rollType] || CONFIG.exaltedthird.rollTypeTargetLabels[this.object.ability] || "Ex3.Roll",
+            rollTypeImgUrl: CONFIG.exaltedsecond.rollTypeTargetImages[this.object.rollType] || CONFIG.exaltedsecond.rollTypeTargetImages[attackTypeValue] || CONFIG.exaltedsecond.rollTypeTargetImages[this.object.ability] || "systems/exaltedsecond/assets/icons/d10.svg",
+            rollTypeLabel: CONFIG.exaltedsecond.rollTypeTargetLabels[this.object.rollType] || CONFIG.exaltedsecond.rollTypeTargetLabels[this.object.ability] || "Ex3.Roll",
             messageContent: content,
             rollData: this.object,
             isAttack: this._isAttackRoll(),
@@ -6389,7 +6389,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             rollingActor: this.actor,
             combatStats: combatStats,
         }
-        return await foundry.applications.handlebars.renderTemplate("systems/exaltedthird/templates/chat/roll-card.html", messageData);
+        return await foundry.applications.handlebars.renderTemplate("systems/exaltedsecond/templates/chat/roll-card.html", messageData);
     }
 
     _getDiceRollDisplay(type = 'roll') {
@@ -7026,7 +7026,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                 }
             }
         }
-        if (game.settings.get("exaltedthird", "gloryOverwhelming")) {
+        if (game.settings.get("exaltedsecond", "gloryOverwhelming")) {
             let animaLevels = ["Dim", "Glowing", "Burning", "Bonfire"];
 
             if (this.actor.system.anima.max === 4) {
@@ -7317,15 +7317,15 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
         }
         if (this.object.specialAttacksList === undefined) {
             this.object.specialAttacksList = [
-                { id: 'aim', name: "Aim", added: false, show: false, description: '+3 Attack Dice', img: 'systems/exaltedthird/assets/icons/targeting.svg' },
-                { id: 'clash', name: "Clash", added: false, show: false, description: 'On successful attack gain +3 initiative withering damage or +1 level of Decisive damage.  Inflict a -2 defense penalty on the target.', img: 'systems/exaltedthird/assets/icons/sword-clash.svg' },
-                { id: 'chopping', name: "Chopping", added: false, show: false, description: 'Cost: 1i and reduce defense by 1. Increase damage by 3 on withering.  -2 hardness on decisive', img: 'systems/exaltedthird/assets/icons/battered-axe.svg' },
-                { id: 'flurry', name: "Flurry", added: false, show: this._isAttackRoll(), description: 'Cost: 3 dice and reduce defense by 1.', img: 'systems/exaltedthird/assets/icons/spinning-blades.svg' },
+                { id: 'aim', name: "Aim", added: false, show: false, description: '+3 Attack Dice', img: 'systems/exaltedsecond/assets/icons/targeting.svg' },
+                { id: 'clash', name: "Clash", added: false, show: false, description: 'On successful attack gain +3 initiative withering damage or +1 level of Decisive damage.  Inflict a -2 defense penalty on the target.', img: 'systems/exaltedsecond/assets/icons/sword-clash.svg' },
+                { id: 'chopping', name: "Chopping", added: false, show: false, description: 'Cost: 1i and reduce defense by 1. Increase damage by 3 on withering.  -2 hardness on decisive', img: 'systems/exaltedsecond/assets/icons/battered-axe.svg' },
+                { id: 'flurry', name: "Flurry", added: false, show: this._isAttackRoll(), description: 'Cost: 3 dice and reduce defense by 1.', img: 'systems/exaltedsecond/assets/icons/spinning-blades.svg' },
                 { id: 'fulldefense', name: "Flurry Full Defense", added: false, show: false, description: '3 Dice and 2 Initiative cost and add the full defense effect to token.  -1 Defense for flurrying', img: 'icons/svg/shield.svg' },
-                { id: 'piercing', name: "Piercing", added: false, show: false, description: 'Cost: 1i and reduce defense by 1.  Ignore 4 soak', img: 'systems/exaltedthird/assets/icons/fast-arrow.svg' },
+                { id: 'piercing', name: "Piercing", added: false, show: false, description: 'Cost: 1i and reduce defense by 1.  Ignore 4 soak', img: 'systems/exaltedsecond/assets/icons/fast-arrow.svg' },
                 { id: 'knockdown', name: "Smashing (Knockdown)", added: false, show: false, description: 'Cost: 2i and reduce defense by 1. Knock opponent down', img: 'icons/svg/falling.svg' },
-                { id: 'knockback', name: "Smashing (Knockback)", added: false, show: false, description: 'Cost: 2i and reduce defense by 1.  Knock opponent back 1 range band', img: 'systems/exaltedthird/assets/icons/hammer-drop.svg' },
-                { id: 'impale', name: "Impale", added: false, show: false, description: 'If moved 2 consecutive range bands toward target while mounted.  Deal +5 withering or +3 decisive damage', img: 'systems/exaltedthird/assets/icons/spiked-tail.svg' },
+                { id: 'knockback', name: "Smashing (Knockback)", added: false, show: false, description: 'Cost: 2i and reduce defense by 1.  Knock opponent back 1 range band', img: 'systems/exaltedsecond/assets/icons/hammer-drop.svg' },
+                { id: 'impale', name: "Impale", added: false, show: false, description: 'If moved 2 consecutive range bands toward target while mounted.  Deal +5 withering or +3 decisive damage', img: 'systems/exaltedsecond/assets/icons/spiked-tail.svg' },
                 { id: 'unexpectedattack', name: "Unexpected Attack", added: false, show: false, description: '-2 To targets Defense', img: 'icons/svg/daze.svg' },
             ];
         }
@@ -7556,7 +7556,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
             if (this._isAttackRoll()) {
                 const triggerMissedAttack = this.object.missedAttacks > 0 && (this.object.missedAttacks >= this.object.showTargets);
                 if (triggerMissedAttack) {
-                    if ((this.object.attackType === 'decisive' || this.object.attackType === 'gambit') && !game.settings.get("exaltedthird", "forgivingDecisives")) {
+                    if ((this.object.attackType === 'decisive' || this.object.attackType === 'gambit') && !game.settings.get("exaltedsecond", "forgivingDecisives")) {
                         if (this.object.characterInitiative < 11) {
                             this.object.characterInitiative -= 2;
                         }
@@ -7566,7 +7566,7 @@ export default class RollForm extends HandlebarsApplicationMixin(ApplicationV2) 
                     }
                 } else {
                     if (this.object.attackType === 'withering' && !this.actor.system.battlegroup) {
-                        if (game.settings.get("exaltedthird", "automaticWitheringDamage") && this.object.gainedInitiative && this.object.damage.gainInitiative) {
+                        if (game.settings.get("exaltedsecond", "automaticWitheringDamage") && this.object.gainedInitiative && this.object.damage.gainInitiative) {
                             if (this.object.damage.maxAttackInitiativeGain) {
                                 this.object.gainedInitiative = Math.min(this.object.damage.maxAttackInitiativeGain, this.object.gainedInitiative);
                             }

@@ -1,6 +1,6 @@
 <div class="tab effects {{tab.cssClass}}" data-group="primary" data-tab="effects">
 
-    {{#if flags.exaltedthird.lastroll}}
+    {{#if flags.exaltedsecond.lastroll}}
     <div class="resource-label list-section-header d-flex flex-between">
         <div>
             {{localize "Ex3.LastRoll"}}
@@ -8,7 +8,7 @@
     </div>
     <ol class="items-list">
         <li class="item flexrow">
-            <div class="item-name resource-table-value item-header">{{flags.exaltedthird.lastroll.rollType}}</div>
+            <div class="item-name resource-table-value item-header">{{flags.exaltedsecond.lastroll.rollType}}</div>
             <div class="item-controls">
                 <a class="item-control last-roll" data-action="lastRoll" title="Dialogue"><i
                         class="fas fa-dice-d10"></i></a>
@@ -394,5 +394,5 @@
             {{/each}}
         </div>
     </div>
-    {{> systems/exaltedthird/templates/actor/active-effects.html}}
+    {{> systems/exaltedsecond/templates/actor/active-effects.html}}
 </div>

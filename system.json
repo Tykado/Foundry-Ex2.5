@@ -1,7 +1,7 @@
 {
-  "id": "exaltedthird",
-  "title": "Exalted Third Edition",
-  "description": "Unofficial Exalted third edition system module for FoundryVTT!  Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit worldofdarkness.com.",
+  "id": "exaltedsecond",
+  "title": "Exalted Second Edition",
+  "description": "Unofficial Exalted 2.5 edition system module for FoundryVTT!  Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit worldofdarkness.com.",
   "url": "https://github.com/Aliharu/Foundry-Ex3",
   "license": "LICENSE.txt",
   "version": "4.2.0",
@@ -18,10 +18,10 @@
     }
   ],
   "esmodules": [
-    "module/exaltedthird.js"
+    "module/exaltedsecond.js"
   ],
   "styles": [
-    "css/exaltedthird.css",
+    "css/exaltedsecond.css",
     "css/dice-roller.css"
   ],
   "languages": [
@@ -38,14 +38,14 @@
       "type": "Macro",
       "name": "exalted_macros",
       "path": "packs/exalted-macros",
-      "system": "exaltedthird"
+      "system": "exaltedsecond"
     }
   ],
   "media": [
     {
       "type": "setup",
-      "url": "systems/exaltedthird/assets/logo.webp",
-      "thumbnail": "systems/exaltedthird/assets/logo.webp"
+      "url": "systems/exaltedsecond/assets/logo.webp",
+      "thumbnail": "systems/exaltedsecond/assets/logo.webp"
     }
   ],
   "relationships": [],

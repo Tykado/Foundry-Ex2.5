@@ -6,7 +6,7 @@ export default class ExaltedCombatTracker extends foundry.applications.sidebar
     .tabs.CombatTracker {
 
     static DEFAULT_OPTIONS = {
-        classes: ['exaltedthird'],
+        classes: ['exaltedsecond'],
         actions: {
             toggleTurnOver: this.#toggleTurnOver,
             setCharacterTurn: this.#setCharacterTurn,
@@ -17,13 +17,13 @@ export default class ExaltedCombatTracker extends foundry.applications.sidebar
 
     static PARTS = {
         header: {
-            template: 'systems/exaltedthird/templates/sidebar/combat-tracker/header.html',
+            template: 'systems/exaltedsecond/templates/sidebar/combat-tracker/header.html',
         },
         tracker: {
-            template: "systems/exaltedthird/templates/sidebar/combat-tracker/tracker.html"
+            template: "systems/exaltedsecond/templates/sidebar/combat-tracker/tracker.html"
         },
         footer: {
-            template: 'systems/exaltedthird/templates/sidebar/combat-tracker/footer.html',
+            template: 'systems/exaltedsecond/templates/sidebar/combat-tracker/footer.html',
         },
     };
 

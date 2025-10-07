@@ -1,7 +1,7 @@
 export async function animaTokenMagic(actor, newAnimaValue) {
     const tokenId = actor.token?.id || actor.getActiveTokens()[0]?.id;
     const actorToken = canvas.tokens.placeables.filter(x => x.id === tokenId)[0];
-    if (game.modules.get("tokenmagic")?.active && game.settings.get("exaltedthird", "animaTokenMagic") && actorToken) {
+    if (game.modules.get("tokenmagic")?.active && game.settings.get("exaltedsecond", "animaTokenMagic") && actorToken) {
         let effectColor = Number(`0x${actor.system.details.animacolor.replace('#', '')}`);
         let sovereign =
             [{
@@ -189,7 +189,7 @@ export async function animaTokenMagic(actor, newAnimaValue) {
 
 export function attackSequence(diceRollerObject) {
     const actorToken = diceRollerObject._getActorToken();
-    if (game.modules.get("sequencer")?.active && diceRollerObject.object.target && actorToken && game.settings.get("exaltedthird", "attackEffects")) {
+    if (game.modules.get("sequencer")?.active && diceRollerObject.object.target && actorToken && game.settings.get("exaltedsecond", "attackEffects")) {
         if (diceRollerObject.object.attackEffectPreset !== 'none') {
             let effectsMap = {
                 'arrow': 'jb2a.arrow.physical.white.01.05ft',

@@ -9,8 +9,8 @@
 @import 'global/grid';
 @import 'global/flex';
 
-/* Styles limited to exaltedthird sheets */
-.exaltedthird {
+/* Styles limited to exaltedsecond sheets */
+.exaltedsecond {
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/tabs';
@@ -40,7 +40,7 @@
 // }
 
 
-// .exaltedthird .window-content {
+// .exaltedsecond .window-content {
 //   background: url('../assets/backgrounds/solar-background.jpg');
 //   background-size: cover;
 // }
@@ -156,7 +156,7 @@
   }
 }
 
-.exaltedthird-dialog {
+.exaltedsecond-dialog {
   table {
     margin: 0px;
     background: rgba(0, 0, 0, 0.05);
@@ -168,7 +168,7 @@
   }
 }
 
-.exaltedthird {
+.exaltedsecond {
   h2 {
     color: #222;
     text-shadow: none;
@@ -213,15 +213,15 @@
   }
 }
 
-.exaltedthird .window-content .abilities,
-.exaltedthird.sheet.actor .window-content .abilities {
+.exaltedsecond .window-content .abilities,
+.exaltedsecond.sheet.actor .window-content .abilities {
   border: none;
   border-bottom: 1px solid #b5b3a4;
 }
 
 /* Resource boxes CSS */
 
-.exaltedthird .resource-value .resource-value-step {
+.exaltedsecond .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -230,7 +230,7 @@
   cursor: pointer;
 }
 
-.exaltedthird .resource-value-static .resource-value-static-step {
+.exaltedsecond .resource-value-static .resource-value-static-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -239,7 +239,7 @@
 }
 
 
-.exaltedthird .augment-attribute-active {
+.exaltedsecond .augment-attribute-active {
   color: #147c14;
 }
 
@@ -263,7 +263,7 @@
   margin: 0px 10px 0px 0px;
 }
 
-.exaltedthird .resource-value .resource-value-empty {
+.exaltedsecond .resource-value .resource-value-empty {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -287,27 +287,27 @@
       transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step {
+.exaltedsecond .resource-counter .resource-counter-step {
   border: 1px solid black;
   display: inline-block;
   cursor: pointer;
 }
 
-.exaltedthird .non-health-boxes {
+.exaltedsecond .non-health-boxes {
   height: 14px;
   width: 14px;
 }
 
-.exaltedthird .health-boxes {
+.exaltedsecond .health-boxes {
   height: var(--font-size-16);
   width: var(--font-size-16);
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="-"] {
+.exaltedsecond .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #147c14;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="/"] {
+.exaltedsecond .resource-counter .resource-counter-step[data-state="/"] {
   background:
     linear-gradient(135deg,
       transparent 0%,
@@ -318,7 +318,7 @@
       transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="x"] {
+.exaltedsecond .resource-counter .resource-counter-step[data-state="x"] {
   background:
     linear-gradient(45deg,
       transparent 0%,
@@ -336,7 +336,7 @@
       transparent 100%);
 }
 
-.exaltedthird .query-results {
+.exaltedsecond .query-results {
   width: 65%;
   overflow: scroll;
   overflow-x: hidden;
@@ -362,7 +362,7 @@
   width: 100%;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="*"] {
+.exaltedsecond .resource-counter .resource-counter-step[data-state="*"] {
   background:
     linear-gradient(45deg,
       transparent 0%,
@@ -394,12 +394,12 @@
       transparent 100%);
 }
 
-.exaltedthird .flex-group-center:not(.flexrow) .resource-value,
-.exaltedthird .flex-group-center:not(.flexrow) .resource-counter {
+.exaltedsecond .flex-group-center:not(.flexrow) .resource-value,
+.exaltedsecond .flex-group-center:not(.flexrow) .resource-counter {
   margin-top: 5px;
 }
 
-.exaltedthird .tab.disciplines .resource-value {
+.exaltedsecond .tab.disciplines .resource-value {
   margin-top: 2px;
 }
 
@@ -408,7 +408,7 @@
   border-bottom: 1px solid black;
 }
 
-.exaltedthird .cursor-pointer {
+.exaltedsecond .cursor-pointer {
   cursor: pointer;
 }
 

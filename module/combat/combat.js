@@ -27,12 +27,12 @@ export class ExaltedCombat extends Combat {
         initiative: value
       };
       if (value <= 0 && combatant.initiative && combatant.initiative > 0 && crasherId) {
-        newVal[`flags.exaltedthird.crashedBy`] = crasherId;
+        newVal[`flags.exaltedsecond.crashedBy`] = crasherId;
       }
       if (value > 0) {
-        newVal[`flags.exaltedthird.crashedBy`] = null;
+        newVal[`flags.exaltedsecond.crashedBy`] = null;
         if(combatant.initiative !== null && combatant.initiative <= 0) {
-          newVal[`flags.exaltedthird.crashRecovery`] = 2;
+          newVal[`flags.exaltedsecond.crashRecovery`] = 2;
         }
       }
       await combatant.update(newVal);
